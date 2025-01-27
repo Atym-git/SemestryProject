@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 
-[RequireComponent(typeof(CountNShowExp))]
+[RequireComponent(typeof(LevelUp))]
 [RequireComponent(typeof(CountNShowCoins))]
 public class Generator : MonoBehaviour
 {
@@ -12,12 +12,12 @@ public class Generator : MonoBehaviour
     public float amountOfCoinsProducing;
     public float amountOfExpProducing;
 
-    [SerializeField, HideInInspector] private CountNShowExp expScript;
+    [SerializeField, HideInInspector] private ExpGain expScript;
     [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
     private void Start()
     {
-        expScript.gameObject.GetComponent<CountNShowExp>();
+        expScript.gameObject.GetComponent<LevelUp>();
         coinsScript.gameObject.GetComponent<CountNShowCoins>();
         StartCoroutine(Produce());
     }
@@ -27,7 +27,7 @@ public class Generator : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(timeToProduce);
-            expScript.AddExp(amountOfExpProducing);
+            expScript.OnExpGain(amountOfExpProducing);
             coinsScript.AddCoins(amountOfCoinsProducing);
         }
     }
