@@ -6,9 +6,9 @@ using UnityEngine;
  menuName = "SO/Generator/New Generator")]
 public class GeneratorSO : ScriptableObject
 {
-    public Sprite generatorSprite { get; set; }
+    public Sprite generatorSprite { get; private set; }
 
-    public int generatorId { get; }
+    public int generatorId { get; private set; }
 
-    public float multiPlayer { get; set; }
+    public float multiplayer { get; set; }
 }

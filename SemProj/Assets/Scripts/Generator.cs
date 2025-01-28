@@ -4,8 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 
-[RequireComponent(typeof(LevelUp))]
-[RequireComponent(typeof(CountNShowCoins))]
+//[RequireComponent(typeof(LevelUp))]
+//[RequireComponent(typeof(CountNShowCoins))]
 public class Generator : MonoBehaviour
 {
     public float timeToProduce;
@@ -17,8 +17,8 @@ public class Generator : MonoBehaviour
 
     private void Start()
     {
-        expScript.gameObject.GetComponent<LevelUp>();
-        coinsScript.gameObject.GetComponent<CountNShowCoins>();
+        //expScript.gameObject.GetComponent<LevelUp>();
+        //coinsScript.gameObject.GetComponent<CountNShowCoins>();
         StartCoroutine(Produce());
     }
 

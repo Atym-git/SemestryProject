@@ -18,7 +18,8 @@ public class Store : MonoBehaviour
         if (CoinsScript.currCoins >= upgradeTimeCost)
         {
             CoinsScript.AddCoins(-upgradeTimeCost);
-            generatorScript.timeToProduce -= (float)0.2;
+            upgradeTimeCost *= 1.5f;
+            generatorScript.timeToProduce -= 0.2f;
         }
     }
     public void UpgradeGeneratorCoins()
@@ -26,7 +27,7 @@ public class Store : MonoBehaviour
         if (CoinsScript.currCoins >= upgradeCoinsCost)
         {
             CoinsScript.AddCoins(-upgradeCoinsCost);
-            generatorScript.amountOfCoinsProducing += (float)0.5;
+            generatorScript.amountOfCoinsProducing += 0.5f;
         }
     }
     public void UpgradeGeneratorExp()
@@ -34,7 +35,7 @@ public class Store : MonoBehaviour
         if (CoinsScript.currCoins >= upgradeExpCost)
         {
             CoinsScript.AddCoins(-upgradeExpCost);
-            generatorScript.amountOfExpProducing += (float)0.3;
+            generatorScript.amountOfExpProducing += 0.3f;
         }
     }
     public void UpgradeLMBClicker()
