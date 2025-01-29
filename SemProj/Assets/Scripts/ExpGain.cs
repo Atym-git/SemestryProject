@@ -29,14 +29,11 @@ public class ExpGain : MonoBehaviour
         expSlider.fillAmount = currExp / expToLevelUp;
         while (currExp >= expToLevelUp)
         {
-            Debug.Log(currExp);
             currExp -= expToLevelUp;
-            Debug.Log(currExp);
             expSlider.fillAmount = 0;
             //expToLevelUp *= 1.25f;
             levelUpScript.LevelUpgraded();
         }
-        Debug.Log(currExp);
         expSlider.fillAmount = currExp / expToLevelUp;
     }
 }

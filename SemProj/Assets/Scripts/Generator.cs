@@ -13,13 +13,14 @@ public class Generator : MonoBehaviour
     public float timeToProduce;
     public float coinsProducement;
     public float expProducement;
+    public float generatorCost;
 
     //public float timeToProduceATick;
     //public float CoinsProducingPerTick;
     //public float ExpProducingPerTick;
 
     //private float timeToProduce = 120;
-    private float currProduceTime = 0;
+    //private float currProduceTime = 0;
     //private float coinsProducement;
     //private float expProducement;
 
@@ -35,12 +36,13 @@ public class Generator : MonoBehaviour
         StartCoroutine(Produce());
     }
 
-    public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement)
+    public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost)
     {
         GetComponent<Image>().sprite = GeneratorSprite;
         timeToProduce = TimeToProduce;
         coinsProducement = CoinsProducement;
         expProducement = ExpProducement;
+        generatorCost = GeneratorCost;
     }
 
     //private IEnumerator Produce()
@@ -74,17 +76,16 @@ public class Generator : MonoBehaviour
         {
             expScript.OnExpGain(expProducement);
             coinsScript.AddCoins(coinsProducement);
-            //Zeroing();
             isGeneratorFinished = false;
             transform.GetChild(0).gameObject.SetActive(false);
             StartCoroutine(Produce());
         }
     }
 
-    private void Zeroing()
-    {
-        currProduceTime = 0;
-        coinsProducement = 0;
-        expProducement = 0;
-    }
+    //private void Zeroing()
+    //{
+    //    currProduceTime = 0;
+    //    coinsProducement = 0;
+    //    expProducement = 0;
+    //}
 }

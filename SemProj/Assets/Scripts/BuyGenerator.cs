@@ -14,6 +14,8 @@ public class BuyGenerator : MonoBehaviour
 
     private int generatorIndex = 0;
 
+    [SerializeField] private CountNShowCoins coinsScript;
+
     private void Start()
     {
         ResourceLoader();
@@ -21,17 +23,16 @@ public class BuyGenerator : MonoBehaviour
 
     public void OnGeneratorBought()
     {
-        //GameObject instance = Instantiate(moveTestTube.testTube, moveTestTube.Slots[i].transform);
-
-        //Tube tube = instance.GetComponent<Tube>();
-        if (generatorIndex < generatorSOs.Length)
+        if (coinsScript.currCoins >= generatorSOs[generatorIndex].generatorCost && generatorIndex < generatorSOs.Length)
         {
+
             GameObject instance = Instantiate(generatorPrefab, generatorRoot);
 
             Generator generator = instance.GetComponent<Generator>();
 
             generator.SetupGenerator(generatorSOs[generatorIndex].generatorSprite, generatorSOs[generatorIndex].timeConsume,
-                generatorSOs[generatorIndex].coinsProducement, generatorSOs[generatorIndex].expProducement);
+                generatorSOs[generatorIndex].coinsProducement, generatorSOs[generatorIndex].expProducement, generatorSOs[generatorIndex].generatorCost);
+            coinsScript.AddCoins(-generatorSOs[generatorIndex].generatorCost);
             generatorIndex++;
         }
             
@@ -43,6 +44,5 @@ public class BuyGenerator : MonoBehaviour
         generatorSOs = Resources.LoadAll("GeneratorSO", typeof(GeneratorSO))
             .Cast<GeneratorSO>()
             .ToArray();
-        Debug.Log(generatorSOs.Length);
     }
 }
