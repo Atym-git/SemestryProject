@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GeneratorSO",
- menuName = "SO/Generator/New Generator")]
+ menuName = "SO/Generator/Generator")]
 public class GeneratorSO : ScriptableObject
 {
+    [field: SerializeField]
     public Sprite generatorSprite { get; private set; }
 
-    public int generatorId { get; private set; }
+    [field: SerializeField]
+    public float coinsProducement { get; private set; }
 
-    public float multiplayer { get; set; }
+    [field: SerializeField]
+    public float expProducement { get; private set; }
+
+    [field: SerializeField]
+    public float timeConsume { get; private set; }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelUp : MonoBehaviour
 {
-    private int currLevel;
+    private int currLevel = 1;
 
     [field: SerializeField, HideInInspector] private TextMeshProUGUI showLevelTMP;
 
