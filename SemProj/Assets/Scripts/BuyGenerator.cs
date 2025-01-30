@@ -6,15 +6,15 @@ using UnityEngine;
 public class BuyGenerator : MonoBehaviour
 {
 
-    [SerializeField] private GameObject generatorPrefab;
+    [SerializeField, HideInInspector] private GameObject generatorPrefab;
 
-    [SerializeField] private Transform generatorRoot;
+    [SerializeField, HideInInspector] private Transform generatorRoot;
 
     private GeneratorSO[] generatorSOs;
 
     private int generatorIndex = 0;
 
-    [SerializeField] private CountNShowCoins coinsScript;
+    [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
     private void Start()
     {

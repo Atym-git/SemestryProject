@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    [SerializeField] private ExpGain _expScript;
-    [SerializeField] private CountNShowCoins _coinsScript;
+    [SerializeField, HideInInspector] private ExpGain _expScript;
+    [SerializeField, HideInInspector] private CountNShowCoins _coinsScript;
 
     public static ExpGain expScript { get; private set; }
     public static CountNShowCoins coinsScript { get; private set; }

@@ -31,7 +31,7 @@ public class ExpGain : MonoBehaviour
         {
             currExp -= expToLevelUp;
             expSlider.fillAmount = 0;
-            //expToLevelUp *= 1.25f;
+            expToLevelUp *= 1.25f;
             levelUpScript.LevelUpgraded();
         }
         expSlider.fillAmount = currExp / expToLevelUp;
