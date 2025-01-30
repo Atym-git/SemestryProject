@@ -23,6 +23,6 @@ public class CountNShowCoins : MonoBehaviour
 
     private void ShowCoins()
     {
-        showCoinsTMP.text = currCoins.ToString();
+        showCoinsTMP.text = Mathf.Round(currCoins).ToString();
     }
 }
