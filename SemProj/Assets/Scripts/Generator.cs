@@ -2,33 +2,90 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
-[RequireComponent(typeof(CountNShowExp))]
-[RequireComponent(typeof(CountNShowCoins))]
+//[RequireComponent(typeof(LevelUp))]
+//[RequireComponent(typeof(CountNShowCoins))]
 public class Generator : MonoBehaviour
 {
     public float timeToProduce;
-    public float amountOfCoinsProducing;
-    public float amountOfExpProducing;
+    public float coinsProducement;
+    public float expProducement;
+    public float generatorCost;
 
-    [SerializeField, HideInInspector] private CountNShowExp expScript;
-    [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
+    //public float timeToProduceATick;
+    //public float CoinsProducingPerTick;
+    //public float ExpProducingPerTick;
+
+    //private float timeToProduce = 120;
+    //private float currProduceTime = 0;
+    //private float coinsProducement;
+    //private float expProducement;
+
+    private bool isGeneratorFinished = false;
+
+    [SerializeField] private ExpGain expScript;
+    [SerializeField] private CountNShowCoins coinsScript;
 
     private void Start()
     {
-        expScript.gameObject.GetComponent<CountNShowExp>();
-        coinsScript.gameObject.GetComponent<CountNShowCoins>();
+        expScript = Manager.expScript;
+        coinsScript = Manager.coinsScript;
         StartCoroutine(Produce());
     }
 
+    public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost)
+    {
+        GetComponent<Image>().sprite = GeneratorSprite;
+        timeToProduce = TimeToProduce;
+        coinsProducement = CoinsProducement;
+        expProducement = ExpProducement;
+        generatorCost = GeneratorCost;
+    }
+
+    //private IEnumerator Produce()
+    //{
+    //    while (currProduceTime <= timeToProduce)
+    //    {
+    //        yield return new WaitForSeconds(timeToProduce);
+    //        currProduceTime += Time.deltaTime;
+    //        coinsProducement += coinsProducement;
+    //        expProducement += expProducement;
+    //    }
+    //}
     private IEnumerator Produce()
     {
-        while (true)
+        //if (currProduceTime < timeToProduce)
+        //{
+        //    Debug.Log(currProduceTime);
+        //    currProduceTime += Time.deltaTime;
+        //}
+        Debug.Log("Start");
+        yield return new WaitForSeconds(timeToProduce);
+        Debug.Log("End");
+        isGeneratorFinished = true;
+        transform.GetChild(0).gameObject.SetActive(true);
+        
+    }
+
+    public void OnGeneratorClicked()
+    {
+        if (isGeneratorFinished)
         {
-            yield return new WaitForSeconds(timeToProduce);
-            expScript.AddExp(amountOfExpProducing);
-            coinsScript.AddCoins(amountOfCoinsProducing);
+            expScript.OnExpGain(expProducement);
+            coinsScript.AddCoins(coinsProducement);
+            isGeneratorFinished = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+            StartCoroutine(Produce());
         }
     }
+
+    //private void Zeroing()
+    //{
+    //    currProduceTime = 0;
+    //    coinsProducement = 0;
+    //    expProducement = 0;
+    //}
 }
