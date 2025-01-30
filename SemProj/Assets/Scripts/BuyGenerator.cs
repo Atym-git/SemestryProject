@@ -8,7 +8,7 @@ public class BuyGenerator : MonoBehaviour
 
     [SerializeField, HideInInspector] private GameObject generatorPrefab;
 
-    [SerializeField, HideInInspector] private Transform generatorRoot;
+    [SerializeField] private Transform[] generatorRoot;
 
     private GeneratorSO[] generatorSOs;
 
@@ -27,12 +27,13 @@ public class BuyGenerator : MonoBehaviour
             !generatorIds.Contains(generatorId))
         {
 
-            GameObject instance = Instantiate(generatorPrefab, generatorRoot);
+            GameObject instance = Instantiate(generatorPrefab, generatorRoot[generatorId]);
 
             Generator generator = instance.GetComponent<Generator>();
 
             generator.SetupGenerator(generatorSOs[generatorId].generatorSprite, generatorSOs[generatorId].timeConsume,
-                generatorSOs[generatorId].coinsProducement, generatorSOs[generatorId].expProducement, generatorSOs[generatorId].generatorCost);
+                generatorSOs[generatorId].coinsProducement, generatorSOs[generatorId].expProducement,
+                generatorSOs[generatorId].generatorCost,generatorSOs[generatorId].ScaleFactor);
             generatorIds.Add(generatorId);
             coinsScript.AddCoins(-generatorSOs[generatorId].generatorCost);
         }

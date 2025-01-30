@@ -37,13 +37,16 @@ public class Generator : MonoBehaviour
         generatorTimerScript = GetComponentInChildren<GeneratorTimer>();
     }
 
-    public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost)
+    public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost, float ScaleFactor)
     {
         GetComponent<Image>().sprite = GeneratorSprite;
         timeToProduce = TimeToProduce;
         coinsProducement = CoinsProducement;
         expProducement = ExpProducement;
         generatorCost = GeneratorCost;
+        GetComponent<RectTransform>().localScale *= ScaleFactor;
+        gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
+        GetComponent<RectTransform>().localScale /= 4;
     }
 
     //private IEnumerator Produce()

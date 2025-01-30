@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Store : MonoBehaviour
@@ -8,6 +9,8 @@ public class Store : MonoBehaviour
     [SerializeField] private float upgradeCoinsCost;
     [SerializeField] private float upgradeExpCost;
     [SerializeField] private float upgradeClickerCost;
+
+    [SerializeField] private TextMeshProUGUI showUpgradeClickerCost;
 
     [SerializeField, HideInInspector] private Generator generatorScript;
     [SerializeField, HideInInspector] private CountNShowCoins CoinsScript;
@@ -43,6 +46,8 @@ public class Store : MonoBehaviour
         if (CoinsScript.currCoins >= upgradeClickerCost)
         {
             CoinsScript.AddCoins(-upgradeClickerCost);
+            upgradeClickerCost *= 1.2f;
+            showUpgradeClickerCost.text = upgradeClickerCost.ToString();
             LMBClicker.coinsPerLMB += 1;
         }
     }
