@@ -12,7 +12,7 @@ public class BuyGenerator : MonoBehaviour
 
     private GeneratorSO[] generatorSOs;
 
-    private int generatorIndex = 0;
+    List<int> generatorIds = new List<int>();
 
     [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
@@ -21,21 +21,22 @@ public class BuyGenerator : MonoBehaviour
         ResourceLoader();
     }
 
-    public void OnGeneratorBought()
+    public void OnGeneratorBought(int generatorId)
     {
-        if (coinsScript.currCoins >= generatorSOs[generatorIndex].generatorCost && generatorIndex < generatorSOs.Length)
+        if (coinsScript.currCoins >= generatorSOs[generatorId].generatorCost && generatorId < generatorSOs.Length &&
+            !generatorIds.Contains(generatorId))
         {
 
             GameObject instance = Instantiate(generatorPrefab, generatorRoot);
 
             Generator generator = instance.GetComponent<Generator>();
 
-            generator.SetupGenerator(generatorSOs[generatorIndex].generatorSprite, generatorSOs[generatorIndex].timeConsume,
-                generatorSOs[generatorIndex].coinsProducement, generatorSOs[generatorIndex].expProducement, generatorSOs[generatorIndex].generatorCost);
-            coinsScript.AddCoins(-generatorSOs[generatorIndex].generatorCost);
-            generatorIndex++;
+            generator.SetupGenerator(generatorSOs[generatorId].generatorSprite, generatorSOs[generatorId].timeConsume,
+                generatorSOs[generatorId].coinsProducement, generatorSOs[generatorId].expProducement, generatorSOs[generatorId].generatorCost);
+            generatorIds.Add(generatorId);
+            coinsScript.AddCoins(-generatorSOs[generatorId].generatorCost);
         }
-            
+
     }
 
 

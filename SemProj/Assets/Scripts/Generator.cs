@@ -24,16 +24,17 @@ public class Generator : MonoBehaviour
     //private float coinsProducement;
     //private float expProducement;
 
-    private bool isGeneratorFinished = false;
+    public bool isGeneratorFinished = false;
 
     [SerializeField] private ExpGain expScript;
     [SerializeField] private CountNShowCoins coinsScript;
+    private GeneratorTimer generatorTimerScript;
 
     private void Start()
     {
         expScript = Manager.expScript;
         coinsScript = Manager.coinsScript;
-        StartCoroutine(Produce());
+        generatorTimerScript = GetComponentInChildren<GeneratorTimer>();
     }
 
     public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost)
@@ -47,28 +48,18 @@ public class Generator : MonoBehaviour
 
     //private IEnumerator Produce()
     //{
-    //    while (currProduceTime <= timeToProduce)
-    //    {
-    //        yield return new WaitForSeconds(timeToProduce);
-    //        currProduceTime += Time.deltaTime;
-    //        coinsProducement += coinsProducement;
-    //        expProducement += expProducement;
-    //    }
-    //}
-    private IEnumerator Produce()
-    {
-        //if (currProduceTime < timeToProduce)
-        //{
-        //    Debug.Log(currProduceTime);
-        //    currProduceTime += Time.deltaTime;
-        //}
-        Debug.Log("Start");
-        yield return new WaitForSeconds(timeToProduce);
-        Debug.Log("End");
-        isGeneratorFinished = true;
-        transform.GetChild(0).gameObject.SetActive(true);
+    //    //if (currProduceTime < timeToProduce)
+    //    //{
+    //    //    Debug.Log(currProduceTime);
+    //    //    currProduceTime += Time.deltaTime;
+    //    //}
+    //    Debug.Log("Start");
+    //    yield return new WaitForSeconds(timeToProduce);
+    //    Debug.Log("End");
+    //    isGeneratorFinished = true;
+    //    transform.GetChild(0).gameObject.SetActive(true);
         
-    }
+    //}
 
     public void OnGeneratorClicked()
     {
@@ -77,15 +68,7 @@ public class Generator : MonoBehaviour
             expScript.OnExpGain(expProducement);
             coinsScript.AddCoins(coinsProducement);
             isGeneratorFinished = false;
-            transform.GetChild(0).gameObject.SetActive(false);
-            StartCoroutine(Produce());
+            generatorTimerScript.Zeroing();
         }
     }
-
-    //private void Zeroing()
-    //{
-    //    currProduceTime = 0;
-    //    coinsProducement = 0;
-    //    expProducement = 0;
-    //}
 }
