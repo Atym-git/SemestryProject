@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class ThroughScenes : MonoBehaviour
 {
 
-    public void GoToGameScene()
+    public void GoToNextScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void GoBackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

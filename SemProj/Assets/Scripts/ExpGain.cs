@@ -11,7 +11,7 @@ public class ExpGain : MonoBehaviour
 {
     
 
-    [SerializeField] private float currExp;
+    [HideInInspector] public float currExp;
     [SerializeField] private float expToLevelUp;
 
     [field: SerializeField, HideInInspector] private Image expSlider;
