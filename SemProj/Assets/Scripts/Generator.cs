@@ -26,8 +26,8 @@ public class Generator : MonoBehaviour
 
     public bool isGeneratorFinished = false;
 
-    [SerializeField] private ExpGain expScript;
-    [SerializeField] private CountNShowCoins coinsScript;
+    private ExpGain expScript;
+    private CountNShowCoins coinsScript;
     private GeneratorTimer generatorTimerScript;
 
     private void Start()
