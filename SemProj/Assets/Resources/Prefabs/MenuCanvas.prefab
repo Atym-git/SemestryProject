@@ -422,7 +422,6 @@ RectTransform:
   m_Children:
   - {fileID: 8805091683490337230}
   - {fileID: 6144423156091855825}
-  - {fileID: 2259269340066156793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1101,11 +1100,11 @@ Transform:
   m_GameObject: {fileID: 4530683638201505433}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 235.44, y: -39.600002, z: -6480}
+  m_LocalPosition: {x: 235.43996, y: -39.60001, z: -6480}
   m_LocalScale: {x: 72, y: 72, z: 72}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2741347148984133477}
+  m_Father: {fileID: 8805091683490337230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2092487488749176686
 SpriteRenderer:
@@ -1528,21 +1527,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8004873852135765961
-Transform:
+--- !u!224 &8004873852135765961
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5515320204085277485}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5995147, y: 3.903271, z: -1491.3435}
+  m_LocalPosition: {x: 0, y: 0, z: -1491.3435}
   m_LocalScale: {x: 16.570482, y: 16.570482, z: 16.570482}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1767524860561011063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.5995147, y: 3.903271}
+  m_SizeDelta: {x: 6.03, y: 1.97}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &4764087749384024868
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2685,6 +2688,7 @@ RectTransform:
   - {fileID: 7438236765002431337}
   - {fileID: 6783698642983717894}
   - {fileID: 1767524860561011063}
+  - {fileID: 2259269340066156793}
   m_Father: {fileID: 2741347148984133477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
