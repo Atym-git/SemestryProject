@@ -10,7 +10,7 @@ public class Store : MonoBehaviour
     [SerializeField] private float upgradeExpCost;
     [SerializeField] private float upgradeClickerCost;
 
-    [SerializeField] private TextMeshProUGUI showUpgradeClickerCost;
+    [SerializeField, HideInInspector] private TextMeshProUGUI showUpgradeClickerCost;
 
     [SerializeField, HideInInspector] private Generator generatorScript;
     [SerializeField, HideInInspector] private CountNShowCoins CoinsScript;
