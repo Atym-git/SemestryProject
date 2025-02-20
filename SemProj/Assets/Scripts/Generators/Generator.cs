@@ -49,6 +49,17 @@ public class Generator : MonoBehaviour
         GetComponent<RectTransform>().localScale /= 4;
     }
 
+    public void WorkerOnGenerator(float coinsMultiplayer, float expMultiplayer)
+    {
+        coinsProducement *= coinsMultiplayer;
+        expProducement *= expMultiplayer;
+    }
+    private void WorkerOffGenerator(float coinsMultiplayer, float expMultiplayer)
+    {
+        coinsProducement /= coinsMultiplayer;
+        expProducement /= expMultiplayer;
+    }
+
     //private IEnumerator Produce()
     //{
     //    //if (currProduceTime < timeToProduce)

@@ -184,8 +184,6 @@ MonoBehaviour:
   expProducement: 0
   generatorCost: 0
   isGeneratorFinished: 0
-  expScript: {fileID: 0}
-  coinsScript: {fileID: 0}
 --- !u!114 &8956284991322582867
 MonoBehaviour:
   m_ObjectHideFlags: 0

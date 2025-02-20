@@ -12,6 +12,7 @@ public class WorkersSlot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().position =
                 GetComponent<RectTransform>().position;
             eventData.pointerDrag.transform.SetParent(transform);
+            SetupWorkers setupWorkers = GetComponentInChildren<SetupWorkers>();
         }
     }
 }
