@@ -16,7 +16,7 @@ public class BuyGenerator : MonoBehaviour
 
     [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
-    private void Start()
+    private void Awake()
     {
         ResourceLoader();
     }
@@ -43,7 +43,7 @@ public class BuyGenerator : MonoBehaviour
 
     private void ResourceLoader()
     {
-        generatorSOs = Resources.LoadAll("GeneratorSO", typeof(GeneratorSO))
+        generatorSOs = Resources.LoadAll("SO/GeneratorSO", typeof(GeneratorSO))
             .Cast<GeneratorSO>()
             .ToArray();
     }

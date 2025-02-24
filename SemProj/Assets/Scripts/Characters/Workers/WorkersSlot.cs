@@ -14,5 +14,9 @@ public class WorkersSlot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.transform.SetParent(transform);
             SetupWorkers setupWorkers = GetComponentInChildren<SetupWorkers>();
         }
+        else
+        {
+
+        }
     }
 }
