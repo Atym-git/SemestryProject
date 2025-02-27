@@ -13,39 +13,39 @@ public class Store : MonoBehaviour
     [SerializeField, HideInInspector] private TextMeshProUGUI showUpgradeClickerCost;
 
     [SerializeField, HideInInspector] private Generator generatorScript;
-    [SerializeField, HideInInspector] private CountNShowCoins CoinsScript;
+    [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
     [SerializeField, HideInInspector] private LMBClicker LMBClicker;
 
     public void UpgradeGeneratorTime()
     {
-        if (CoinsScript.currCoins >= upgradeTimeCost)
+        if (coinsScript.IsEnoughToBuy(upgradeTimeCost))
         {
-            CoinsScript.AddCoins(-upgradeTimeCost);
+            coinsScript.AddCoins(-upgradeTimeCost);
             upgradeTimeCost *= 1.5f;
             generatorScript.timeToProduce -= 0.2f;
         }
     }
     public void UpgradeGeneratorCoins()
     {
-        if (CoinsScript.currCoins >= upgradeCoinsCost)
+        if (coinsScript.IsEnoughToBuy(upgradeCoinsCost))
         {
-            CoinsScript.AddCoins(-upgradeCoinsCost);
+            coinsScript.AddCoins(-upgradeCoinsCost);
             generatorScript.coinsProducement += 0.5f;
         }
     }
     public void UpgradeGeneratorExp()
     {
-        if (CoinsScript.currCoins >= upgradeExpCost)
+        if (coinsScript.IsEnoughToBuy(upgradeExpCost))
         {
-            CoinsScript.AddCoins(-upgradeExpCost);
+            coinsScript.AddCoins(-upgradeExpCost);
             generatorScript.expProducement += 0.3f;
         }
     }
     public void UpgradeLMBClicker()
     {
-        if (CoinsScript.currCoins >= upgradeClickerCost)
+        if (coinsScript.IsEnoughToBuy(upgradeClickerCost))
         {
-            CoinsScript.AddCoins(-upgradeClickerCost);
+            coinsScript.AddCoins(-upgradeClickerCost);
             upgradeClickerCost *= 1.2f;
             showUpgradeClickerCost.text = upgradeClickerCost.ToString();
             LMBClicker.coinsPerLMB += 1;

@@ -6,9 +6,15 @@ using UnityEngine;
  menuName = "SO/Worker/New Worker")]
 public class WorkersSO : ScriptableObject
 {
+    [field: SerializeField]
     public Sprite workerSprite { get; private set; }
 
-    public float generatorXPMultiplayer { get; private set; }
+    [field: SerializeField]
+    public float workerCost { get; private set; }
 
-    public float generatorCoinsMultiplayer { get; private set; }
+    [field: SerializeField]
+    public float workerXPMultiplayer { get; private set; }
+
+    [field: SerializeField]
+    public float workerCoinsMultiplayer { get; private set; }
 }
