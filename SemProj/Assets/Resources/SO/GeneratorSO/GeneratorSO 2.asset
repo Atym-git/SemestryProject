@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6631d52cc193706489e1646119979b81, type: 3}
   m_Name: GeneratorSO 2
   m_EditorClassIdentifier: 
-  <generatorSprite>k__BackingField: {fileID: 21300000, guid: 93aed68eb127ace409b381e27233d8b9, type: 3}
+  <generatorSprite>k__BackingField: {fileID: 21300000, guid: 1d04448157f914845b4fd92c7a92d7d7, type: 3}
   <coinsProducement>k__BackingField: 65
   <expProducement>k__BackingField: 43
   <timeConsume>k__BackingField: 10
