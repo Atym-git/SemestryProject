@@ -54,7 +54,7 @@ public class Generator : MonoBehaviour
         coinsProducement *= coinsMultiplayer;
         expProducement *= expMultiplayer;
     }
-    private void WorkerOffGenerator(float coinsMultiplayer, float expMultiplayer)
+    public void WorkerOffGenerator(float coinsMultiplayer, float expMultiplayer)
     {
         coinsProducement /= coinsMultiplayer;
         expProducement /= expMultiplayer;

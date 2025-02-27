@@ -23,7 +23,7 @@ public class BuyGenerator : MonoBehaviour
 
     public void OnGeneratorBought(int generatorId)
     {
-        if (coinsScript.currCoins >= generatorSOs[generatorId].generatorCost && generatorId < generatorSOs.Length &&
+        if (coinsScript.IsEnoughToBuy(generatorSOs[generatorId].generatorCost) && generatorId < generatorSOs.Length &&
             !generatorIds.Contains(generatorId))
         {
 

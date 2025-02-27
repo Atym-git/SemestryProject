@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,11 +13,8 @@ public class WorkersSlot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().position =
                 GetComponent<RectTransform>().position;
             eventData.pointerDrag.transform.SetParent(transform);
-            SetupWorkers setupWorkers = GetComponentInChildren<SetupWorkers>();
-        }
-        else
-        {
-
+            Worker setupWorkers = eventData.pointerDrag.GetComponent<Worker>();
+            setupWorkers.WorkerSet();
         }
     }
 }

@@ -12,6 +12,10 @@ public class Save : MonoBehaviour
     private ExpGain expScript;
     private Save saveScript;
 
+    private string[] _slidersKeys = { "MainSlider", "MusicSlider", "SFXSlider" };
+
+    private string[] _resourceKeys = { "Coins", "Exp" };
+
     private void Start()
     {
         expScript = Manager.expScript;
@@ -20,14 +24,14 @@ public class Save : MonoBehaviour
 
     public void SaveSlidersVolume()
     {
-        PlayerPrefs.SetFloat("MainSlider", volumeSliders[0].value);
-        PlayerPrefs.SetFloat("MusicSlider", volumeSliders[1].value);
-        PlayerPrefs.SetFloat("SFXSlider", volumeSliders[2].value);
+        PlayerPrefs.SetFloat(_slidersKeys[0], volumeSliders[0].value);
+        PlayerPrefs.SetFloat(_slidersKeys[1], volumeSliders[1].value);
+        PlayerPrefs.SetFloat(_slidersKeys[2], volumeSliders[2].value);
     }
 
     public void SaveCoinsNExp()
     {
-        PlayerPrefs.SetFloat("Coins", coinsScript.currCoins);
-        PlayerPrefs.SetFloat("Exp", expScript.currExp);
+        PlayerPrefs.SetFloat(_resourceKeys[0], coinsScript.currCoins);
+        PlayerPrefs.SetFloat(_resourceKeys[1], expScript.currExp);
     }
 }

@@ -10,8 +10,11 @@ public class WorkersSO : ScriptableObject
     public Sprite workerSprite { get; private set; }
 
     [field: SerializeField]
-    public float generatorXPMultiplayer { get; private set; }
+    public float workerCost { get; private set; }
 
     [field: SerializeField]
-    public float generatorCoinsMultiplayer { get; private set; }
+    public float workerXPMultiplayer { get; private set; }
+
+    [field: SerializeField]
+    public float workerCoinsMultiplayer { get; private set; }
 }
