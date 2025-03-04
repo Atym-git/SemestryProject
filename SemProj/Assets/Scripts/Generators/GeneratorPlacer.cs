@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuyGenerator : MonoBehaviour
+public class GeneratorPlacer : MonoBehaviour
 {
 
     [SerializeField, HideInInspector] private GameObject generatorPrefab;
@@ -28,7 +28,7 @@ public class BuyGenerator : MonoBehaviour
         ResourceLoader();
     }
 
-    public void OnGeneratorBought(int generatorId)
+    public void BuyGenerator(int generatorId)
     {
         if (coinsScript.IsEnoughToBuy(generatorSOs[generatorId].generatorCost) && generatorId < generatorSOs.Length &&
             !generatorIds.Contains(generatorId))

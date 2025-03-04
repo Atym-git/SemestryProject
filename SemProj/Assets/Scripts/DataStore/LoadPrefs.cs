@@ -8,6 +8,8 @@ public class LoadPrefs : MonoBehaviour
     private ExpGain expScript;
     private Save saveScript;
 
+    private string[] _slidersKeys = { "MainSlider", "MusicSlider", "SFXSlider" };
+
     private void Start()
     {
         expScript = Manager.expScript;
@@ -19,9 +21,9 @@ public class LoadPrefs : MonoBehaviour
 
     public void SetSlidersValue()
     {
-        saveScript.volumeSliders[0].value = PlayerPrefs.GetFloat("MainSlider");
-        saveScript.volumeSliders[1].value = PlayerPrefs.GetFloat("MusicSlider");
-        saveScript.volumeSliders[2].value = PlayerPrefs.GetFloat("SFXSlider");
+        saveScript.volumeSliders[0].value = PlayerPrefs.GetFloat(_slidersKeys[0]);
+        saveScript.volumeSliders[1].value = PlayerPrefs.GetFloat(_slidersKeys[1]);
+        saveScript.volumeSliders[2].value = PlayerPrefs.GetFloat(_slidersKeys[2]);
     }
 
 

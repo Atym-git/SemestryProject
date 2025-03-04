@@ -8,7 +8,7 @@ public class CountNShowCoins : MonoBehaviour
 {
     [field: SerializeField, HideInInspector] private TextMeshProUGUI showCoinsTMP;
 
-    [HideInInspector] public float currCoins = 0;
+    [HideInInspector] private int currCoins = 0;
 
     private void Start()
     {
@@ -33,6 +33,7 @@ public class CountNShowCoins : MonoBehaviour
             return true;
         }
     }
+    public int SaveCoins() => currCoins;
 
     private void ShowCoins()
     {
