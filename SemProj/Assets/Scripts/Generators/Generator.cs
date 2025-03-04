@@ -6,14 +6,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-//[RequireComponent(typeof(LevelUp))]
-//[RequireComponent(typeof(CountNShowCoins))]
 public class Generator : MonoBehaviour
 {
     public float timeToProduce;
     public float coinsProducement;
     public float expProducement;
     public float generatorCost;
+
+    private const int firstChild = 0;
+    private const int secondChild = 1;
 
     //public float timeToProduceATick;
     //public float CoinsProducingPerTick;
@@ -26,6 +27,10 @@ public class Generator : MonoBehaviour
 
     public bool isGeneratorFinished = false;
 
+    private Animator expAnimator;
+
+    private const string animatiorBool = "RunExpAnim";
+
     private ExpGain expScript;
     private CountNShowCoins coinsScript;
     private GeneratorTimer generatorTimerScript;
@@ -34,7 +39,8 @@ public class Generator : MonoBehaviour
     {
         expScript = Manager.expScript;
         coinsScript = Manager.coinsScript;
-        generatorTimerScript = GetComponentInChildren<GeneratorTimer>();
+        generatorTimerScript = transform.GetChild(firstChild).GetComponent<GeneratorTimer>();
+        expAnimator = transform.GetChild(secondChild).GetComponent<Animator>();
     }
 
     public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost, float ScaleFactor)
@@ -49,15 +55,15 @@ public class Generator : MonoBehaviour
         GetComponent<RectTransform>().localScale /= 4;
     }
 
-    public void WorkerOnGenerator(float coinsMultiplayer, float expMultiplayer)
+    public void WorkerOnGenerator(float coinsMultiplier, float expMultiplier)
     {
-        coinsProducement *= coinsMultiplayer;
-        expProducement *= expMultiplayer;
+        coinsProducement *= coinsMultiplier;
+        expProducement *= expMultiplier;
     }
-    public void WorkerOffGenerator(float coinsMultiplayer, float expMultiplayer)
+    public void WorkerOffGenerator(float coinsMultiplier, float expMultiplier)
     {
-        coinsProducement /= coinsMultiplayer;
-        expProducement /= expMultiplayer;
+        coinsProducement /= coinsMultiplier;
+        expProducement /= expMultiplier;
     }
 
     //private IEnumerator Produce()
@@ -72,13 +78,14 @@ public class Generator : MonoBehaviour
     //    Debug.Log("End");
     //    isGeneratorFinished = true;
     //    transform.GetChild(0).gameObject.SetActive(true);
-        
+
     //}
 
     public void OnGeneratorClicked()
     {
         if (isGeneratorFinished)
         {
+            expAnimator.Play("Exp");
             expScript.OnExpGain(expProducement);
             coinsScript.AddCoins(coinsProducement);
             isGeneratorFinished = false;
