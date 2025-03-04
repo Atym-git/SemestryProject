@@ -10,10 +10,16 @@ public class Store : MonoBehaviour
     [SerializeField] private float upgradeExpCost;
     [SerializeField] private float upgradeClickerCost;
 
+    [Header("MultiplyAfterUpgrade")]
+    [SerializeField] private float _generatorTime = 1.5f;
+    [SerializeField] private float _generatorCoins = 1.5f;
+    [SerializeField] private float _generatorExp = 1.5f;
+    [SerializeField] private float _lmbClicker = 1.5f;
+
     [SerializeField, HideInInspector] private TextMeshProUGUI showUpgradeClickerCost;
 
     [SerializeField, HideInInspector] private Generator generatorScript;
-    [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
+    [SerializeField] private CountNShowCoins coinsScript;
     [SerializeField, HideInInspector] private LMBClicker LMBClicker;
 
     public void UpgradeGeneratorTime()
@@ -21,7 +27,7 @@ public class Store : MonoBehaviour
         if (coinsScript.IsEnoughToBuy(upgradeTimeCost))
         {
             coinsScript.AddCoins(-upgradeTimeCost);
-            upgradeTimeCost *= 1.5f;
+            upgradeTimeCost *= _generatorTime;
             generatorScript.timeToProduce -= 0.2f;
         }
     }
@@ -30,6 +36,7 @@ public class Store : MonoBehaviour
         if (coinsScript.IsEnoughToBuy(upgradeCoinsCost))
         {
             coinsScript.AddCoins(-upgradeCoinsCost);
+            upgradeCoinsCost *= _generatorCoins;
             generatorScript.coinsProducement += 0.5f;
         }
     }
@@ -38,6 +45,7 @@ public class Store : MonoBehaviour
         if (coinsScript.IsEnoughToBuy(upgradeExpCost))
         {
             coinsScript.AddCoins(-upgradeExpCost);
+            upgradeExpCost *= _generatorExp;
             generatorScript.expProducement += 0.3f;
         }
     }
@@ -46,7 +54,7 @@ public class Store : MonoBehaviour
         if (coinsScript.IsEnoughToBuy(upgradeClickerCost))
         {
             coinsScript.AddCoins(-upgradeClickerCost);
-            upgradeClickerCost *= 1.2f;
+            upgradeClickerCost *= _lmbClicker;
             showUpgradeClickerCost.text = upgradeClickerCost.ToString();
             LMBClicker.coinsPerLMB += 1;
         }

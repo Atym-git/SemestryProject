@@ -31,7 +31,7 @@ public class Save : MonoBehaviour
 
     public void SaveCoinsNExp()
     {
-        PlayerPrefs.SetFloat(_resourceKeys[0], coinsScript.currCoins);
+        PlayerPrefs.SetFloat(_resourceKeys[0], coinsScript.SaveCoins());
         PlayerPrefs.SetFloat(_resourceKeys[1], expScript.currExp);
     }
 }
