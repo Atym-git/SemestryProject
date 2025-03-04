@@ -8,7 +8,9 @@ public class CountNShowCoins : MonoBehaviour
 {
     [field: SerializeField, HideInInspector] private TextMeshProUGUI showCoinsTMP;
 
-    [HideInInspector] private int currCoins = 0;
+    private int currCoins = 0;
+
+    private float polluteMultiplier = 1;
 
     private void Start()
     {
@@ -17,8 +19,8 @@ public class CountNShowCoins : MonoBehaviour
 
     public void AddCoins(float coins)
     {
-        currCoins += (int)coins;
-
+        currCoins += (int)(coins * polluteMultiplier);
+        Debug.Log(polluteMultiplier);
         ShowCoins();
     }
 
@@ -33,6 +35,12 @@ public class CountNShowCoins : MonoBehaviour
             return true;
         }
     }
+
+    public void PolluteMultiplier(float PolluteMultiplier)
+    {
+        polluteMultiplier = PolluteMultiplier;
+    }
+
     public int SaveCoins() => currCoins;
 
     private void ShowCoins()

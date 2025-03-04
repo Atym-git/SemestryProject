@@ -56,7 +56,7 @@ public class GeneratorPlacer : MonoBehaviour
         yield return new WaitForSeconds(_dialogueCloseTime);
         StopCoroutine(Delay());
     }
-        
+
 
     private void ResourceLoader()
     {
@@ -64,4 +64,7 @@ public class GeneratorPlacer : MonoBehaviour
             .Cast<GeneratorSO>()
             .ToArray();
     }
+
+    public GeneratorSO[] GetSOValues() => generatorSOs;
+
 }
