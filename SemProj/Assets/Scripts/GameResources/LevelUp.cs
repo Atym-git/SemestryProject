@@ -9,10 +9,23 @@ public class LevelUp : MonoBehaviour
 
     [field: SerializeField, HideInInspector] private TextMeshProUGUI showLevelTMP;
 
+    private GeneratorsUnlocker unlockerScript;
+
+    private void Start()
+    {
+        unlockerScript = GetComponent<GeneratorsUnlocker>();
+    }
+
     public void LevelUpgraded()
     {
         currLevel += 1;
         ShowLevel();
+        unlockerScript.Unlock(currLevel);
+    }
+
+    public int GetcurrLvl()
+    {
+        return currLevel;
     }
 
     private void ShowLevel()
