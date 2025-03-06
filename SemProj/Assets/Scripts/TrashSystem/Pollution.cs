@@ -21,13 +21,13 @@ public class Pollution : MonoBehaviour
 
     List<int> trashPlacements = new List<int>();
 
-    private bool isPolluted;
+    private bool _isPolluted;
 
     private CountNShowCoins coinsScript;
     private ExpGain expScript;
 
-    private const int basicMultiplier = 1;
-    private const float pollutionMultiplier = 0.8f;
+    [SerializeField] private int basicMultiplier = 1;
+    [SerializeField] private float pollutionMultiplier = 0.8f;
 
     private void Start()
     {
@@ -39,27 +39,31 @@ public class Pollution : MonoBehaviour
 
     private void Pollute()
     {
-        int amountOfTrash = Random.Range(_minTrashAmount, _trashRoots.Length);
-        for (int i = 0; i < amountOfTrash; i++)
+        if (!_isPolluted)
         {
-            int rootId = Random.Range(0, _trashRoots.Length);
-            if (!trashPlacements.Contains(rootId))
+            int amountOfTrash = Random.Range(_minTrashAmount, _trashRoots.Length);
+            for (int i = 0; i < amountOfTrash; i++)
             {
-                GameObject instance = Instantiate(_trashPrefab, _trashRoots[rootId]);
+                int rootId = Random.Range(0, _trashRoots.Length);
+                if (!trashPlacements.Contains(rootId))
+                {
+                    GameObject instance = Instantiate(_trashPrefab, _trashRoots[rootId]);
 
-                Trash trash = instance.GetComponent<Trash>();
+                    Trash trash = instance.GetComponent<Trash>();
 
-                int randomSpriteId = Random.Range(0, trashSOs.Length);
+                    int randomSpriteId = Random.Range(0, trashSOs.Length);
 
-                trash.SetupTrash(trashSOs[randomSpriteId].trashSprite);
+                    trash.SetupTrash(trashSOs[randomSpriteId].trashSprite);
 
-                trashPlacements.Add(rootId);
-                coinsScript.PolluteMultiplier(pollutionMultiplier);
-            }
-            else
-            {
-                i--;
-                continue;
+                    _isPolluted = true;
+                    trashPlacements.Add(rootId);
+                    coinsScript.PolluteMultiplier(pollutionMultiplier);
+                }
+                else
+                {
+                    i--;
+                    continue;
+                }
             }
         }
     }
@@ -68,6 +72,7 @@ public class Pollution : MonoBehaviour
     {
         if (coinsScript.IsEnoughToBuy(_cleanCost))
         {
+            _isPolluted = false;
             coinsScript.PolluteMultiplier(basicMultiplier);
             trashPlacements.Clear();
         }
@@ -78,6 +83,7 @@ public class Pollution : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(_secsBetweenPollution);
+            Pollute();
         }
     }
 

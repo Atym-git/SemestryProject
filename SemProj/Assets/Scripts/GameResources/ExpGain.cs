@@ -14,15 +14,15 @@ public class ExpGain : MonoBehaviour
 
     [field: SerializeField, HideInInspector] private Image expSlider;
 
-    [SerializeField, HideInInspector] private LevelUp levelUpScript;
+    [SerializeField] private LevelUp levelScript;
 
-    [SerializeField] private float expMultiplier = 1.25f;
+    [SerializeField] private float lvlUpMultiplier = 1.25f;
 
-    private float polluteMultiplier;
+    private float polluteMultiplier = 1;
 
     private void Start()
     {
-        levelUpScript.gameObject.GetComponent<LevelUp>();
+        levelScript.gameObject.GetComponent<LevelUp>();
     }
 
     public void OnExpGain(float exp)
@@ -33,8 +33,8 @@ public class ExpGain : MonoBehaviour
         {
             currExp -= expToLevelUp;
             expSlider.fillAmount = 0;
-            expToLevelUp *= expMultiplier;
-            levelUpScript.LevelUpgraded();
+            expToLevelUp *= lvlUpMultiplier;
+            levelScript.LevelUpgraded();
         }
         expSlider.fillAmount = currExp / expToLevelUp;
     }
