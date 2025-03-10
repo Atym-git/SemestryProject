@@ -4,6 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine.UI;
 
 public class Pollution : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Pollution : MonoBehaviour
 
     List<int> trashPlacements = new List<int>();
 
+    List<GameObject> trashObjects = new List<GameObject>();
+
     private bool _isPolluted;
 
     private CountNShowCoins coinsScript;
@@ -28,6 +31,8 @@ public class Pollution : MonoBehaviour
 
     [SerializeField] private int basicMultiplier = 1;
     [SerializeField] private float pollutionMultiplier = 0.8f;
+
+    [SerializeField] private Button cleanUpButton;
 
     private void Start()
     {
@@ -57,6 +62,7 @@ public class Pollution : MonoBehaviour
 
                     _isPolluted = true;
                     trashPlacements.Add(rootId);
+                    trashObjects.Add(instance);
                     coinsScript.PolluteMultiplier(pollutionMultiplier);
                 }
                 else
@@ -65,26 +71,32 @@ public class Pollution : MonoBehaviour
                     continue;
                 }
             }
+            cleanUpButton.gameObject.SetActive(true);
         }
     }
 
-    private void CleanAll()
+    public void CleanAll()
     {
         if (coinsScript.IsEnoughToBuy(_cleanCost))
         {
+            coinsScript.AddCoins(-_cleanCost);
             _isPolluted = false;
             coinsScript.PolluteMultiplier(basicMultiplier);
+            cleanUpButton.gameObject.SetActive(false);
+            foreach (var gameObject in trashObjects)
+            {
+                Destroy(gameObject);
+            }
+            trashObjects.Clear();
             trashPlacements.Clear();
+            StartCoroutine(PollutionsDelay());
         }
     }
 
     private IEnumerator PollutionsDelay()
     {
-        while (true)
-        {
             yield return new WaitForSeconds(_secsBetweenPollution);
             Pollute();
-        }
     }
 
     private void LoadResources()

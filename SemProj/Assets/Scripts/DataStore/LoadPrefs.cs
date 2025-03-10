@@ -15,8 +15,10 @@ public class LoadPrefs : MonoBehaviour
         expScript = Manager.expScript;
         coinsScript = Manager.coinsScript;
         saveScript = GetComponent<Save>();
-        PlayerPrefs.GetFloat("Coins");
-        PlayerPrefs.GetFloat("Exp");
+        coinsScript.AddCoins(PlayerPrefs.GetFloat("Coins"));
+        expScript.OnExpGain(PlayerPrefs.GetFloat("Exp"));
+        Debug.Log(PlayerPrefs.GetFloat("Coins"));
+        Debug.Log(PlayerPrefs.GetFloat("Exp"));
     }
 
     public void SetSlidersValue()

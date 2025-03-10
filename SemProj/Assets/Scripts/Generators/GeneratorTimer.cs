@@ -19,6 +19,11 @@ public class GeneratorTimer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Timer();
+    }
+
+    private void Timer()
+    {
         if (currTime < generatorScript.timeToProduce)
         {
             currTime += Time.deltaTime;
@@ -26,7 +31,7 @@ public class GeneratorTimer : MonoBehaviour
         }
         else
         {
-        generatorScript.isGeneratorFinished = true;
+            generatorScript.isGeneratorFinished = true;
         }
     }
 
