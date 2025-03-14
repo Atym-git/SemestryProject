@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class ShowBuyCost : MonoBehaviour
+public class CostAssigner : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] generatorsCostTMP;
 
@@ -13,15 +13,17 @@ public class ShowBuyCost : MonoBehaviour
     private void Start()
     {
         generatorPlacer = GetComponent<GeneratorPlacer>();
-        ShowConstCosts();
+        AssignConstCosts();
     }
 
-    private void ShowConstCosts()
+    private void AssignConstCosts()
     {
         for (int i = 0; i < generatorPlacer.GetSOValues().Length; i++)
         {
             generatorsCostTMP[i].text = generatorPlacer.GetSOValues()[i].generatorCost.ToString();
         }
     }
+
+    public TextMeshProUGUI[] GetGeneratorsCostsTMP() => generatorsCostTMP;
 
 }

@@ -9,7 +9,7 @@ public class GeneratorPlacer : MonoBehaviour
 
     [SerializeField, HideInInspector] private GameObject generatorPrefab;
 
-    [SerializeField] private Transform[] generatorRoot;
+    [SerializeField] private Transform[] generatorRoots;
 
     private GeneratorSO[] generatorSOs;
 
@@ -23,8 +23,11 @@ public class GeneratorPlacer : MonoBehaviour
 
     [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
+    private GeneratorsInStock generatorsStockScript;
+
     private void Awake()
     {
+        generatorsStockScript = GetComponent<GeneratorsInStock>();
         ResourceLoader();
     }
 
@@ -33,15 +36,19 @@ public class GeneratorPlacer : MonoBehaviour
         if (coinsScript.IsEnoughToBuy(generatorSOs[generatorId].generatorCost) && generatorId < generatorSOs.Length &&
             !generatorIds.Contains(generatorId))
         {
-            GameObject instance = Instantiate(generatorPrefab, generatorRoot[generatorId]);
+            GameObject instance = Instantiate(generatorPrefab, generatorRoots[generatorId]);
 
             Generator generator = instance.GetComponent<Generator>();
 
             generator.SetupGenerator(generatorSOs[generatorId].generatorSprite, generatorSOs[generatorId].timeConsume,
                 generatorSOs[generatorId].coinsProducement, generatorSOs[generatorId].expProducement,
                 generatorSOs[generatorId].generatorCost, generatorSOs[generatorId].ScaleFactor);
+
             generatorIds.Add(generatorId);
             coinsScript.AddCoins(-generatorSOs[generatorId].generatorCost);
+
+            generatorsStockScript.UpdateInStockGenerators(generatorId);
+
             if (generatorIds.Contains(_idTrigger))
             {
                 _dialogueWindow.gameObject.SetActive(true);
@@ -65,6 +72,7 @@ public class GeneratorPlacer : MonoBehaviour
             .ToArray();
     }
 
+    public Transform[] GetGeneratorRoots() => generatorRoots;
     public GeneratorSO[] GetSOValues() => generatorSOs;
 
 }

@@ -40,4 +40,5 @@ public class GeneratorTimer : MonoBehaviour
         currTime = 0;
         generatorTimer.fillAmount = 0;
     }
+    public float GetRemainingTime() => generatorScript.timeToProduce - currTime;
 }

@@ -8,14 +8,17 @@ using UnityEngine.UI;
 
 public class Generator : MonoBehaviour
 {
-    private Sprite generatorSprite;
+    public string generatorName;
+
+    public Sprite generatorSprite;
 
     public float timeToProduce;
     public float coinsProducement;
     public float expProducement;
     public float generatorCost;
 
-    //private int[] childs = { 0, 1 };
+    private int firstChild = 0;
+    private int secondChild = 1;
 
 
     //public float timeToProduceATick;
@@ -36,17 +39,13 @@ public class Generator : MonoBehaviour
     private ExpGain expScript;
     private CountNShowCoins coinsScript;
     private GeneratorTimer generatorTimerScript;
-    private GetGeneratorStats generatorStatsScript;
 
     private void Start()
     {
         expScript = Manager.expScript;
         coinsScript = Manager.coinsScript;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            generatorTimerScript = transform.GetChild(i).GetComponent<GeneratorTimer>();
-            expAnimator = transform.GetChild(i).GetComponent<Animator>();
-        }
+        generatorTimerScript = transform.GetChild(firstChild).GetComponent<GeneratorTimer>();
+        expAnimator = transform.GetChild(secondChild).GetComponent<Animator>();
     }
 
     public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost, float ScaleFactor)
@@ -78,7 +77,6 @@ public class Generator : MonoBehaviour
         coinsProducement += coinsUpg;
         expProducement += expUpg;
         timeToProduce += cdUpg;
-        generatorStatsScript.GetStats(generatorSprite, coinsProducement, expProducement, timeToProduce);
     }
 
 
