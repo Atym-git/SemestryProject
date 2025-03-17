@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GeneratorsInStock : MonoBehaviour
 {
-    [SerializeField] private GameObject[] OptionMarks;
+    [SerializeField] private GameObject[] optionMarks;
+
+    [SerializeField] private GameObject[] upgradeButtons;
 
     [SerializeField] private Sprite[] generatorInStockSprites;
 
@@ -23,7 +23,8 @@ public class GeneratorsInStock : MonoBehaviour
     public void UpdateInStockGenerators(int generatorId)
     {
         Destroy(generatorsCostTMP[generatorId]);
-        OptionMarks[generatorId].SetActive(true);
+        optionMarks[generatorId].SetActive(true);
+        upgradeButtons[generatorId].SetActive(true);
         generatorsImages[generatorId].sprite = generatorInStockSprites[generatorId];
     }
 }

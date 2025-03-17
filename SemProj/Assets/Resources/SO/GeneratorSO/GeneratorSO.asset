@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GeneratorSO
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: 91868010bef9e4c418c45a9e360e8063, type: 3}
+  <generatorName>k__BackingField: DJ BOOTH
   <coinsProducement>k__BackingField: 10
   <expProducement>k__BackingField: 5
   <timeConsume>k__BackingField: 12
