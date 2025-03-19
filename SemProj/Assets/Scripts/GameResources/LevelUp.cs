@@ -7,9 +7,9 @@ public class LevelUp : MonoBehaviour
 {
     private int currLevel = 1;
 
-    [field: SerializeField, HideInInspector] private TextMeshProUGUI showLevelTMP;
+    [SerializeField] private TextMeshProUGUI showLevelTMP;
 
-    private GeneratorsUnlocker unlockerScript;
+    [SerializeField] private GeneratorsUnlocker unlockerScript;
 
     private void Start()
     {

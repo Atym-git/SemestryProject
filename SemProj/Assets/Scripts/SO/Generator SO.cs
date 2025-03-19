@@ -10,6 +10,9 @@ public class GeneratorSO : ScriptableObject
     public Sprite generatorSprite { get; private set; }
 
     [field: SerializeField]
+    public string generatorName { get; private set; }
+
+    [field: SerializeField]
     public float coinsProducement { get; private set; }
 
     [field: SerializeField]

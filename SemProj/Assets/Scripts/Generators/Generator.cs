@@ -8,22 +8,17 @@ using UnityEngine.UI;
 
 public class Generator : MonoBehaviour
 {
+    public string generatorName;
+
+    public Sprite generatorSprite;
+
     public float timeToProduce;
     public float coinsProducement;
     public float expProducement;
     public float generatorCost;
 
-    private const int firstChild = 0;
-    private const int secondChild = 1;
-
-    //public float timeToProduceATick;
-    //public float CoinsProducingPerTick;
-    //public float ExpProducingPerTick;
-
-    //private float timeToProduce = 120;
-    //private float currProduceTime = 0;
-    //private float coinsProducement;
-    //private float expProducement;
+    private int firstChild = 0;
+    private int secondChild = 1;
 
     public bool isGeneratorFinished = false;
 
@@ -35,24 +30,30 @@ public class Generator : MonoBehaviour
     private CountNShowCoins coinsScript;
     private GeneratorTimer generatorTimerScript;
 
+    private Image generatorImage;
+    private RectTransform generatorRectTransform;
+
     private void Start()
     {
         expScript = Manager.expScript;
         coinsScript = Manager.coinsScript;
+        generatorImage = GetComponent<Image>();
+        generatorRectTransform = GetComponent<RectTransform>();
         generatorTimerScript = transform.GetChild(firstChild).GetComponent<GeneratorTimer>();
         expAnimator = transform.GetChild(secondChild).GetComponent<Animator>();
     }
 
     public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost, float ScaleFactor)
     {
-        GetComponent<Image>().sprite = GeneratorSprite;
+        generatorSprite = GeneratorSprite;
+        generatorImage.sprite = generatorSprite;
         timeToProduce = TimeToProduce;
         coinsProducement = CoinsProducement;
         expProducement = ExpProducement;
         generatorCost = GeneratorCost;
-        GetComponent<RectTransform>().localScale *= ScaleFactor;
+        generatorRectTransform.localScale *= ScaleFactor;
         gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
-        GetComponent<RectTransform>().localScale /= 4;
+        generatorRectTransform.localScale /= 4;
     }
 
     public void WorkerOnGenerator(float coinsMultiplier, float expMultiplier)
@@ -66,20 +67,16 @@ public class Generator : MonoBehaviour
         expProducement /= expMultiplier;
     }
 
-    //private IEnumerator Produce()
-    //{
-    //    //if (currProduceTime < timeToProduce)
-    //    //{
-    //    //    Debug.Log(currProduceTime);
-    //    //    currProduceTime += Time.deltaTime;
-    //    //}
-    //    Debug.Log("Start");
-    //    yield return new WaitForSeconds(timeToProduce);
-    //    Debug.Log("End");
-    //    isGeneratorFinished = true;
-    //    transform.GetChild(0).gameObject.SetActive(true);
-
-    //}
+    public void UpgradeGenerator(Sprite nextLevelSprite, float coinsUpg, float expUpg, float cdUpg)
+    {
+        if (nextLevelSprite != null)
+        {
+            generatorImage.sprite = nextLevelSprite;
+        }
+        coinsProducement *= coinsUpg;
+        expProducement *= expUpg;
+        timeToProduce *= cdUpg;
+    }
 
     public void OnGeneratorClicked()
     {

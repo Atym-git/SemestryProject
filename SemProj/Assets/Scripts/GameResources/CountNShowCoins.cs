@@ -1,5 +1,5 @@
 using JetBrains.Annotations;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,8 +19,15 @@ public class CountNShowCoins : MonoBehaviour
 
     public void AddCoins(float coins)
     {
-        currCoins += (int)(coins * polluteMultiplier);
-        Debug.Log(polluteMultiplier);
+        if (coins >= 0)
+        {
+            currCoins += (int)Mathf.Round(coins * polluteMultiplier);
+        }
+        else
+        {
+            currCoins += (int)Mathf.Round(coins);
+        }
+        //Debug.Log(polluteMultiplier);
         ShowCoins();
     }
 

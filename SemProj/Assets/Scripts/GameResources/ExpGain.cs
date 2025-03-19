@@ -28,7 +28,12 @@ public class ExpGain : MonoBehaviour
     public void OnExpGain(float exp)
     {
         currExp += exp * polluteMultiplier;
+        LevelUp();
         expSlider.fillAmount = currExp / expToLevelUp;
+    }
+
+    private void LevelUp()
+    {
         while (currExp >= expToLevelUp)
         {
             currExp -= expToLevelUp;
@@ -36,10 +41,12 @@ public class ExpGain : MonoBehaviour
             expToLevelUp *= lvlUpMultiplier;
             levelScript.LevelUpgraded();
         }
-        expSlider.fillAmount = currExp / expToLevelUp;
     }
+
     public void PolluteMultiplier(float PolluteMultiplier)
     {
         polluteMultiplier = PolluteMultiplier;
     }
+
+    
 }

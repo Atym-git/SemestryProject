@@ -2,29 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GeneratorPlacer : MonoBehaviour
 {
 
     [SerializeField, HideInInspector] private GameObject generatorPrefab;
 
-    [SerializeField] private Transform[] generatorRoot;
+    [SerializeField] private Transform[] generatorRoots;
 
     private GeneratorSO[] generatorSOs;
 
     List<int> generatorIds = new List<int>();
 
-    [SerializeField] private Image _dialogueWindow;
+    [SerializeField] private GameObject _dialoguePanel;
 
     private const int _idTrigger = 0;
 
-    private const int _dialogueCloseTime = 8;
+    [SerializeField] private int _dialogueCloseTime = 8;
 
     [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
+    private GeneratorsInStock generatorsStockScript;
+
     private void Awake()
     {
+        generatorsStockScript = GetComponent<GeneratorsInStock>();
         ResourceLoader();
     }
 
@@ -33,28 +35,29 @@ public class GeneratorPlacer : MonoBehaviour
         if (coinsScript.IsEnoughToBuy(generatorSOs[generatorId].generatorCost) && generatorId < generatorSOs.Length &&
             !generatorIds.Contains(generatorId))
         {
-            GameObject instance = Instantiate(generatorPrefab, generatorRoot[generatorId]);
+            GameObject instance = Instantiate(generatorPrefab, generatorRoots[generatorId]);
 
             Generator generator = instance.GetComponent<Generator>();
 
             generator.SetupGenerator(generatorSOs[generatorId].generatorSprite, generatorSOs[generatorId].timeConsume,
                 generatorSOs[generatorId].coinsProducement, generatorSOs[generatorId].expProducement,
                 generatorSOs[generatorId].generatorCost, generatorSOs[generatorId].ScaleFactor);
+
             generatorIds.Add(generatorId);
             coinsScript.AddCoins(-generatorSOs[generatorId].generatorCost);
-            if (generatorIds.Contains(_idTrigger))
+
+            generatorsStockScript.UpdateInStockGenerators(generatorId);
+            if (generatorId == _idTrigger)
             {
-                _dialogueWindow.gameObject.SetActive(true);
                 StartCoroutine(Delay());
-                _dialogueWindow.gameObject.SetActive(false);
             }
         }
-
     }
     private IEnumerator Delay()
     {
-        yield return new WaitForSeconds(_dialogueCloseTime);
-        StopCoroutine(Delay());
+         _dialoguePanel.SetActive(true);
+         yield return new WaitForSeconds(_dialogueCloseTime);
+         _dialoguePanel.SetActive(false);
     }
 
 
@@ -65,6 +68,7 @@ public class GeneratorPlacer : MonoBehaviour
             .ToArray();
     }
 
+    public Transform[] GetGeneratorRoots() => generatorRoots;
     public GeneratorSO[] GetSOValues() => generatorSOs;
 
 }
