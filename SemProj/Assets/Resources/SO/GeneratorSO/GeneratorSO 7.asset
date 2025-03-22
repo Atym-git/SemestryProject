@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6631d52cc193706489e1646119979b81, type: 3}
   m_Name: GeneratorSO 7
   m_EditorClassIdentifier: 
-  <generatorSprite>k__BackingField: {fileID: 21300000, guid: 051912ee03faabc4496b37e32c463401, type: 3}
+  <generatorSprite>k__BackingField: {fileID: 21300000, guid: c771a203fe7de8945b313c593bdf4971, type: 3}
+  <generatorName>k__BackingField: Gachapon
   <coinsProducement>k__BackingField: 100
   <expProducement>k__BackingField: 80
   <timeConsume>k__BackingField: 45
