@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6631d52cc193706489e1646119979b81, type: 3}
   m_Name: GeneratorSO 6
   m_EditorClassIdentifier: 
-  <generatorSprite>k__BackingField: {fileID: 21300000, guid: 4dcb459134df55841b97e1c50e3d94e9, type: 3}
-  <generatorName>k__BackingField: Cafe Tables
-  <coinsProducement>k__BackingField: 83
-  <expProducement>k__BackingField: 64
-  <timeConsume>k__BackingField: 50
-  <generatorCost>k__BackingField: 65
+  <generatorSprite>k__BackingField: {fileID: 21300000, guid: 6283d167ed105f1419fc8bc1ba7926b0, type: 3}
+  <generatorName>k__BackingField: Cafeteria
+  <coinsProducement>k__BackingField: 65
+  <expProducement>k__BackingField: 23
+  <timeConsume>k__BackingField: 34
+  <generatorCost>k__BackingField: 56
   <ScaleFactor>k__BackingField: 1.5

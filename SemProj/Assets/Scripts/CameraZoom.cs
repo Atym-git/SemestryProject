@@ -15,6 +15,8 @@ public class CameraZoom : MonoBehaviour
 
     private const string _scrollWheel = "Mouse ScrollWheel";
 
+    public bool isCursorOnShop = false;
+
     private void Awake()
     {
         _camera = Camera.main;
@@ -28,6 +30,8 @@ public class CameraZoom : MonoBehaviour
 
     private void Zoom()
     {
+        if (!isCursorOnShop)
+        {
         var inputDelta = Input.GetAxis(_scrollWheel);
         var inputDeltaWithSpeed = inputDelta * _zoomSpeed;
 
@@ -40,6 +44,7 @@ public class CameraZoom : MonoBehaviour
             _smoothness);
 
         _camera.orthographicSize = newOrthoSize;
+        }
     }
 
 }

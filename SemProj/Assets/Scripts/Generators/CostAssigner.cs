@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
 public class CostAssigner : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI[] generatorsCostTMP;
+    [SerializeField] private TextMeshProUGUI[] generatorsCostTMPs;
+
+    [SerializeField] private TextMeshProUGUI[] workersCostTMPs;
 
     private GeneratorPlacer generatorPlacer;
+    private WorkerPlacer workerPlacer;
 
     private void Start()
     {
         generatorPlacer = GetComponent<GeneratorPlacer>();
+        workerPlacer = GetComponent<WorkerPlacer>();
         AssignConstCosts();
     }
 
@@ -20,10 +25,14 @@ public class CostAssigner : MonoBehaviour
     {
         for (int i = 0; i < generatorPlacer.GetSOValues().Length; i++)
         {
-            generatorsCostTMP[i].text = generatorPlacer.GetSOValues()[i].generatorCost.ToString();
+            generatorsCostTMPs[i].text = generatorPlacer.GetSOValues()[i].generatorCost.ToString();
+        }
+        for (int i = 0; i < workerPlacer.GetWorkersSOs().Length; i++)
+        {
+            workersCostTMPs[i].text = workerPlacer.GetWorkersSOs()[i].workerCost.ToString();
         }
     }
 
-    public TextMeshProUGUI[] GetGeneratorsCostsTMP() => generatorsCostTMP;
+    public TextMeshProUGUI[] GetGeneratorsCostsTMP() => generatorsCostTMPs;
 
 }

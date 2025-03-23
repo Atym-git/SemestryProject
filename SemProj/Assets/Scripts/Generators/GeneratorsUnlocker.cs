@@ -1,9 +1,21 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GeneratorsUnlocker : MonoBehaviour
 {
+    private Sprite[] stCUnlockedSprites;
+    //[SerializeField] private Image[] stCImages;
+    //[SerializeField] private Button[] stCButtons;
+    private List<Image> stCImagesL = new List<Image>();
+    private List<Button> stCButtonsL = new List<Button>();
+    [SerializeField] private Transform imagesParent;
+    private List<int> filledSprites = new List<int>();
+
+    [SerializeField] private int level3UnlockAmount = 3;
+    [SerializeField] private int level6UnlockAmount = 5;
+
     [SerializeField] private Sprite[] level3StCUnlockedSprites; //StC = Store Cards
     [SerializeField] private Image[] level3StCImages;
     [SerializeField] private Button[] level3StCButtons;
@@ -20,6 +32,19 @@ public class GeneratorsUnlocker : MonoBehaviour
 
     //[SerializeField] private Sprite[] level9StcSprites;
     //[SerializeField] private Image[] level9StCImages;
+
+    private void Awake()
+    {
+        LoadResources();
+        for (int i = 0; i < imagesParent.childCount; i++)
+        {
+            var child = imagesParent.GetChild(i);
+            //stCImages[i] = child.GetComponent<Image>();
+            //stCButtons[i] = child.GetComponent<Button>();
+            stCImagesL.Add(child.GetComponent<Image>());
+            stCButtonsL.Add(child.GetComponent<Button>());
+        }
+    }
 
     public void Unlock(int currLevel)
     {
@@ -55,5 +80,42 @@ public class GeneratorsUnlocker : MonoBehaviour
         //        level9StCImages[i].sprite = level9StcSprites[i];
         //    }
         //}
+    }
+    //public void Unlock(int currLevel) // 2nd attempt
+    //{
+    //    if (currLevel >= firstUnlockLevel)
+    //    {
+    //        for (int i = 0; i < level3UnlockAmount; i++)
+    //        {
+    //            if (!filledSprites.Contains(i))
+    //            {
+    //                stCButtonsL[i].interactable = true;
+    //                stCImagesL[i].sprite = stCUnlockedSprites[i];
+    //                filledSprites.Add(i);
+    //            }
+    //        }
+    //    }
+    //    if (currLevel >= secondUnlockLevel)
+    //    {
+    //        for (int i = level3UnlockAmount; i < level6UnlockAmount; i++)
+    //        {
+    //            if (!filledSprites.Contains(i))
+    //            {
+    //                stCButtonsL[i].interactable = true;
+    //                stCImagesL[i].sprite = stCUnlockedSprites[i];
+    //                filledSprites.Add(i);
+    //            }
+
+    //        }
+    //    }
+    //}
+
+    private void LoadResources()
+    {
+        stCUnlockedSprites = Resources.LoadAll("Sprites/Store cards versions/Generators/AbleToBuy",
+            typeof(Sprite))
+            .Cast<Sprite>().ToArray();
+        Debug.Log(stCUnlockedSprites.Length);
+        //Assets/Resources/Sprites/Store cards versions/Generators/AbleToBuy
     }
 }

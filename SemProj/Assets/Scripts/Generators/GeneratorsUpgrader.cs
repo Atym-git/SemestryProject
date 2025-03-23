@@ -93,6 +93,7 @@ public class GeneratorsUpgrader : MonoBehaviour
         else if (generatorsLevels[Id] == 3)
         {
             generatorImage.sprite = level3Sprites[Id];
+            IsMaxLevel(Id);
         }
     }
 }

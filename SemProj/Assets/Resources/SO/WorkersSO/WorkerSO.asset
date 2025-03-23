@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2710e8c184a76479d8491ab6ea66c1, type: 3}
   m_Name: WorkerSO
   m_EditorClassIdentifier: 
-  <workerSprite>k__BackingField: {fileID: -1314871018, guid: 0ba9bc72fba72f0459075e7faf06707b, type: 3}
+  <workerSprite>k__BackingField: {fileID: 21300000, guid: c1e467c063439444fa12e78cce6c8e4d, type: 3}
   <workerCost>k__BackingField: 10
-  <workerXPMultiplayer>k__BackingField: 2
-  <workerCoinsMultiplayer>k__BackingField: 2
+  <workerXPMultiplayer>k__BackingField: 1.15
+  <workerCoinsMultiplayer>k__BackingField: 1.1

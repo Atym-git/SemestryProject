@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6631d52cc193706489e1646119979b81, type: 3}
   m_Name: GeneratorSO 9
   m_EditorClassIdentifier: 
-  <generatorSprite>k__BackingField: {fileID: 21300000, guid: 45bc0fd8ac4e7ef43889f8cb1c908af1, type: 3}
-  <generatorName>k__BackingField: Pictures
-  <coinsProducement>k__BackingField: 100
-  <expProducement>k__BackingField: 80
-  <timeConsume>k__BackingField: 45
-  <generatorCost>k__BackingField: 120
+  <generatorSprite>k__BackingField: {fileID: 21300000, guid: c45497f50b248604a80acd8b0d56ccfb, type: 3}
+  <generatorName>k__BackingField: Flowers
+  <coinsProducement>k__BackingField: 120
+  <expProducement>k__BackingField: 100
+  <timeConsume>k__BackingField: 50
+  <generatorCost>k__BackingField: 150
   <ScaleFactor>k__BackingField: 1.5

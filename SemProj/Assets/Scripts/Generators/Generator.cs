@@ -33,7 +33,7 @@ public class Generator : MonoBehaviour
     private Image generatorImage;
     private RectTransform generatorRectTransform;
 
-    private void Start()
+    private void Awake()
     {
         expScript = Manager.expScript;
         coinsScript = Manager.coinsScript;
@@ -45,15 +45,15 @@ public class Generator : MonoBehaviour
 
     public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost, float ScaleFactor)
     {
-        generatorSprite = GeneratorSprite;
-        generatorImage.sprite = generatorSprite;
-        timeToProduce = TimeToProduce;
-        coinsProducement = CoinsProducement;
-        expProducement = ExpProducement;
-        generatorCost = GeneratorCost;
-        generatorRectTransform.localScale *= ScaleFactor;
-        gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
-        generatorRectTransform.localScale /= 4;
+            generatorSprite = GeneratorSprite;
+            generatorImage.sprite = generatorSprite;
+            timeToProduce = TimeToProduce;
+            coinsProducement = CoinsProducement;
+            expProducement = ExpProducement;
+            generatorCost = GeneratorCost;
+            generatorRectTransform.localScale *= ScaleFactor;
+            gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
+            generatorRectTransform.localScale /= 4;
     }
 
     public void WorkerOnGenerator(float coinsMultiplier, float expMultiplier)
