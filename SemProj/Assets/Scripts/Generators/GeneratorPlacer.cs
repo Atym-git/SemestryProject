@@ -8,6 +8,7 @@ public class GeneratorPlacer : MonoBehaviour
 
     [SerializeField, HideInInspector] private GameObject generatorPrefab;
 
+    [SerializeField] private Transform rootsParent;
     [SerializeField] private Transform[] generatorRoots;
 
     private GeneratorSO[] generatorSOs;
@@ -28,6 +29,11 @@ public class GeneratorPlacer : MonoBehaviour
     {
         generatorsStockScript = GetComponent<GeneratorsInStock>();
         ResourceLoader();
+        
+        for (int i = 0; i < rootsParent.childCount; i++)
+        {
+            generatorRoots[i] = rootsParent.GetChild(i);
+        }
     }
 
     public void BuyGenerator(int generatorId)

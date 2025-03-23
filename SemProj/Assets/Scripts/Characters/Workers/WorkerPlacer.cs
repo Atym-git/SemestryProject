@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class BuyWorker : MonoBehaviour
+public class WorkerPlacer : MonoBehaviour
 {
     [SerializeField] private GameObject _workerPrefab;
     [SerializeField] private Transform _workersRoot;
@@ -39,17 +39,12 @@ public class BuyWorker : MonoBehaviour
 
     }
 
-
-
-
-
-
-
-
     private void ResourceLoader()
     {
         workersSOs = Resources.LoadAll("SO/WorkersSO", typeof(WorkersSO))
         .Cast<WorkersSO>()
         .ToArray();
     }
+
+    public WorkersSO[] GetWorkersSOs() => workersSOs;
 }
