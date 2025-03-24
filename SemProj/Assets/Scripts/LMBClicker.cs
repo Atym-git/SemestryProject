@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class LMBClicker : MonoBehaviour
+public class LMBClicker : MonoBehaviour, IPointerClickHandler
 {
     public float coinsPerLMB;
 
-    [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
+    [SerializeField] private CountNShowCoins coinsScript;
 
-    public void OnPlayerClick()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        coinsScript.AddCoins(coinsPerLMB);
+            coinsScript.AddCoins(coinsPerLMB);
     }
 }
