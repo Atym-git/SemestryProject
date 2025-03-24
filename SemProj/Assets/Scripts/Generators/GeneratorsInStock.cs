@@ -16,6 +16,14 @@ public class GeneratorsInStock : MonoBehaviour
 
     private void Start()
     {
+        //for (int i = 0; i < generatorsImages.Length; i++)
+        //{
+        //    optionMarks[i] = generatorsImages[i].transform.GetChild(1).GetComponent<GameObject>();
+        //}
+        //for (int i = 0; i < generatorsImages.Length; i++)
+        //{
+        //    upgradeButtons[i] = generatorsImages[i].transform.GetChild(2).GetComponent<GameObject>();
+        //}
         CostAssigner costAssignerScript = GetComponent<CostAssigner>();
         generatorsCostTMP = costAssignerScript.GetGeneratorsCostsTMP();
     }
