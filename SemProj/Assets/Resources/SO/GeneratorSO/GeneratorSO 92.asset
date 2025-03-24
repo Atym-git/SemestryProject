@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6631d52cc193706489e1646119979b81, type: 3}
-  m_Name: GeneratorSO 10
+  m_Name: GeneratorSO 92
   m_EditorClassIdentifier: 
-  <generatorSprite>k__BackingField: {fileID: 21300000, guid: 45bc0fd8ac4e7ef43889f8cb1c908af1, type: 3}
-  <generatorName>k__BackingField: Pictures
-  <coinsProducement>k__BackingField: 200
-  <expProducement>k__BackingField: 150
-  <timeConsume>k__BackingField: 60
-  <generatorCost>k__BackingField: 300
+  <generatorSprite>k__BackingField: {fileID: 21300000, guid: 42394cbdcfde8bd49aeb11aa084e2907, type: 3}
+  <generatorName>k__BackingField: Dance Floor
+  <coinsProducement>k__BackingField: 300
+  <expProducement>k__BackingField: 200
+  <timeConsume>k__BackingField: 75
+  <generatorCost>k__BackingField: 500
   <ScaleFactor>k__BackingField: 1.5

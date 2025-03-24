@@ -27,7 +27,7 @@ public class CostAssigner : MonoBehaviour
         {
             generatorsCostTMPs[i].text = generatorPlacer.GetSOValues()[i].generatorCost.ToString();
         }
-        for (int i = 0; i < workerPlacer.GetWorkersSOs().Length; i++)
+        for (int i = 0; i < workersCostTMPs.Length; i++)
         {
             workersCostTMPs[i].text = workerPlacer.GetWorkersSOs()[i].workerCost.ToString();
         }

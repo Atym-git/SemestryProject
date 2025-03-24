@@ -11,7 +11,7 @@ public class GeneratorPlacer : MonoBehaviour
     [SerializeField] private Transform rootsParent;
     [SerializeField] private Transform[] generatorRoots;
 
-    private GeneratorSO[] generatorSOs;
+    [SerializeField] private GeneratorSO[] generatorSOs;
 
     List<int> generatorIds = new List<int>();
 
