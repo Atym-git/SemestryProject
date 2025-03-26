@@ -10,8 +10,17 @@ public class LMBClicker : MonoBehaviour, IPointerClickHandler
 
     [SerializeField] private CountNShowCoins coinsScript;
 
+    [SerializeField] private AudioClip clickClip;
+    [SerializeField] private float clickVolume = 0.05f;
+
+    [SerializeField] private GameObject animationGameObject;
+
     public void OnPointerClick(PointerEventData eventData)
     {
-            coinsScript.AddCoins(coinsPerLMB);
+        SoundFXManager.SFXinstance.PlaySoundFXClip(clickClip, transform, clickVolume);
+        //Vector3 mousePos = Input.mousePosition;
+        //Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
+        Instantiate(animationGameObject, eventData.pressPosition, Quaternion.identity);
+        coinsScript.AddCoins(coinsPerLMB);
     }
 }
