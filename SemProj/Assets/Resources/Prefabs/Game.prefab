@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6177398953443830686}
   - component: {fileID: 3026703274357501066}
   - component: {fileID: 401046803809380742}
+  - component: {fileID: 4289071921170009672}
   m_Layer: 5
   m_Name: BackGround(New)
   m_TagString: Untagged
@@ -77,6 +78,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4289071921170009672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15960471012270926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6bf5394bf3ab544794e969def305a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsPerLMB: 1
+  coinsScript: {fileID: 5081183744875826946}
+  clickClip: {fileID: 8300000, guid: 776575e55f2f1e44cacd998b1e99bc63, type: 3}
+  clickVolume: 0.05
 --- !u!1 &19142057112750755
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +221,6 @@ GameObject:
   - component: {fileID: 2402401231645923890}
   - component: {fileID: 5548508889688833485}
   - component: {fileID: 245572761724932021}
-  - component: {fileID: 7094456539771050676}
   - component: {fileID: 5166059881693919923}
   - component: {fileID: 3378918577103351385}
   - component: {fileID: 7065138844100444680}
@@ -308,21 +324,7 @@ MonoBehaviour:
   showUpgradeClickerCost: {fileID: 5813061998196614946}
   generatorScript: {fileID: 0}
   coinsScript: {fileID: 5081183744875826946}
-  LMBClicker: {fileID: 7094456539771050676}
---- !u!114 &7094456539771050676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38906887198007387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6bf5394bf3ab544794e969def305a9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsPerLMB: 1
-  coinsScript: {fileID: 5081183744875826946}
+  LMBClicker: {fileID: 0}
 --- !u!114 &5166059881693919923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6334,6 +6336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsPerLMB: 1
   coinsScript: {fileID: 5081183744875826946}
+  clickClip: {fileID: 0}
+  clickVolume: 0.05
 --- !u!1 &4864536443079485154
 GameObject:
   m_ObjectHideFlags: 0
@@ -7727,6 +7731,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsPerLMB: 1
   coinsScript: {fileID: 5081183744875826946}
+  clickClip: {fileID: 0}
+  clickVolume: 0.05
 --- !u!1 &6154881650970070299
 GameObject:
   m_ObjectHideFlags: 0
@@ -8974,6 +8980,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsPerLMB: 1
   coinsScript: {fileID: 5081183744875826946}
+  clickClip: {fileID: 0}
+  clickVolume: 0.05
 --- !u!1 &7571192622269968122
 GameObject:
   m_ObjectHideFlags: 0
