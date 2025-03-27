@@ -5,30 +5,36 @@ using UnityEngine.UI;
 
 public class Worker : MonoBehaviour
 {
-    private float workerCost;
+    public Sprite workerSprite;
 
-    private float workerXPMultiplayer;
+    public float workerCost;
 
-    private float workerCoinsMultiplayer;
+    public float XPMultiplayer;
+
+    public float coinsMultiplayer;
+
+    public string workerName;
 
     private Generator generatorScript;
 
-    public void SetupWorker(Sprite WorkerSprite, float WorkerCost, float WorkerXPMultiplayer, float WorkerCoinsMultiplayer)
+    public void SetupWorker(Sprite WorkerSprite, float WorkerCost, float WorkerXPMultiplayer, float WorkerCoinsMultiplayer, string WorkerName)
     {
-        GetComponent<Image>().sprite = WorkerSprite;
+        workerSprite = WorkerSprite;
+        GetComponent<Image>().sprite = workerSprite;
         workerCost = WorkerCost;
-        workerCoinsMultiplayer = WorkerCoinsMultiplayer;
-        workerXPMultiplayer = WorkerXPMultiplayer;
+        coinsMultiplayer = WorkerCoinsMultiplayer;
+        XPMultiplayer = WorkerXPMultiplayer;
+        workerName = WorkerName;
     }
 
     public void WorkerSet()
     {
         generatorScript = GetComponentInParent<Generator>();
-        generatorScript.WorkerOnGenerator(workerCoinsMultiplayer, workerXPMultiplayer);
+        generatorScript.WorkerOnGenerator(coinsMultiplayer, XPMultiplayer);
     }
     public void WorkerOff()
     {
         generatorScript = GetComponentInParent<Generator>();
-        generatorScript.WorkerOffGenerator(workerCoinsMultiplayer, workerXPMultiplayer);
+        generatorScript.WorkerOffGenerator(coinsMultiplayer, XPMultiplayer);
     }
 }
