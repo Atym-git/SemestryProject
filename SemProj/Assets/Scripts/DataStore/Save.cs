@@ -34,4 +34,10 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetFloat(_resourceKeys[0], coinsScript.SaveCoins());
         PlayerPrefs.SetFloat(_resourceKeys[1], expScript.currExp);
     }
+
+    private void OnApplicationQuit()
+    {
+        SaveSlidersVolume();
+        SaveCoinsNExp();
+    }
 }
