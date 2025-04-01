@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEditor;
 
 public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
@@ -14,6 +10,9 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     [SerializeField] private Canvas canvas;
 
+    [SerializeField] private float dragDivideY = 4.125f;
+    [SerializeField] private float dragDivideX = 6f;
+
     private Worker setupScript;
         
     private void Start()
@@ -22,7 +21,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         setupScript = GetComponent<Worker>();
-        canvas = FindObjectOfType<Canvas>();
+        canvas = GetComponentInParent<Canvas>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -37,7 +36,16 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     }
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        Vector2 deltaVector = new Vector2(eventData.delta.x / dragDivideX, eventData.delta.y / dragDivideY);
+        rectTransform.anchoredPosition += deltaVector;
+        //var screenPos = Camera.main.WorldToScreenPoint(transform.position) / canvas.scaleFactor;
+        //float height = Screen.height;
+        //float width = Screen.width;
+        //float x = screenPos.x - (width / 2);
+        //float y = screenPos.y - (height / 2);
+        //rectTransform.anchoredPosition = new Vector2(x, y);
+        //rectTransform.anchoredPosition = screenPos / 100;
+        //rectTransform.anchoredPosition = eventData.worldPosition;
     }
     public void OnEndDrag(PointerEventData eventData)
     {

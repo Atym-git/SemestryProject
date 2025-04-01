@@ -37,11 +37,13 @@ public class GeneratorsUpgrader : MonoBehaviour
 
     //private Generator generator;
     private GeneratorPlacer generatorPlacerScript;
+    private Save save;
     private void Start()
     {
         generatorPlacerScript = GetComponent<GeneratorPlacer>();
+        save = GetComponent<Save>();
         generatorsRoots = generatorPlacerScript.GetGeneratorRoots();
-        generatorSOs = generatorPlacerScript.GetSOValues();
+        generatorSOs = generatorPlacerScript.GetGeneratorsSO();
         for (int i = 0; i < generatorSOs.Length; i++)
         {
             generatorsLevels[i] = generatorsStartingLevel;
@@ -54,17 +56,13 @@ public class GeneratorsUpgrader : MonoBehaviour
         {
             generatorsLevels[Id]++;
             Generator generator = generatorsRoots[Id].GetComponentInChildren<Generator>();
-
         }
         else if (generatorsLevels[Id] == 2)
         {
             generatorsLevels[Id]++;
-            
-        }
-        else
-        {
             IsMaxLevel(Id);
         }
+        //save.SaveGenerator(Id);
     }
 
     private void IsMaxLevel(int Id)

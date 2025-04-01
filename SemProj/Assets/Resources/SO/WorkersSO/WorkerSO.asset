@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <workerSprite>k__BackingField: {fileID: 21300000, guid: c1e467c063439444fa12e78cce6c8e4d, type: 3}
   <workerCost>k__BackingField: 10
-  <workerXPMultiplayer>k__BackingField: 1.15
-  <workerCoinsMultiplayer>k__BackingField: 1.1
+  <XPMultiplayer>k__BackingField: 1.1
+  <coinsMultiplayer>k__BackingField: 1.1
+  <workerName>k__BackingField: 

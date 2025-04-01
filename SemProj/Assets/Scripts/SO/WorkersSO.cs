@@ -13,8 +13,11 @@ public class WorkersSO : ScriptableObject
     public float workerCost { get; private set; }
 
     [field: SerializeField]
-    public float workerXPMultiplayer { get; private set; }
+    public float XPMultiplayer { get; private set; }
 
     [field: SerializeField]
-    public float workerCoinsMultiplayer { get; private set; }
+    public float coinsMultiplayer { get; private set; }
+
+    [field: SerializeField]
+    public string workerName { get; private set; }
 }

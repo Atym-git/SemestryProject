@@ -28,11 +28,15 @@ public class GeneratorsInStock : MonoBehaviour
         generatorsCostTMP = costAssignerScript.GetGeneratorsCostsTMP();
     }
 
-    public void UpdateInStockGenerators(int generatorId)
+    public void UpdateInStockGenerators(int currId, int generatorsMaxAmount)
     {
-        Destroy(generatorsCostTMP[generatorId]);
-        optionMarks[generatorId].SetActive(true);
-        upgradeButtons[generatorId].SetActive(true);
-        generatorsImages[generatorId].sprite = generatorInStockSprites[generatorId];
+        int generatorsMaxId = generatorsMaxAmount - 1;
+        if (currId < generatorsMaxId)
+        {
+            upgradeButtons[currId].SetActive(true);
+        }
+        Destroy(generatorsCostTMP[currId]);
+        optionMarks[currId].SetActive(true);
+        generatorsImages[currId].sprite = generatorInStockSprites[currId];
     }
 }
