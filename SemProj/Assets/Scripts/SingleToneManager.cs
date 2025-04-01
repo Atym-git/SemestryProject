@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manager : MonoBehaviour
+public class SingleToneManager : MonoBehaviour
 {
     [SerializeField, HideInInspector] private ExpGain _expScript;
     [SerializeField, HideInInspector] private CountNShowCoins _coinsScript;

@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,15 +9,30 @@ public class Save : MonoBehaviour
     private CountNShowCoins coinsScript;
     private ExpGain expScript;
     private Save saveScript;
+    private GeneratorPlacer generatorPlacer;
 
     private string[] _slidersKeys = { "MainSlider", "MusicSlider", "SFXSlider" };
 
     private string[] _resourceKeys = { "Coins", "Exp" };
 
-    private void Start()
+    private List<string> generatorsKeys = new List<string>();
+
+    private List<string> workersKeys = new List<string>();
+
+    private void Awake()
     {
-        expScript = Manager.expScript;
-        coinsScript = Manager.coinsScript;
+        expScript = SingleToneManager.expScript;
+        coinsScript = SingleToneManager.coinsScript;
+        generatorPlacer = GetComponent<GeneratorPlacer>();
+        Worker workers = GetComponent<Worker>();
+        for (int i = 0; i < generatorPlacer.GetGeneratorsSO().Length; i++)
+        {
+            generatorsKeys.Add($"Generator-{i}");
+        }
+        for (int i = 0; i < generatorPlacer.GetWorkersSOs().Length; i++)
+        {
+            workersKeys.Add($"Worker-{i}");
+        }
     }
 
     public void SaveSlidersVolume()
@@ -34,4 +47,24 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetFloat(_resourceKeys[0], coinsScript.SaveCoins());
         PlayerPrefs.SetFloat(_resourceKeys[1], expScript.currExp);
     }
+
+    public void SaveGenerator(int Id)
+    {
+        PlayerPrefs.SetInt(generatorsKeys[Id].ToString(), Id);
+    }
+    public void SaveWorkers(int Id)
+    {
+        int workerId = Id - generatorPlacer.GetGeneratorsSO().Length;
+        PlayerPrefs.SetInt(workersKeys[workerId].ToString(), workerId);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveSlidersVolume();
+        SaveCoinsNExp();
+    }
+    public List<string> GetGeneratorsKeys() => generatorsKeys;
+    public List<string> GetWorkersKeys() => workersKeys;
+    public string[] GetResourceKeys() => _resourceKeys;
+    public string[] GetSlidersKeys() => _slidersKeys;
 }

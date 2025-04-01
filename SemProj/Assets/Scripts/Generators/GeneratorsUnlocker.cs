@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class GeneratorsUnlocker : MonoBehaviour
 {
-    private Sprite[] stCUnlockedSprites;
+    //private Sprite[] stCUnlockedSprites;
     //[SerializeField] private Image[] stCImages;
     //[SerializeField] private Button[] stCButtons;
-    private List<Image> stCImagesL = new List<Image>();
-    private List<Button> stCButtonsL = new List<Button>();
-    [SerializeField] private Transform imagesParent;
-    private List<int> filledSprites = new List<int>();
+    //private List<Image> stCImagesL = new List<Image>();
+    //private List<Button> stCButtonsL = new List<Button>();
+    //[SerializeField] private Transform imagesParent;
+    //private List<int> filledSprites = new List<int>();
 
     [SerializeField] private int level3UnlockAmount = 3;
     [SerializeField] private int level6UnlockAmount = 5;
@@ -33,18 +33,18 @@ public class GeneratorsUnlocker : MonoBehaviour
     //[SerializeField] private Sprite[] level9StcSprites;
     //[SerializeField] private Image[] level9StCImages;
 
-    private void Awake()
-    {
-        LoadResources();
-        for (int i = 0; i < imagesParent.childCount; i++)
-        {
-            var child = imagesParent.GetChild(i);
-            //stCImages[i] = child.GetComponent<Image>();
-            //stCButtons[i] = child.GetComponent<Button>();
-            stCImagesL.Add(child.GetComponent<Image>());
-            stCButtonsL.Add(child.GetComponent<Button>());
-        }
-    }
+    //private void Awake()
+    //{
+    //    LoadResources();
+    //    for (int i = 0; i < imagesParent.childCount; i++)
+    //    {
+    //        var child = imagesParent.GetChild(i);
+    //        //stCImages[i] = child.GetComponent<Image>();
+    //        //stCButtons[i] = child.GetComponent<Button>();
+    //        stCImagesL.Add(child.GetComponent<Image>());
+    //        stCButtonsL.Add(child.GetComponent<Button>());
+    //    }
+    //}
 
     public void Unlock(int currLevel)
     {
@@ -112,10 +112,9 @@ public class GeneratorsUnlocker : MonoBehaviour
 
     private void LoadResources()
     {
-        stCUnlockedSprites = Resources.LoadAll("Sprites/Store cards versions/Generators/AbleToBuy",
-            typeof(Sprite))
-            .Cast<Sprite>().ToArray();
-        Debug.Log(stCUnlockedSprites.Length);
+        //stCUnlockedSprites = Resources.LoadAll("Sprites/Store cards versions/Generators/AbleToBuy",
+        //    typeof(Sprite))
+        //    .Cast<Sprite>().ToArray();
         //Assets/Resources/Sprites/Store cards versions/Generators/AbleToBuy
     }
 }
