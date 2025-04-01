@@ -23,8 +23,8 @@ public class CostAssigner : MonoBehaviour
 
     private void AssignConstCosts()
     {
-        var generatorsSOs = generatorPlacer.GetSOValues();
-        var workersSOs = workerPlacer.GetWorkersSOs();
+        var generatorsSOs = generatorPlacer.GetGeneratorsSO();
+        var workersSOs = generatorPlacer.GetWorkersSOs();
         for (int i = 0; i < generatorsSOs.Length; i++)
         {
             costTMPs[i].text = generatorsSOs[i].generatorCost.ToString();

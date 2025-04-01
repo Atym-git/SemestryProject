@@ -30,10 +30,12 @@ public class GeneratorPlacer : MonoBehaviour
     [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
     private GeneratorsInStock generatorsStockScript;
+    private Save save;
 
     private void Awake()
     {
         generatorsStockScript = GetComponent<GeneratorsInStock>();
+        save = GetComponent<Save>();
         ResourceLoader();
         
         for (int i = 0; i < generatorSOs.Length; i++)
@@ -48,8 +50,6 @@ public class GeneratorPlacer : MonoBehaviour
 
     public void BuyGenerator(int Id)
     {
-        Debug.Log($"Id: {Id}");
-        Debug.Log($"SO Length: {generatorSOs.Length}");
         if (Id < generatorSOs.Length)
         {
             if (coinsScript.IsEnoughToBuy(generatorSOs[Id].generatorCost) && Id < generatorSOs.Length &&
@@ -65,8 +65,8 @@ public class GeneratorPlacer : MonoBehaviour
 
                 generatorIds.Add(Id);
                 coinsScript.AddCoins(-generatorSOs[Id].generatorCost);
-
                 generatorsStockScript.UpdateInStockGenerators(Id, generatorSOs.Length);
+                save.SaveGenerator(Id);
                 if (Id == _idTrigger)
                 {
                     StartCoroutine(Delay());
@@ -79,7 +79,6 @@ public class GeneratorPlacer : MonoBehaviour
             if (coinsScript.IsEnoughToBuy(workersSOs[workerSOId].workerCost) && workerSOId < workersSOs.Length &&
             !workerIds.Contains(workerSOId))
             {
-                Debug.Log($"Else {Id}");
                 GameObject instance = Instantiate(_workerPrefab, _workersRoots[workerSOId]);
 
                 Worker worker = instance.GetComponent<Worker>();
@@ -88,6 +87,7 @@ public class GeneratorPlacer : MonoBehaviour
                     workersSOs[workerSOId].coinsMultiplayer, workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName);
 
                 workerIds.Add(workerSOId);
+                save.SaveWorkers(Id);
 
                 coinsScript.AddCoins(-workersSOs[workerSOId].workerCost);
                 generatorsStockScript.UpdateInStockGenerators(Id, generatorSOs.Length);
@@ -118,6 +118,6 @@ public class GeneratorPlacer : MonoBehaviour
     public Worker[] GetCurrWorkers() => workers;
 
     public Transform[] GetGeneratorRoots() => generatorRoots;
-    public GeneratorSO[] GetSOValues() => generatorSOs;
+    public GeneratorSO[] GetGeneratorsSO() => generatorSOs;
 
 }

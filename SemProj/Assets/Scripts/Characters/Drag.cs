@@ -10,6 +10,9 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     [SerializeField] private Canvas canvas;
 
+    [SerializeField] private float dragDivideY = 4.125f;
+    [SerializeField] private float dragDivideX = 6f;
+
     private Worker setupScript;
         
     private void Start()
@@ -33,7 +36,8 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     }
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / 6f;
+        Vector2 deltaVector = new Vector2(eventData.delta.x / dragDivideX, eventData.delta.y / dragDivideY);
+        rectTransform.anchoredPosition += deltaVector;
         //var screenPos = Camera.main.WorldToScreenPoint(transform.position) / canvas.scaleFactor;
         //float height = Screen.height;
         //float width = Screen.width;

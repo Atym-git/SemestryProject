@@ -35,8 +35,8 @@ public class Generator : MonoBehaviour
 
     private void Awake()
     {
-        expScript = Manager.expScript;
-        coinsScript = Manager.coinsScript;
+        expScript = SingleToneManager.expScript;
+        coinsScript = SingleToneManager.coinsScript;
         generatorImage = GetComponent<Image>();
         generatorRectTransform = GetComponent<RectTransform>();
         generatorTimerScript = transform.GetChild(firstChild).GetComponent<GeneratorTimer>();
@@ -59,7 +59,7 @@ public class Generator : MonoBehaviour
             coinsProducement = CoinsProducement;
             expProducement = ExpProducement;
             generatorCost = GeneratorCost;
-            generatorRectTransform.localScale *= ScaleFactor;
+            //generatorRectTransform.localScale *= ScaleFactor;
             //gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
             //generatorRectTransform.localScale /= 4;
     }
