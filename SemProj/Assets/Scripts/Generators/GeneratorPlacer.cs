@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GeneratorPlacer : MonoBehaviour
@@ -26,6 +27,8 @@ public class GeneratorPlacer : MonoBehaviour
     private const int _idTrigger = 0;
 
     [SerializeField] private int _dialogueCloseTime = 8;
+
+    [SerializeField] private int _maxMultipleGeneratorAmount = 10;
 
     [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
@@ -55,18 +58,34 @@ public class GeneratorPlacer : MonoBehaviour
             if (coinsScript.IsEnoughToBuy(generatorSOs[Id].generatorCost) && Id < generatorSOs.Length &&
             !generatorIds.Contains(Id))
             {
-                GameObject instance = Instantiate(generatorPrefab, generatorRoots[Id]);
-
-                Generator generator = instance.GetComponent<Generator>();
-
-                generator.SetupGenerator(generatorSOs[Id].generatorSprite, generatorSOs[Id].timeConsume,
+                List<Transform> multipleGeneratorRoots = new List<Transform>();
+                List<GameObject> instances = new List<GameObject>();
+                List<Generator> generators = new List<Generator>();
+                for (int i = 0; i < generatorRoots[Id].childCount; i++)
+                {
+                    multipleGeneratorRoots.Add(generatorRoots[Id].GetChild(i));
+                    instances.Add(Instantiate(generatorPrefab, multipleGeneratorRoots[i]));
+                    generators.Add(instances[i].GetComponent<Generator>());
+                    generators[i].SetupGenerator(generatorSOs[Id].generatorSprite, generatorSOs[Id].timeConsume,
                     generatorSOs[Id].coinsProducement, generatorSOs[Id].expProducement,
-                    generatorSOs[Id].generatorCost, generatorSOs[Id].ScaleFactor);
+                    generatorSOs[Id].generatorCost, generatorSOs[Id].ScaleFactor, generatorSOs[Id].generatorAmount);
+                }
+
+                //GameObject instance = Instantiate(generatorPrefab, generatorRoots[Id]);
+
+                //Generator generator = instance.GetComponent<Generator>();
+
+                //generator.SetupGenerator(generatorSOs[Id].generatorSprite, generatorSOs[Id].timeConsume,
+                //    generatorSOs[Id].coinsProducement, generatorSOs[Id].expProducement,
+                //    generatorSOs[Id].generatorCost, generatorSOs[Id].ScaleFactor, generatorSOs[Id].generatorAmount);
 
                 generatorIds.Add(Id);
                 coinsScript.AddCoins(-generatorSOs[Id].generatorCost);
                 generatorsStockScript.UpdateInStockGenerators(Id, generatorSOs.Length);
                 save.SaveGenerator(Id);
+                multipleGeneratorRoots.Clear();
+                instances.Clear();
+                generators.Clear();
                 if (Id == _idTrigger)
                 {
                     StartCoroutine(Delay());
@@ -95,6 +114,7 @@ public class GeneratorPlacer : MonoBehaviour
         }
 
     }
+
     private IEnumerator Delay()
     {
          _dialoguePanel.SetActive(true);

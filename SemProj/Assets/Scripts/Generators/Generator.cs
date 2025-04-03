@@ -1,8 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +12,10 @@ public class Generator : MonoBehaviour
     public float coinsProducement;
     public float expProducement;
     public float generatorCost;
+    public bool isMultiple = false;
 
-    private int firstChild = 0;
-    private int secondChild = 1;
+    private int generatorTimer = 0;
+    private int animatorManager = 1;
 
     public bool isGeneratorFinished = false;
 
@@ -33,32 +30,40 @@ public class Generator : MonoBehaviour
     private Image generatorImage;
     private RectTransform generatorRectTransform;
 
+    //private Transform[] generatorsTimers;
+
     private void Awake()
     {
         expScript = SingleToneManager.expScript;
         coinsScript = SingleToneManager.coinsScript;
         generatorImage = GetComponent<Image>();
         generatorRectTransform = GetComponent<RectTransform>();
-        generatorTimerScript = transform.GetChild(firstChild).GetComponent<GeneratorTimer>();
-        expAnimator = transform.GetChild(secondChild).GetComponent<Animator>();
+        generatorTimerScript = transform.GetChild(generatorTimer).GetComponent<GeneratorTimer>();
+        expAnimator = transform.GetChild(animatorManager).GetComponent<Animator>();
     }
 
     private void Start()
     {
-        for (int i = 0; i < transform.parent.childCount; i++)
+        //for (int i = 0; i < transform.parent.childCount; i++)
+        //{
+        //    transform.GetChild(i).gameObject.SetActive(true);
+        //}
+        if (transform.parent.parent.GetComponent<Image>()) //That means generator spawned in a singe-slot transform
         {
-            transform.GetChild(i).gameObject.SetActive(true);
+            isMultiple = true;
         }
     }
 
-    public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement, float GeneratorCost, float ScaleFactor)
+    public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement,
+        float GeneratorCost, float ScaleFactor, int GeneratorAmount)
     {
-            generatorSprite = GeneratorSprite;
-            generatorImage.sprite = generatorSprite;
-            timeToProduce = TimeToProduce;
-            coinsProducement = CoinsProducement;
-            expProducement = ExpProducement;
-            generatorCost = GeneratorCost;
+        generatorSprite = GeneratorSprite;
+        generatorImage.sprite = generatorSprite;
+        timeToProduce = TimeToProduce;
+        coinsProducement = CoinsProducement;
+        expProducement = ExpProducement;
+        generatorCost = GeneratorCost;
+        //isMultiple = GeneratorAmount;
             //generatorRectTransform.localScale *= ScaleFactor;
             //gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
             //generatorRectTransform.localScale /= 4;
@@ -94,6 +99,25 @@ public class Generator : MonoBehaviour
             expScript.OnExpGain(expProducement);
             coinsScript.AddCoins(coinsProducement);
             isGeneratorFinished = false;
+            if (isMultiple)
+            {
+                Transform rootsParent = transform.parent.parent;
+                List<Transform> generatorsTimersObjects = new List<Transform>();
+                List<GeneratorTimer> generatorsTimers = new List<GeneratorTimer>();
+                for (int i = 0; i < rootsParent.childCount; i++)
+                {
+                    generatorsTimersObjects.Add(rootsParent.GetChild(i).GetChild(0).GetChild(generatorTimer));
+                    //generatorsTimers[i] = rootsParent.GetChild(i).GetChild(0).GetChild(generatorTimer);
+                }
+                foreach (Transform t in generatorsTimersObjects)
+                {
+                    generatorsTimers.Add(t.GetComponent<GeneratorTimer>());
+                }
+                foreach (GeneratorTimer genTim in generatorsTimers)
+                {
+                    genTim.Zeroing();
+                }
+            }
             generatorTimerScript.Zeroing();
         }
     }
