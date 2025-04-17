@@ -20,7 +20,7 @@ public class LMBClicker : MonoBehaviour, IPointerClickHandler
         SoundFXManager.SFXinstance.PlaySoundFXClip(clickClip, transform, clickVolume);
         //Vector3 mousePos = Input.mousePosition;
         //Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
-        Instantiate(animationGameObject, eventData.pressPosition, Quaternion.identity);
+        //Instantiate(animationGameObject, eventData.pressPosition, Quaternion.identity);
         coinsScript.AddCoins(coinsPerLMB);
     }
 }

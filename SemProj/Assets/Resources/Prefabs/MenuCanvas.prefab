@@ -417,7 +417,7 @@ RectTransform:
   m_GameObject: {fileID: 1682865186105015424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.80972224, y: 0.80972224, z: 0.80972224}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8805091683490337230}
@@ -429,7 +429,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8017923867395165970
 Canvas:
   m_ObjectHideFlags: 0
@@ -1087,7 +1087,6 @@ GameObject:
   - component: {fileID: 7550588639364766700}
   - component: {fileID: 3731891615329503747}
   - component: {fileID: 8589155402642541285}
-  - component: {fileID: 3941987505443716423}
   m_Layer: 0
   m_Name: Manager (Scripts)
   m_TagString: Untagged
@@ -1151,18 +1150,6 @@ MonoBehaviour:
   - {fileID: 2646162588602371902}
   - {fileID: 2337204791285903196}
   - {fileID: 5495615530401201311}
---- !u!114 &3941987505443716423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4320556440806169323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b76e1b5a697343b180fab7a3048d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4530683638201505433
 GameObject:
   m_ObjectHideFlags: 0
