@@ -25,13 +25,16 @@ public class Save : MonoBehaviour
         coinsScript = SingleToneManager.coinsScript;
         generatorPlacer = GetComponent<GeneratorPlacer>();
         Worker workers = GetComponent<Worker>();
-        for (int i = 0; i < generatorPlacer.GetGeneratorsSO().Length; i++)
+        if (generatorPlacer != null)
         {
-            generatorsKeys.Add($"Generator-{i}");
-        }
-        for (int i = 0; i < generatorPlacer.GetWorkersSOs().Length; i++)
-        {
-            workersKeys.Add($"Worker-{i}");
+            for (int i = 0; i < generatorPlacer.GetGeneratorsSO().Length; i++)
+            {
+                generatorsKeys.Add($"Generator-{i}");
+            }
+            for (int i = 0; i < generatorPlacer.GetWorkersSOs().Length; i++)
+            {
+                workersKeys.Add($"Worker-{i}");
+            }
         }
     }
 
