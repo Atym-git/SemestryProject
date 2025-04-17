@@ -3447,6 +3447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 3561758728297710237}
+  dragDivideY: 4.125
+  dragDivideX: 6
 --- !u!225 &4177999841480637054
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3730,11 +3732,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4267501958864755512}
-  - {fileID: 4353956295563636280}
   - {fileID: 2785255111944646540}
   - {fileID: 964533780569085034}
   - {fileID: 1977451524457226738}
   - {fileID: 6411500889018410246}
+  - {fileID: 4353956295563636280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5942,6 +5944,7 @@ MonoBehaviour:
   _workersRoots: []
   _dialoguePanel: {fileID: 0}
   _dialogueCloseTime: 8
+  _maxMultipleGeneratorAmount: 10
   coinsScript: {fileID: 7947312398978478060}
 --- !u!114 &3973636883998095128
 MonoBehaviour:
@@ -6022,10 +6025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f8867ad640e2a46b2f6799705a93f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _workerPrefab: {fileID: 6310899637647190577, guid: 7ff29bd0b69fa2942b5be5520c2b0a68, type: 3}
-  _workersRootParent: {fileID: 0}
-  _workersRoots: []
-  coinsScript: {fileID: 7947312398978478060}
 --- !u!114 &7620399090456780325
 MonoBehaviour:
   m_ObjectHideFlags: 0
