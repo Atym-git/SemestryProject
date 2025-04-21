@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Save))]
+[RequireComponent(typeof(GeneratorPlacer))]
+[RequireComponent(typeof(LevelUp))]
 public class Save : MonoBehaviour
 {
     public Slider[] volumeSliders;
@@ -10,10 +13,11 @@ public class Save : MonoBehaviour
     private ExpGain expScript;
     private Save saveScript;
     private GeneratorPlacer generatorPlacer;
+    private LevelUp levelUp;
 
     private string[] _slidersKeys = { "MainSlider", "MusicSlider", "SFXSlider" };
 
-    private string[] _resourceKeys = { "Coins", "Exp" };
+    private string[] _resourceKeys = { "Coins", "Exp", "Level" };
 
     private List<string> generatorsKeys = new List<string>();
 
@@ -24,6 +28,7 @@ public class Save : MonoBehaviour
         expScript = SingleToneManager.expScript;
         coinsScript = SingleToneManager.coinsScript;
         generatorPlacer = GetComponent<GeneratorPlacer>();
+        levelUp = GetComponent<LevelUp>();
         Worker workers = GetComponent<Worker>();
         if (generatorPlacer != null)
         {
@@ -38,17 +43,20 @@ public class Save : MonoBehaviour
         }
     }
 
-    public void SaveSlidersVolume()
+
+
+    private void SaveSlidersVolume()
     {
         PlayerPrefs.SetFloat(_slidersKeys[0], volumeSliders[0].value);
         PlayerPrefs.SetFloat(_slidersKeys[1], volumeSliders[1].value);
         PlayerPrefs.SetFloat(_slidersKeys[2], volumeSliders[2].value);
     }
 
-    public void SaveCoinsNExp()
+    private void SaveGameResources()
     {
         PlayerPrefs.SetFloat(_resourceKeys[0], coinsScript.SaveCoins());
         PlayerPrefs.SetFloat(_resourceKeys[1], expScript.currExp);
+        PlayerPrefs.SetInt(_resourceKeys[2], levelUp.currLevel);
     }
 
     public void SaveGenerator(int Id)
@@ -64,7 +72,7 @@ public class Save : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveSlidersVolume();
-        SaveCoinsNExp();
+        SaveGameResources();
     }
     public List<string> GetGeneratorsKeys() => generatorsKeys;
     public List<string> GetWorkersKeys() => workersKeys;

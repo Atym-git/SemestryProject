@@ -9,7 +9,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(LevelUp))]
 public class ExpGain : MonoBehaviour
 {
-    [HideInInspector] public float currExp;
+    [HideInInspector] public float currExp { get; private set; }
     [SerializeField] private float expToLevelUp;
 
     [field: SerializeField, HideInInspector] private Image expSlider;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelUp : MonoBehaviour
 {
-    private int currLevel = 1;
+    public int currLevel = 1;
 
     [SerializeField] private TextMeshProUGUI showLevelTMP;
 
@@ -23,10 +23,19 @@ public class LevelUp : MonoBehaviour
         unlockerScript.Unlock(currLevel);
     }
 
-    public int GetcurrLvl()
+    public bool SetCurrLevel(int level)
     {
-        return currLevel;
+        if (level != 0)
+        {
+            return false;
+        }
+        currLevel = level;
+        return true;
     }
+    //public int GetcurrLvl()
+    //{
+    //    return currLevel;
+    //}
 
     private void ShowLevel()
     {
