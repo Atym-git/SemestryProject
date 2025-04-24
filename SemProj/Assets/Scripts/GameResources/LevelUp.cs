@@ -9,12 +9,9 @@ public class LevelUp : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI showLevelTMP;
 
-    [SerializeField] private GeneratorsUnlocker unlockerScript;
+    [SerializeField] private ExpGain expGain;
 
-    private void Start()
-    {
-        unlockerScript = GetComponent<GeneratorsUnlocker>();
-    }
+    [SerializeField] private GeneratorsUnlocker unlockerScript;
 
     public void LevelUpgraded()
     {
@@ -23,6 +20,18 @@ public class LevelUp : MonoBehaviour
         unlockerScript.Unlock(currLevel);
     }
 
+    public bool SetCurrLevel(int level)
+    {
+        if (level == 0)
+        {
+            return false;
+        }
+        currLevel = level;
+        expGain.AllignExpNLevel(level);
+        ShowLevel();
+        unlockerScript.Unlock(currLevel);
+        return true;
+    }
     public int GetcurrLvl()
     {
         return currLevel;
