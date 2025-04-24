@@ -21,46 +21,73 @@ public class GeneratorsUpgrader : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] timeTMPs;
     [SerializeField] private TextMeshProUGUI currLevelTMP;
 
-    [SerializeField] private float coinsFirstUpgrade = 1.5f; // From level 1 to 2
-    [SerializeField] private float expFirstUpgrade = 1.25f;
-    [SerializeField] private float timeFirstUpgrade = 1.1f;
+    [SerializeField] private float coinsUpgrade = 1.5f; // From level 1 to 2
+    [SerializeField] private float expUpgrade = 1.25f;
+    [SerializeField] private float timeUpgrade = 1.1f;
 
     [SerializeField] private float multiplierAfterUpgrade = 1.5f;
+
+    [SerializeField] private int upgradeCost = 100;
 
     //[SerializeField] private float coinsSecondUpgrade = 1.5f;
     //[SerializeField] private float expSecondUpgrade = 1.25f;
     //[SerializeField] private float timeSecondUpgrade = 1.1f;
 
+    [SerializeField] private Sprite[,] spritesByLevels;
+
     [SerializeField] private Sprite[] level1Sprites;
     [SerializeField] private Sprite[] level2Sprites;
     [SerializeField] private Sprite[] level3Sprites;
 
-    //private Generator generator;
+    private Generator generator;
     private GeneratorPlacer generatorPlacerScript;
     private Save save;
+    private CountNShowCoins coins;
+
     private void Start()
     {
-        generatorPlacerScript = GetComponent<GeneratorPlacer>();
         save = GetComponent<Save>();
+        coins = GetComponent<CountNShowCoins>();
+
+        GetGeneratorValues();
+    }
+
+    private void GetGeneratorValues()
+    {
+        generatorPlacerScript = GetComponent<GeneratorPlacer>();
+
         generatorsRoots = generatorPlacerScript.GetGeneratorRoots();
         generatorSOs = generatorPlacerScript.GetGeneratorsSO();
+
         for (int i = 0; i < generatorSOs.Length; i++)
         {
             generatorsLevels[i] = generatorsStartingLevel;
+        }
+        
+        for (int i = 0; i < generatorsMaxLevel; i++)
+        {
+
         }
     }
     
     public void UpgradeGenerator(int Id)
     {
-        if (generatorsLevels[Id] == 1)
+        if (coins.IsEnoughToBuy(upgradeCost))
         {
-            generatorsLevels[Id]++;
-            Generator generator = generatorsRoots[Id].GetComponentInChildren<Generator>();
-        }
-        else if (generatorsLevels[Id] == 2)
-        {
-            generatorsLevels[Id]++;
-            IsMaxLevel(Id);
+            int generatorLevel = generator.generatorLevel;
+            if (generatorsLevels[Id] == 1)
+            {
+                generatorLevel++;
+                
+                //generator.UpgradeGenerator();
+            }
+            else if (generatorsLevels[Id] == 2)
+            {
+                generatorLevel++;
+                IsMaxLevel(Id);
+            }
+            ChangeSprite(Id, generator);
+            upgradeCost = Mathf.RoundToInt(upgradeCost * multiplierAfterUpgrade);
         }
         //save.SaveGenerator(Id);
     }
@@ -71,27 +98,39 @@ public class GeneratorsUpgrader : MonoBehaviour
     }
     public void ShowStats(int Id)
     {
-        Generator generator = generatorsRoots[Id].GetComponentInChildren<Generator>();
+        generator = generatorsRoots[Id].GetComponentInChildren<Generator>();
+
         currLevelTMP.text = generatorsLevels[Id].ToString();
         coinsTMPs[0].text = generator.coinsProducement.ToString();
-        coinsTMPs[1].text = (generator.coinsProducement * coinsFirstUpgrade).ToString();
+        coinsTMPs[1].text = (generator.coinsProducement * coinsUpgrade).ToString();
         expTMPs[0].text = generator.expProducement.ToString();
-        expTMPs[1].text = (generator.expProducement * coinsFirstUpgrade).ToString();
+        expTMPs[1].text = (generator.expProducement * expUpgrade).ToString();
         timeTMPs[0].text = generator.timeToProduce.ToString();
-        timeTMPs[1].text = (generator.timeToProduce * coinsFirstUpgrade).ToString();
+        timeTMPs[1].text = (generator.timeToProduce / timeUpgrade).ToString();
+        //ChangeSprite(Id, generator);
+    }
+
+    private void ChangeSprite(int Id, Generator generator)
+    {
         Image generatorImage = generator.GetComponent<Image>();
-        if (generatorsLevels[Id] == 1)
+
+        bool hasSprites = level1Sprites[Id] || level2Sprites[Id] || level3Sprites[Id];
+
+        if (generatorImage && hasSprites)
         {
-            generatorImage.sprite = level1Sprites[Id];
-        }
-        if (generatorsLevels[Id] == 2)
-        {
-            generatorImage.sprite = level2Sprites[Id];
-        }
-        else if (generatorsLevels[Id] == 3)
-        {
-            generatorImage.sprite = level3Sprites[Id];
-            IsMaxLevel(Id);
+            if (generatorsLevels[Id] == 1)
+            {
+                generatorImage.sprite = level1Sprites[Id];
+            }
+            if (generatorsLevels[Id] == 2)
+            {
+                generatorImage.sprite = level2Sprites[Id];
+            }
+            else if (generatorsLevels[Id] == 3)
+            {
+                generatorImage.sprite = level3Sprites[Id];
+                //IsMaxLevel(Id);
+            }
         }
     }
 }

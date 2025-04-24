@@ -22,7 +22,7 @@ public class GeneratorSO : ScriptableObject
     public float timeConsume { get; private set; }
 
     [field: SerializeField]
-    public float generatorCost { get; private set; }
+    public int generatorCost { get; private set; }
 
     [field: SerializeField]
     public float ScaleFactor { get; private set; }
