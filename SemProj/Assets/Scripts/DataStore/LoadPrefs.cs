@@ -49,9 +49,9 @@ public class LoadPrefs : MonoBehaviour
     private void LoadResources()
     {
         coinsScript.AddCoins(PlayerPrefs.GetFloat(_resourcesKeys[0]));
-        expScript.OnExpGain(PlayerPrefs.GetFloat(_resourcesKeys[1]));
-        levelUp.SetCurrLevel(PlayerPrefs.GetInt(_resourcesKeys[2]));
-        levelUp.LevelUpgraded();
+        levelUp.SetCurrLevel(PlayerPrefs.GetInt(_resourcesKeys[1]));
+        expScript.GainExp(PlayerPrefs.GetFloat(_resourcesKeys[2]));
+        Debug.Log(PlayerPrefs.GetInt(_resourcesKeys[2]));
     }
 
     private void LoadGenerators(GeneratorSO[] generatorSOs)

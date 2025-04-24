@@ -5,16 +5,13 @@ using UnityEngine;
 
 public class LevelUp : MonoBehaviour
 {
-    public int currLevel = 1;
+    private int currLevel = 1;
 
     [SerializeField] private TextMeshProUGUI showLevelTMP;
 
-    [SerializeField] private GeneratorsUnlocker unlockerScript;
+    [SerializeField] private ExpGain expGain;
 
-    private void Start()
-    {
-        unlockerScript = GetComponent<GeneratorsUnlocker>();
-    }
+    [SerializeField] private GeneratorsUnlocker unlockerScript;
 
     public void LevelUpgraded()
     {
@@ -25,17 +22,20 @@ public class LevelUp : MonoBehaviour
 
     public bool SetCurrLevel(int level)
     {
-        if (level != 0)
+        if (level == 0)
         {
             return false;
         }
         currLevel = level;
+        expGain.AllignExpNLevel(level);
+        ShowLevel();
+        unlockerScript.Unlock(currLevel);
         return true;
     }
-    //public int GetcurrLvl()
-    //{
-    //    return currLevel;
-    //}
+    public int GetcurrLvl()
+    {
+        return currLevel;
+    }
 
     private void ShowLevel()
     {

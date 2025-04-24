@@ -27,7 +27,6 @@ public class CountNShowCoins : MonoBehaviour
         {
             currCoins += (int)Mathf.Round(coins);
         }
-        //Debug.Log(polluteMultiplier);
         ShowCoins();
     }
 
@@ -48,7 +47,7 @@ public class CountNShowCoins : MonoBehaviour
         polluteMultiplier = PolluteMultiplier;
     }
 
-    public int SaveCoins() => currCoins;
+    public int GetCoins() => currCoins;
 
     private void ShowCoins()
     {

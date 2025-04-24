@@ -17,7 +17,7 @@ public class Save : MonoBehaviour
 
     private string[] _slidersKeys = { "MainSlider", "MusicSlider", "SFXSlider" };
 
-    private string[] _resourceKeys = { "Coins", "Exp", "Level" };
+    private string[] _resourceKeys = { "Coins", "Level", "Exp" };
 
     private List<string> generatorsKeys = new List<string>();
 
@@ -43,8 +43,6 @@ public class Save : MonoBehaviour
         }
     }
 
-
-
     private void SaveSlidersVolume()
     {
         PlayerPrefs.SetFloat(_slidersKeys[0], volumeSliders[0].value);
@@ -54,9 +52,11 @@ public class Save : MonoBehaviour
 
     private void SaveGameResources()
     {
-        PlayerPrefs.SetFloat(_resourceKeys[0], coinsScript.SaveCoins());
-        PlayerPrefs.SetFloat(_resourceKeys[1], expScript.currExp);
-        PlayerPrefs.SetInt(_resourceKeys[2], levelUp.currLevel);
+        int currLevel = levelUp.GetcurrLvl();
+        int currCoins = coinsScript.GetCoins();
+        PlayerPrefs.SetFloat(_resourceKeys[0], currCoins);
+        PlayerPrefs.SetInt(_resourceKeys[1], currLevel);
+        PlayerPrefs.SetFloat(_resourceKeys[2], expScript.currExp);
     }
 
     public void SaveGenerator(int Id)

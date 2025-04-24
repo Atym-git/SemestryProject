@@ -96,7 +96,7 @@ public class Generator : MonoBehaviour
         if (isGeneratorFinished)
         {
             expAnimator.Play("Exp");
-            expScript.OnExpGain(expProducement);
+            expScript.GainExp(expProducement);
             coinsScript.AddCoins(coinsProducement);
             isGeneratorFinished = false;
             if (isMultiple)
