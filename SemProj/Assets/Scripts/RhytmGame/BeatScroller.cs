@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeatScroller : MonoBehaviour
 {
-    [SerializeField] private float beatTempo;
+    [SerializeField] private float beatTempo = 120f;
 
     [SerializeField] private bool hasStarted;
 
