@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class GeneratorsUpgrader : MonoBehaviour
 {
-    private int[] generatorsLevels;
+    private List<int> generatorsLevels = new List<int>();
     private const int generatorsStartingLevel = 1;
     [SerializeField] private int generatorsMaxLevel = 3;
 
@@ -61,12 +61,7 @@ public class GeneratorsUpgrader : MonoBehaviour
 
         for (int i = 0; i < generatorSOs.Length; i++)
         {
-            generatorsLevels[i] = generatorsStartingLevel;
-        }
-        
-        for (int i = 0; i < generatorsMaxLevel; i++)
-        {
-
+            generatorsLevels.Add(generatorsStartingLevel);
         }
     }
     

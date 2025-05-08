@@ -75,7 +75,7 @@ public class GeneratorPlacer : MonoBehaviour
                 ClearLists(multipleGeneratorRoots, instances, generators);
                 if (Id == _idTrigger)
                 {
-                    StartCoroutine(Delay());
+                    _dialoguePanel.SetActive(true);
                 }
             }
         }
@@ -128,13 +128,6 @@ public class GeneratorPlacer : MonoBehaviour
 
         worker.SetupWorker(workersSOs[workerSOId].workerSprite, workersSOs[workerSOId].workerCost,
             workersSOs[workerSOId].coinsMultiplayer, workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName);
-    }
-
-    private IEnumerator Delay()
-    {
-         _dialoguePanel.SetActive(true);
-         yield return new WaitForSeconds(_dialogueCloseTime);
-         _dialoguePanel.SetActive(false);
     }
 
 

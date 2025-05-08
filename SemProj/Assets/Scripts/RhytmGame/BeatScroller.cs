@@ -6,7 +6,7 @@ public class BeatScroller : MonoBehaviour
 {
     [SerializeField] private float beatTempo = 120f;
 
-    [SerializeField] private bool hasStarted;
+    public bool hasStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +19,10 @@ public class BeatScroller : MonoBehaviour
     {
         if (!hasStarted)
         {
-            if (Input.anyKeyDown)
-            {
-                hasStarted = true;
-            }
+            //if (Input.anyKeyDown)
+            //{
+            //    hasStarted = true;
+            //}
         }
         else
         {
