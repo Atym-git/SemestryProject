@@ -8,14 +8,18 @@ public class Generator : MonoBehaviour
 
     public Sprite generatorSprite;
 
+    public float generatorCost;
+
     public float timeToProduce;
     public float coinsProducement;
     public float expProducement;
-    public float generatorCost;
+    
     public bool isMultiple = false;
 
-    private int generatorTimer = 0;
-    private int animatorManager = 1;
+    public int generatorLevel = 1;
+
+    private int generatorTimerChild = 0;
+    private int animatorManagerChild = 1;
 
     public bool isGeneratorFinished = false;
 
@@ -38,8 +42,8 @@ public class Generator : MonoBehaviour
         coinsScript = SingleToneManager.coinsScript;
         generatorImage = GetComponent<Image>();
         generatorRectTransform = GetComponent<RectTransform>();
-        generatorTimerScript = transform.GetChild(generatorTimer).GetComponent<GeneratorTimer>();
-        expAnimator = transform.GetChild(animatorManager).GetComponent<Animator>();
+        generatorTimerScript = transform.GetChild(generatorTimerChild).GetComponent<GeneratorTimer>();
+        expAnimator = transform.GetChild(animatorManagerChild).GetComponent<Animator>();
     }
 
     private void Start()
@@ -64,9 +68,9 @@ public class Generator : MonoBehaviour
         expProducement = ExpProducement;
         generatorCost = GeneratorCost;
         //isMultiple = GeneratorAmount;
-            //generatorRectTransform.localScale *= ScaleFactor;
-            //gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
-            //generatorRectTransform.localScale /= 4;
+        //generatorRectTransform.localScale *= ScaleFactor;
+        //gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
+        //generatorRectTransform.localScale /= 4;
     }
 
     public void WorkerOnGenerator(float coinsMultiplier, float expMultiplier)
@@ -86,6 +90,7 @@ public class Generator : MonoBehaviour
         {
             generatorImage.sprite = nextLevelSprite;
         }
+        generatorLevel++;
         coinsProducement *= coinsUpg;
         expProducement *= expUpg;
         timeToProduce *= cdUpg;
@@ -106,7 +111,7 @@ public class Generator : MonoBehaviour
                 List<GeneratorTimer> generatorsTimers = new List<GeneratorTimer>();
                 for (int i = 0; i < rootsParent.childCount; i++)
                 {
-                    generatorsTimersObjects.Add(rootsParent.GetChild(i).GetChild(0).GetChild(generatorTimer));
+                    generatorsTimersObjects.Add(rootsParent.GetChild(i).GetChild(0).GetChild(generatorTimerChild));
                     //generatorsTimers[i] = rootsParent.GetChild(i).GetChild(0).GetChild(generatorTimer);
                 }
                 foreach (Transform t in generatorsTimersObjects)

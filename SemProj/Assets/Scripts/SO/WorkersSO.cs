@@ -10,7 +10,7 @@ public class WorkersSO : ScriptableObject
     public Sprite workerSprite { get; private set; }
 
     [field: SerializeField]
-    public float workerCost { get; private set; }
+    public int workerCost { get; private set; }
 
     [field: SerializeField]
     public float XPMultiplayer { get; private set; }
