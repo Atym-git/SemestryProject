@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float hitIndicatorShowTime = 0.1f;
     [SerializeField] private TextMeshProUGUI scoreTMP;
 
+    [SerializeField] private GameObject anyKeyDownTMP;
+
     private void Start()
     {
         instance = this;
@@ -63,15 +65,12 @@ public class GameManager : MonoBehaviour
         currentScore += scorePerPerfectNote;
         NoteHit();
     }
-    public void NoteMissed()
-    {
-
-    }
 
     private void StartMusic()
     {
         if (!startPlaying && Input.anyKeyDown)
         {
+            Destroy(anyKeyDownTMP);
             startPlaying = true;
             mBeatScroller.hasStarted = true;
 

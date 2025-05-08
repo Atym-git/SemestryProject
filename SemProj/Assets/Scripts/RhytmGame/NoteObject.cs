@@ -50,7 +50,6 @@ public class NoteObject : MonoBehaviour
         //if (collision.GetComponent<ButtonController>())
         //{
            canBePressed = false;
-        GameManager.instance.NoteMissed();
         //}
     }
 }
