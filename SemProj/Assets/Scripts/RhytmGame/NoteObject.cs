@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class NoteObject : MonoBehaviour
 {
-    [SerializeField] private bool canBePressed;
+    [SerializeField] private bool canBePressed = false;
 
     [SerializeField] private KeyCode keyToPress;
+
+    [SerializeField] private float startingClickYArea = 0.4f;
 
     [SerializeField] private float normalHit = 0.22f;
     [SerializeField] private float goodHit = 0.05f;
@@ -14,12 +16,16 @@ public class NoteObject : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(keyToPress))
+        OnArrowPress();
+    }
+
+    private void OnArrowPress()
+    {
+        if (GameManager.instance.hasStarted && Input.GetKeyDown(keyToPress))
         {
             if (canBePressed)
             {
                 gameObject.SetActive(false);
-
                 if (Mathf.Abs(transform.position.y) > normalHit)
                 {
                     GameManager.instance.NormalHit();
@@ -33,7 +39,11 @@ public class NoteObject : MonoBehaviour
                     GameManager.instance.PerfectHit();
                 }
             }
-            
+            //else if (!canBePressed)
+            //{
+            //    GameManager.instance.Miss();
+            //}
+
         }
     }
 
