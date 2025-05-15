@@ -5515,66 +5515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62407caa4c61e2849a2ab1786cf44abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &9038132289900036442
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 28.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.90437824
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1120.0471
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 416585337143456730, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8660350001385100080, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
-      propertyPath: m_Name
-      value: RhytmGame
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5ba66183b9f44ff4bbd5dfec252c0703, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 6421254970313174208}
-  - {fileID: 9038132289900036442}

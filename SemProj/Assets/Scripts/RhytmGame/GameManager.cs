@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private AudioSource music;
 
-    [SerializeField] private bool startPlaying;
+    public bool hasStarted;
 
     [SerializeField] private BeatScroller mBeatScroller;
 
@@ -65,16 +65,20 @@ public class GameManager : MonoBehaviour
         currentScore += scorePerPerfectNote;
         NoteHit();
     }
+    public void Miss()
+    {
+
+    }
 
     private void StartMusic()
     {
-        if (!startPlaying && Input.anyKeyDown)
+        if (!hasStarted && Input.anyKeyDown)
         {
             Destroy(anyKeyDownTMP);
-            startPlaying = true;
             mBeatScroller.hasStarted = true;
 
             music.Play();
+            hasStarted = true;
         }
     }
 }
