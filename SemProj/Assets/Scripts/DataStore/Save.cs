@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Save))]
 [RequireComponent(typeof(GeneratorPlacer))]
 [RequireComponent(typeof(LevelUp))]
 public class Save : MonoBehaviour
@@ -11,7 +10,7 @@ public class Save : MonoBehaviour
 
     private CountNShowCoins coinsScript;
     private ExpGain expScript;
-    private Save saveScript;
+    private LoadPrefs loadScript;
     private GeneratorPlacer generatorPlacer;
     private LevelUp levelUp;
 
@@ -27,6 +26,7 @@ public class Save : MonoBehaviour
     {
         expScript = SingleToneManager.expScript;
         coinsScript = SingleToneManager.coinsScript;
+        loadScript = GetComponent<LoadPrefs>();
         generatorPlacer = GetComponent<GeneratorPlacer>();
         levelUp = GetComponent<LevelUp>();
         Worker workers = GetComponent<Worker>();
@@ -40,6 +40,15 @@ public class Save : MonoBehaviour
             {
                 workersKeys.Add($"Worker-{i}");
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.DeleteAll();
+            loadScript.LoadAll();
         }
     }
 
