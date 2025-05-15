@@ -26,7 +26,7 @@ public class LoadPrefs : MonoBehaviour
         generatorPlacer = GetComponent<GeneratorPlacer>();
         levelUp = GetComponent<LevelUp>();
         GetKeys();
-        Load();
+        LoadAll();
     }
 
     private void GetKeys()
@@ -37,7 +37,7 @@ public class LoadPrefs : MonoBehaviour
         _resourcesKeys = saveScript.GetResourceKeys();
     }
 
-    private void Load()
+    public void LoadAll()
     {
         LoadResources();
         GeneratorSO[] generatorSOs = generatorPlacer.GetGeneratorsSO();
@@ -58,7 +58,6 @@ public class LoadPrefs : MonoBehaviour
     {
         for (int i = 0; i < generatorSOs.Length; i++)
         {
-
             if (PlayerPrefs.HasKey(_generatorsKeys[i]))
             {
                 coinsScript.AddCoins(generatorSOs[i].generatorCost);
