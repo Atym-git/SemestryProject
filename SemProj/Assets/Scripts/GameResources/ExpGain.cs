@@ -9,7 +9,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(LevelUp))]
 public class ExpGain : MonoBehaviour
 {
-    [HideInInspector] public float currExp;
+    [HideInInspector] public float currExp { get; private set; }
     [SerializeField] private float expToLevelUp;
 
     [field: SerializeField, HideInInspector] private Image expSlider;
@@ -25,11 +25,17 @@ public class ExpGain : MonoBehaviour
         levelScript.gameObject.GetComponent<LevelUp>();
     }
 
-    public void OnExpGain(float exp)
+    public void GainExp(float exp)
     {
         currExp += exp * polluteMultiplier;
         LevelUp();
-        expSlider.fillAmount = currExp / expToLevelUp;
+        ShowSliderValue();
+    }
+
+    private void ShowSliderValue()
+    {
+        float sliderValue = currExp / expToLevelUp;
+        expSlider.fillAmount = sliderValue;
     }
 
     private void LevelUp()
@@ -38,8 +44,16 @@ public class ExpGain : MonoBehaviour
         {
             currExp -= expToLevelUp;
             expSlider.fillAmount = 0;
-            expToLevelUp *= lvlUpMultiplier;
+            AllignExpNLevel(1);
             levelScript.LevelUpgraded();
+        }
+    }
+
+    public void AllignExpNLevel(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            expToLevelUp *= lvlUpMultiplier;
         }
     }
 

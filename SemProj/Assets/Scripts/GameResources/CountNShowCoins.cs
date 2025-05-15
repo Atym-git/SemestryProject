@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CountNShowCoins : MonoBehaviour
 {
-    [field: SerializeField, HideInInspector] private TextMeshProUGUI showCoinsTMP;
+    [field: SerializeField] private TextMeshProUGUI showCoinsTMP;
 
     private int currCoins = 0;
 
@@ -27,20 +27,17 @@ public class CountNShowCoins : MonoBehaviour
         {
             currCoins += (int)Mathf.Round(coins);
         }
-        //Debug.Log(polluteMultiplier);
         ShowCoins();
     }
 
-    public bool IsEnoughToBuy(float coins)
+    public bool IsEnoughToBuy(int coins)
     {
         if (currCoins < coins)
         {
             return false;
         }
-        else
-        {
-            return true;
-        }
+        //currCoins -= coins;
+        return true;
     }
 
     public void PolluteMultiplier(float PolluteMultiplier)
@@ -48,7 +45,7 @@ public class CountNShowCoins : MonoBehaviour
         polluteMultiplier = PolluteMultiplier;
     }
 
-    public int SaveCoins() => currCoins;
+    public int GetCoins() => currCoins;
 
     private void ShowCoins()
     {

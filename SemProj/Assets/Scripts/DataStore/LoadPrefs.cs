@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Save))]
+[RequireComponent(typeof(GeneratorPlacer))]
+[RequireComponent(typeof(LevelUp))]
 public class LoadPrefs : MonoBehaviour
 {
     private CountNShowCoins coinsScript;
     private ExpGain expScript;
     private Save saveScript;
     private GeneratorPlacer generatorPlacer;
+    private LevelUp levelUp;
 
     private string[] _slidersKeys;
     private List<string> _generatorsKeys = new List<string>();
@@ -19,8 +23,9 @@ public class LoadPrefs : MonoBehaviour
         saveScript = GetComponent<Save>();
         expScript = SingleToneManager.expScript;
         coinsScript = SingleToneManager.coinsScript;
-        GetKeys();
         generatorPlacer = GetComponent<GeneratorPlacer>();
+        levelUp = GetComponent<LevelUp>();
+        GetKeys();
         Load();
     }
 
@@ -34,10 +39,23 @@ public class LoadPrefs : MonoBehaviour
 
     private void Load()
     {
-        coinsScript.AddCoins(PlayerPrefs.GetFloat(_resourcesKeys[0]));
-        expScript.OnExpGain(PlayerPrefs.GetFloat(_resourcesKeys[1]));
+        LoadResources();
         GeneratorSO[] generatorSOs = generatorPlacer.GetGeneratorsSO();
         WorkersSO[] workerSOs = generatorPlacer.GetWorkersSOs();
+        LoadGenerators(generatorSOs);
+        LoadWorkers(workerSOs);
+    }
+
+    private void LoadResources()
+    {
+        coinsScript.AddCoins(PlayerPrefs.GetFloat(_resourcesKeys[0]));
+        levelUp.SetCurrLevel(PlayerPrefs.GetInt(_resourcesKeys[1]));
+        expScript.GainExp(PlayerPrefs.GetFloat(_resourcesKeys[2]));
+        Debug.Log(PlayerPrefs.GetInt(_resourcesKeys[2]));
+    }
+
+    private void LoadGenerators(GeneratorSO[] generatorSOs)
+    {
         for (int i = 0; i < generatorSOs.Length; i++)
         {
 
@@ -47,10 +65,11 @@ public class LoadPrefs : MonoBehaviour
                 generatorPlacer.BuyGenerator(i);
             }
         }
+    }
+    private void LoadWorkers(WorkersSO[] workerSOs)
+    {
         for (int i = 0; i < workerSOs.Length; i++)
         {
-            Debug.Log(_workersKeys.Count);
-            Debug.Log(_workersKeys[i]);
             if (PlayerPrefs.HasKey(_workersKeys[i]))
             {
                 coinsScript.AddCoins(workerSOs[i].workerCost);
@@ -59,12 +78,12 @@ public class LoadPrefs : MonoBehaviour
         }
     }
 
+
     public void SetSlidersValue()
     {
         saveScript.volumeSliders[0].value = PlayerPrefs.GetFloat(_slidersKeys[0]);
         saveScript.volumeSliders[1].value = PlayerPrefs.GetFloat(_slidersKeys[1]);
         saveScript.volumeSliders[2].value = PlayerPrefs.GetFloat(_slidersKeys[2]);
     }
-
 
 }

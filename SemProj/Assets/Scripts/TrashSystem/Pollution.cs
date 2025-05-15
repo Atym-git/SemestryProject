@@ -103,6 +103,5 @@ public class Pollution : MonoBehaviour
         trashSOs = Resources.LoadAll("SO/TrashSO", typeof(TrashSO))
             .Cast<TrashSO>()
             .ToArray();
-        
     }
 }
