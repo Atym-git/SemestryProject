@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WorkerSO",
@@ -25,6 +25,6 @@ public class WorkersSO : ScriptableObject
     [field: SerializeField]
     public AnimationClip workerAnimation { get; private set; }
     
-    [field: SerializeField]
-    public AnimatorController workerAnimator { get; private set; }
+    //[field: SerializeField]
+    //public AnimatorController workerAnimator { get; private set; }
 }

@@ -12,12 +12,10 @@ public class CostAssigner : MonoBehaviour
     //[SerializeField] private TextMeshProUGUI[] workersCostTMPs;
 
     private GeneratorPlacer generatorPlacer;
-    private WorkerPlacer workerPlacer;
 
     private void Start()
     {
         generatorPlacer = GetComponent<GeneratorPlacer>();
-        workerPlacer = GetComponent<WorkerPlacer>();
         AssignConstCosts();
     }
 
