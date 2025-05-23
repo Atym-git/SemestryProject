@@ -4,14 +4,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(Save))]
 [RequireComponent(typeof(GeneratorPlacer))]
-[RequireComponent(typeof(LevelUp))]
+[RequireComponent(typeof(Level))]
 public class LoadPrefs : MonoBehaviour
 {
     private CountNShowCoins coinsScript;
     private ExpGain expScript;
     private Save saveScript;
     private GeneratorPlacer generatorPlacer;
-    private LevelUp levelUp;
+    private Level levelUp;
 
     private string[] _slidersKeys;
     private List<string> _generatorsKeys = new List<string>();
@@ -24,7 +24,7 @@ public class LoadPrefs : MonoBehaviour
         expScript = SingleToneManager.expScript;
         coinsScript = SingleToneManager.coinsScript;
         generatorPlacer = GetComponent<GeneratorPlacer>();
-        levelUp = GetComponent<LevelUp>();
+        levelUp = GetComponent<Level>();
         GetKeys();
         LoadAll();
     }
@@ -51,7 +51,7 @@ public class LoadPrefs : MonoBehaviour
         coinsScript.AddCoins(PlayerPrefs.GetFloat(_resourcesKeys[0]));
         levelUp.SetCurrLevel(PlayerPrefs.GetInt(_resourcesKeys[1]));
         expScript.GainExp(PlayerPrefs.GetFloat(_resourcesKeys[2]));
-        Debug.Log(PlayerPrefs.GetInt(_resourcesKeys[2]));
+        Debug.Log(PlayerPrefs.GetInt(_resourcesKeys[1]));
     }
 
     private void LoadGenerators(GeneratorSO[] generatorSOs)
@@ -61,7 +61,7 @@ public class LoadPrefs : MonoBehaviour
             if (PlayerPrefs.HasKey(_generatorsKeys[i]))
             {
                 coinsScript.AddCoins(generatorSOs[i].generatorCost);
-                generatorPlacer.BuyGenerator(i);
+                generatorPlacer.BuyGeneratorOrWorker(i);
             }
         }
     }
@@ -72,7 +72,7 @@ public class LoadPrefs : MonoBehaviour
             if (PlayerPrefs.HasKey(_workersKeys[i]))
             {
                 coinsScript.AddCoins(workerSOs[i].workerCost);
-                generatorPlacer.BuyGenerator(i);
+                generatorPlacer.BuyGeneratorOrWorker(i);
             }
         }
     }

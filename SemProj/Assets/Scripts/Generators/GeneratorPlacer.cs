@@ -56,7 +56,7 @@ public class GeneratorPlacer : MonoBehaviour
         }
     }
 
-    public void BuyGenerator(int Id)
+    public void BuyGeneratorOrWorker(int Id)
     {
         if (Id < generatorSOs.Length)
         {
@@ -126,8 +126,8 @@ public class GeneratorPlacer : MonoBehaviour
 
         Worker worker = instance.GetComponent<Worker>();
 
-        worker.SetupWorker(workersSOs[workerSOId].workerSprite, workersSOs[workerSOId].workerCost,
-            workersSOs[workerSOId].coinsMultiplayer, workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName);
+        worker.SetupWorker(workersSOs[workerSOId].workerSprite, workersSOs[workerSOId].workerCost, workersSOs[workerSOId].coinsMultiplayer,
+            workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName, workersSOs[workerSOId].workerAnimator, workersSOs[workerSOId].workerAnimation);
     }
 
 
