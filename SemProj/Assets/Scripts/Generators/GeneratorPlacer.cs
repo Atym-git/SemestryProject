@@ -127,7 +127,7 @@ public class GeneratorPlacer : MonoBehaviour
         Worker worker = instance.GetComponent<Worker>();
 
         worker.SetupWorker(workersSOs[workerSOId].workerSprite, workersSOs[workerSOId].workerCost, workersSOs[workerSOId].coinsMultiplayer,
-            workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName, workersSOs[workerSOId].workerAnimator, workersSOs[workerSOId].workerAnimation);
+            workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName, /*workersSOs[workerSOId].workerAnimator,*/ workersSOs[workerSOId].workerAnimation);
     }
 
 
