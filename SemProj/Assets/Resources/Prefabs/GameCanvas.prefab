@@ -5791,8 +5791,6 @@ GameObject:
   - component: {fileID: 4267501958864755512}
   - component: {fileID: 7947312398978478060}
   - component: {fileID: 6796932858890304901}
-  - component: {fileID: 5914036256294154501}
-  - component: {fileID: 7445429993828571227}
   - component: {fileID: 8926724872683599641}
   - component: {fileID: 3424376416174547870}
   - component: {fileID: 8935656636777787192}
@@ -5804,6 +5802,7 @@ GameObject:
   - component: {fileID: 2505890573555402667}
   - component: {fileID: 7620399090456780325}
   - component: {fileID: 1250589073564564842}
+  - component: {fileID: 6691581210392072163}
   m_Layer: 0
   m_Name: Manager (Scripts)
   m_TagString: Untagged
@@ -5851,49 +5850,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9b200efcc96f94d9833016b2a75f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currExp: 0
-  expToLevelUp: 15
+  expToNextLvlUp: []
   expSlider: {fileID: 3661877827245439418}
   levelScript: {fileID: 0}
   lvlUpMultiplier: 1.25
---- !u!114 &5914036256294154501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3320304524313821031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b09f0de5b5c11464cb58e5092884afeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showLevelTMP: {fileID: 3028549442010619297}
-  unlockerScript: {fileID: 0}
---- !u!114 &7445429993828571227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3320304524313821031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc720958d6991404a9d30fb84a4204eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeTimeCost: 10
-  upgradeCoinsCost: 5
-  upgradeExpCost: 4
-  upgradeClickerCost: 3
-  _generatorTime: 1.5
-  _generatorCoins: 1.5
-  _generatorExp: 1.5
-  _lmbClicker: 1.5
-  showUpgradeClickerCost: {fileID: 6088012173214972322}
-  generatorScript: {fileID: 0}
-  coinsScript: {fileID: 0}
-  LMBClicker: {fileID: 8926724872683599641}
 --- !u!114 &8926724872683599641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5943,6 +5903,7 @@ MonoBehaviour:
   _workersRootParent: {fileID: 0}
   _workersRoots: []
   _dialoguePanel: {fileID: 0}
+  _idTrigger: 0
   _dialogueCloseTime: 8
   _maxMultipleGeneratorAmount: 10
   coinsScript: {fileID: 7947312398978478060}
@@ -6057,6 +6018,22 @@ MonoBehaviour:
   basicMultiplier: 1
   pollutionMultiplier: 0.8
   cleanUpButton: {fileID: 0}
+--- !u!114 &6691581210392072163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3320304524313821031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648b4c5b449dcd249a139d878560f3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currLevel: 1
+  showLevelTMP: {fileID: 0}
+  unlockerScript: {fileID: 0}
+  customersSpawner: {fileID: 0}
 --- !u!1 &3350606194040000784
 GameObject:
   m_ObjectHideFlags: 0
@@ -7507,7 +7484,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2257927850087108664}
   m_HandleRect: {fileID: 3988265304644443067}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.9999999
   m_Size: 0.45454547
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11472,7 +11449,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -766.52}
   m_LocalScale: {x: 1.5950353, y: 1.5950353, z: 1.5950353}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 11288710467926146}
   m_Father: {fileID: 4353956295563636280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13212,7 +13190,6 @@ RectTransform:
   - {fileID: 7746348286842817853}
   - {fileID: 3162470955471893616}
   - {fileID: 5305503865113775039}
-  - {fileID: 11288710467926146}
   - {fileID: 3523635896401003419}
   - {fileID: 9014011126635730569}
   m_Father: {fileID: 473341651088618861}
@@ -14211,15 +14188,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6233983760342030403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8940.1}
-  m_LocalScale: {x: 133.09581, y: 133.09581, z: 133.09581}
+  m_LocalPosition: {x: 0, y: 0, z: -5124.387}
+  m_LocalScale: {x: 83.4438, y: 83.4438, z: 83.4438}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4353956295563636280}
+  m_Father: {fileID: 6208559107506834035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -559.71, y: 249.56}
+  m_AnchoredPosition: {x: 108.430176, y: -0.802475}
   m_SizeDelta: {x: 0.48, y: 0.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8311747756045153059

@@ -2,18 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Save))]
 [RequireComponent(typeof(GeneratorPlacer))]
-[RequireComponent(typeof(LevelUp))]
+[RequireComponent(typeof(Level))]
 public class Save : MonoBehaviour
 {
     public Slider[] volumeSliders;
 
     private CountNShowCoins coinsScript;
     private ExpGain expScript;
-    private Save saveScript;
+    private LoadPrefs loadScript;
     private GeneratorPlacer generatorPlacer;
-    private LevelUp levelUp;
+    private Level levelUp;
 
     private string[] _slidersKeys = { "MainSlider", "MusicSlider", "SFXSlider" };
 
@@ -25,11 +24,7 @@ public class Save : MonoBehaviour
 
     private void Awake()
     {
-        expScript = SingleToneManager.expScript;
-        coinsScript = SingleToneManager.coinsScript;
-        generatorPlacer = GetComponent<GeneratorPlacer>();
-        levelUp = GetComponent<LevelUp>();
-        Worker workers = GetComponent<Worker>();
+        GetScriptsLinks();
         if (generatorPlacer != null)
         {
             for (int i = 0; i < generatorPlacer.GetGeneratorsSO().Length; i++)
@@ -43,6 +38,32 @@ public class Save : MonoBehaviour
         }
     }
 
+    private void GetScriptsLinks()
+    {
+        expScript = SingleToneManager.expScript;
+        coinsScript = SingleToneManager.coinsScript;
+        loadScript = GetComponent<LoadPrefs>();
+        generatorPlacer = GetComponent<GeneratorPlacer>();
+        levelUp = GetComponent<Level>();
+    }
+
+    private void Update()
+    {
+        RestartGame();
+    }
+
+    private void RestartGame()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            coinsScript.AddCoins(-coinsScript.GetCoins());
+            expScript.GainExp(-expScript.currExp);
+            levelUp.SetCurrLevel(1);
+            PlayerPrefs.DeleteAll();
+            loadScript.LoadAll();
+        }
+    }
+
     private void SaveSlidersVolume()
     {
         PlayerPrefs.SetFloat(_slidersKeys[0], volumeSliders[0].value);
@@ -52,11 +73,12 @@ public class Save : MonoBehaviour
 
     private void SaveGameResources()
     {
-        int currLevel = levelUp.GetcurrLvl();
+        int currLevel = levelUp.GetCurrLvl();
         int currCoins = coinsScript.GetCoins();
         PlayerPrefs.SetFloat(_resourceKeys[0], currCoins);
         PlayerPrefs.SetInt(_resourceKeys[1], currLevel);
         PlayerPrefs.SetFloat(_resourceKeys[2], expScript.currExp);
+        Debug.Log(currLevel);
     }
 
     public void SaveGenerator(int Id)

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2494163169540000761}
   - component: {fileID: 8963061219751694871}
   - component: {fileID: 1126906833736619108}
+  - component: {fileID: 8799619464564815109}
   m_Layer: 5
   m_Name: Worker
   m_TagString: Untagged
@@ -91,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  dragDivideY: 4.125
+  dragDivideX: 6
 --- !u!225 &8963061219751694871
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -115,3 +118,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e832e8d006b67a040a6804125fc37ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  workerSprite: {fileID: 0}
+  workerCost: 0
+  XPMultiplayer: 0
+  coinsMultiplayer: 0
+  workerName: 
+--- !u!95 &8799619464564815109
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310899637647190577}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19fafd7abe8a2e749ba975fc4557b991, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

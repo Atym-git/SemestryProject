@@ -6,5 +6,6 @@ using UnityEngine;
  menuName = "SO/Customer/New Customer")]
 public class CustomersSO : ScriptableObject
 {
+    [field: SerializeField]
     public Sprite customerSprite { get; private set; }
 }
