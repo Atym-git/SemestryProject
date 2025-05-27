@@ -54,6 +54,10 @@ public class Save : MonoBehaviour
 
     private void RestartGame()
     {
+        coinsScript = SingleToneManager.coinsScript;
+        expScript = SingleToneManager.expScript;
+        levelUp = GetComponent<Level>();
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             coinsScript.AddCoins(-coinsScript.GetCoins());

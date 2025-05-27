@@ -17,6 +17,7 @@ public class Worker : MonoBehaviour
     public string workerName;
 
     //private AnimatorController animatorController;
+    [SerializeField] 
     private Animator animator;
     private AnimationClip workerAnimation;
 
@@ -25,8 +26,12 @@ public class Worker : MonoBehaviour
     public void SetupWorker(Sprite WorkerSprite, float WorkerCost, float WorkerXPMultiplayer, float WorkerCoinsMultiplayer,
         string WorkerName, /*AnimatorController AnimatorController,*/ AnimationClip WorkerAnimation)
     {
+        animator.SetTrigger(WorkerAnimation.name);
+        Image image = GetComponent<Image>();
+        image.color = Color.white;
+
         workerSprite = WorkerSprite;
-        GetComponent<Image>().sprite = workerSprite;
+        image.sprite = workerSprite;
         workerCost = WorkerCost;
         coinsMultiplayer = WorkerCoinsMultiplayer;
         XPMultiplayer = WorkerXPMultiplayer;

@@ -62,7 +62,6 @@ public class Generator : MonoBehaviour
         float GeneratorCost, float ScaleFactor, int GeneratorAmount)
     {
         generatorImage = GetComponent<Image>();
-        Debug.Log(generatorImage);
 
         generatorSprite = GeneratorSprite;
         generatorImage.sprite = generatorSprite;

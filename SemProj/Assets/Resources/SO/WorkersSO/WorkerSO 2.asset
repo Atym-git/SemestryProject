@@ -17,3 +17,4 @@ MonoBehaviour:
   <XPMultiplayer>k__BackingField: 2
   <coinsMultiplayer>k__BackingField: 1.5
   <workerName>k__BackingField: 
+  <workerAnimation>k__BackingField: {fileID: 7400000, guid: 448519eb5e1e56a45adb698d70583a00, type: 2}
