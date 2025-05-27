@@ -35,13 +35,24 @@ public class ExpGain : MonoBehaviour
 
     private void ShowSliderValue()
     {
-        float sliderValue = currExp / expToNextLvlUp[levelScript.GetCurrLvl()];
+        int currentLevel = levelScript.GetCurrLvl();
+        if (currentLevel >= expToNextLvlUp.Length)
+        {
+            currentLevel = expToNextLvlUp.Length - 1;
+        }
+
+        float sliderValue = currExp / expToNextLvlUp[currentLevel];
         expSlider.fillAmount = sliderValue;
     }
 
     private void LevelUp()
     {
         int currLvl = levelScript.GetCurrLvl();
+
+        if (currLvl >= expToNextLvlUp.Length)
+        {
+            currLvl = expToNextLvlUp.Length - 1;
+        }
 
         while (currExp >= expToNextLvlUp[currLvl])
         {
