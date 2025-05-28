@@ -51,13 +51,14 @@ public class LoadPrefs : MonoBehaviour
         coinsScript.AddCoins(PlayerPrefs.GetFloat(_resourcesKeys[0]));
         levelUp.SetCurrLevel(PlayerPrefs.GetInt(_resourcesKeys[1]));
         expScript.GainExp(PlayerPrefs.GetFloat(_resourcesKeys[2]));
-        Debug.Log(PlayerPrefs.GetInt(_resourcesKeys[1]));
+        //Debug.Log(PlayerPrefs.GetInt(_resourcesKeys[1]));
     }
 
     private void LoadGenerators(GeneratorSO[] generatorSOs)
     {
         for (int i = 0; i < generatorSOs.Length; i++)
         {
+            Debug.Log(_generatorsKeys.Count);
             if (PlayerPrefs.HasKey(_generatorsKeys[i]))
             {
                 coinsScript.AddCoins(generatorSOs[i].generatorCost);

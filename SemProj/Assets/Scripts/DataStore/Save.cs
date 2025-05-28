@@ -30,12 +30,18 @@ public class Save : MonoBehaviour
             for (int i = 0; i < generatorPlacer.GetGeneratorsSO().Length; i++)
             {
                 generatorsKeys.Add($"Generator-{i}");
+                Debug.Log($"Generator-{i}");
             }
             for (int i = 0; i < generatorPlacer.GetWorkersSOs().Length; i++)
             {
                 workersKeys.Add($"Worker-{i}");
             }
         }
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void GetScriptsLinks()
@@ -77,6 +83,10 @@ public class Save : MonoBehaviour
 
     private void SaveGameResources()
     {
+        coinsScript = SingleToneManager.coinsScript;
+        expScript = SingleToneManager.expScript;
+        levelUp = GetComponent<Level>();
+
         int currLevel = levelUp.GetCurrLvl();
         int currCoins = coinsScript.GetCoins();
         PlayerPrefs.SetFloat(_resourceKeys[0], currCoins);
