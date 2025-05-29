@@ -8,6 +8,8 @@ public class GeneratorsInStock : MonoBehaviour
 
     [SerializeField] private GameObject[] upgradeButtons;
 
+    [SerializeField] private GameObject[] generatorButtons;
+
     [SerializeField] private Sprite[] generatorInStockSprites;
 
     [SerializeField] private Image[] generatorsImages;
@@ -34,6 +36,7 @@ public class GeneratorsInStock : MonoBehaviour
         if (currId < generatorsMaxId)
         {
             upgradeButtons[currId].SetActive(true);
+            //generatorButtons[currId].SetActive(true);
         }
         Destroy(generatorsCostTMP[currId]);
         optionMarks[currId].SetActive(true);

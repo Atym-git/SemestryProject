@@ -61,6 +61,8 @@ public class Generator : MonoBehaviour
     public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement,
         float GeneratorCost, float ScaleFactor, int GeneratorAmount)
     {
+        generatorImage = GetComponent<Image>();
+
         generatorSprite = GeneratorSprite;
         generatorImage.sprite = generatorSprite;
         timeToProduce = TimeToProduce;
@@ -109,6 +111,7 @@ public class Generator : MonoBehaviour
                 Transform rootsParent = transform.parent.parent;
                 List<Transform> generatorsTimersObjects = new List<Transform>();
                 List<GeneratorTimer> generatorsTimers = new List<GeneratorTimer>();
+
                 for (int i = 0; i < rootsParent.childCount; i++)
                 {
                     generatorsTimersObjects.Add(rootsParent.GetChild(i).GetChild(0).GetChild(generatorTimerChild));

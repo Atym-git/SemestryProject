@@ -125,9 +125,10 @@ public class GeneratorPlacer : MonoBehaviour
         GameObject instance = Instantiate(_workerPrefab, _workersRoots[workerSOId]);
 
         Worker worker = instance.GetComponent<Worker>();
-
+        Debug.Log(worker);
+        Debug.Log(workersSOs[workerSOId].workerAnimation);
         worker.SetupWorker(workersSOs[workerSOId].workerSprite, workersSOs[workerSOId].workerCost, workersSOs[workerSOId].coinsMultiplayer,
-            workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName, /*workersSOs[workerSOId].workerAnimator,*/ workersSOs[workerSOId].workerAnimation);
+            workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName, /*workersSOs[workerSOId].workerAnimator,*/workersSOs[workerSOId].workerAnimation);
     }
 
 

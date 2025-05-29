@@ -38,8 +38,6 @@ public class CustomersSpawner : MonoBehaviour
                 }
                 GameObject customer = Instantiate(customerPrefab, customersRoots[customerId]);
                 SpriteRenderer customerSr = customer.GetComponent<SpriteRenderer>();
-                Debug.Log(customerSr);
-                Debug.Log(customerSOs[customerId]);
                 customerSr.sprite = customerSOs[customerId].customerSprite;
                 customersList.Add(customerId);
             }
@@ -51,6 +49,6 @@ public class CustomersSpawner : MonoBehaviour
         customerSOs = Resources.LoadAll("SO/CustomerSO", typeof(CustomersSO))
             .Cast<CustomersSO>()
             .ToArray();
-        Debug.Log(customerSOs.Length);
+        //Debug.Log(customerSOs.Length);
     }
 }

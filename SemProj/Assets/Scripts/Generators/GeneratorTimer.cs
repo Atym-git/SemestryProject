@@ -37,6 +37,7 @@ public class GeneratorTimer : MonoBehaviour
 
     public void Zeroing()
     {
+        generatorTimer = GetComponent<Image>();
         currTime = 0;
         generatorTimer.fillAmount = 0;
     }
