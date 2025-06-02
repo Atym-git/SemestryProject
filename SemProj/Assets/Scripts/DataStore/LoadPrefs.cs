@@ -86,7 +86,6 @@ public class LoadPrefs : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("DanceFloor") == 1)
         {
-            Debug.Log(123);
             coinsScript.AddCoins(30);
             DFUpgrader.DanceFloorUpgrade();
         }

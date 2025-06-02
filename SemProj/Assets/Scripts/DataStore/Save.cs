@@ -27,6 +27,11 @@ public class Save : MonoBehaviour
     private void Awake()
     {
         GetScriptsLinks();
+        CreateKeysForBuyable();
+    }
+
+    private void CreateKeysForBuyable()
+    {
         if (generatorPlacer != null)
         {
             for (int i = 0; i < generatorPlacer.GetGeneratorsSO().Length; i++)
@@ -133,10 +138,15 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetInt(danceFloorKey, 1);
     }
 
-    private void OnApplicationQuit()
+    public void SaveAll()
     {
         SaveSlidersVolume();
         SaveGameResources();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveAll();
     }
     public List<string> GetGeneratorsKeys() => generatorsKeys;
     public List<string> GetWorkersKeys() => workersKeys;
