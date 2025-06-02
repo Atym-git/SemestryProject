@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Save))]
@@ -12,6 +13,7 @@ public class LoadPrefs : MonoBehaviour
     private Save saveScript;
     private GeneratorPlacer generatorPlacer;
     private Level levelUp;
+    [SerializeField] private LMBClicker DFUpgrader;
 
     private string[] _slidersKeys;
     private List<string> _generatorsKeys = new List<string>();
@@ -44,6 +46,7 @@ public class LoadPrefs : MonoBehaviour
         WorkersSO[] workerSOs = generatorPlacer.GetWorkersSOs();
         LoadGenerators(generatorSOs);
         LoadWorkers(workerSOs);
+        LoadDFUpgrade();
     }
 
     private void LoadResources()
@@ -58,7 +61,6 @@ public class LoadPrefs : MonoBehaviour
     {
         for (int i = 0; i < generatorSOs.Length; i++)
         {
-            Debug.Log(_generatorsKeys.Count);
             if (PlayerPrefs.HasKey(_generatorsKeys[i]))
             {
                 coinsScript.AddCoins(generatorSOs[i].generatorCost);
@@ -73,11 +75,22 @@ public class LoadPrefs : MonoBehaviour
             if (PlayerPrefs.HasKey(_workersKeys[i]))
             {
                 coinsScript.AddCoins(workerSOs[i].workerCost);
-                generatorPlacer.BuyGeneratorOrWorker(i);
+                Debug.Log(_workersKeys[i]);
+                Debug.Log(i);
+                generatorPlacer.BuyGeneratorOrWorker(i+_generatorsKeys.Count);
             }
         }
     }
 
+    private void LoadDFUpgrade()
+    {
+        if (PlayerPrefs.GetInt("DanceFloor") == 1)
+        {
+            Debug.Log(123);
+            coinsScript.AddCoins(30);
+            DFUpgrader.DanceFloorUpgrade();
+        }
+    }
 
     public void SetSlidersValue()
     {

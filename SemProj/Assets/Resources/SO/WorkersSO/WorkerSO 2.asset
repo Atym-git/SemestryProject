@@ -16,5 +16,6 @@ MonoBehaviour:
   <workerCost>k__BackingField: 45
   <XPMultiplayer>k__BackingField: 2
   <coinsMultiplayer>k__BackingField: 1.5
-  <workerName>k__BackingField: 
+  <workerName>k__BackingField: Engineer
+  <workerDescPic>k__BackingField: {fileID: 21300000, guid: 228f787a42239634a98c4f83aaee283f, type: 3}
   <workerAnimation>k__BackingField: {fileID: 7400000, guid: 448519eb5e1e56a45adb698d70583a00, type: 2}

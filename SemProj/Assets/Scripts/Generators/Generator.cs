@@ -59,7 +59,7 @@ public class Generator : MonoBehaviour
     }
 
     public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement,
-        float GeneratorCost, float ScaleFactor, int GeneratorAmount)
+        float GeneratorCost, float ScaleFactor)
     {
         generatorImage = GetComponent<Image>();
 
@@ -69,7 +69,6 @@ public class Generator : MonoBehaviour
         coinsProducement = CoinsProducement;
         expProducement = ExpProducement;
         generatorCost = GeneratorCost;
-        //isMultiple = GeneratorAmount;
         //generatorRectTransform.localScale *= ScaleFactor;
         //gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
         //generatorRectTransform.localScale /= 4;

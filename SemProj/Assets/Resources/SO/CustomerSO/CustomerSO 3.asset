@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: CustomerSO 3
   m_EditorClassIdentifier: 
   <customerSprite>k__BackingField: {fileID: 538453162, guid: 289cec08fe7c9414493042066d77a816, type: 3}
+  <customerAnimation>k__BackingField: {fileID: 7400000, guid: acd0a3c358a579f40a5a48c9c78ba40d, type: 2}

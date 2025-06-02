@@ -7,7 +7,7 @@ using UnityEngine;
 public class GeneratorPlacer : MonoBehaviour
 {
     [SerializeField, HideInInspector] private GameObject generatorPrefab;
-    [SerializeField] private GameObject _workerPrefab;
+    [SerializeField, HideInInspector] private GameObject _workerPrefab;
 
     [SerializeField] private Transform rootsParent;
     [SerializeField] private Transform[] generatorRoots;
@@ -25,8 +25,6 @@ public class GeneratorPlacer : MonoBehaviour
     [SerializeField] private GameObject _dialoguePanel;
 
     [SerializeField] private int _idTrigger = 0;
-
-    [SerializeField] private int _dialogueCloseTime = 8;
 
     [SerializeField] private int _maxMultipleGeneratorAmount = 10;
 
@@ -97,7 +95,7 @@ public class GeneratorPlacer : MonoBehaviour
 
     }
 
-    private static void ClearLists(List<Transform> multipleGeneratorRoots, List<GameObject> instances, List<Generator> generators)
+    private void ClearLists(List<Transform> multipleGeneratorRoots, List<GameObject> instances, List<Generator> generators)
     {
         multipleGeneratorRoots.Clear();
         instances.Clear();
@@ -116,7 +114,7 @@ public class GeneratorPlacer : MonoBehaviour
             generators.Add(instances[i].GetComponent<Generator>());
             generators[i].SetupGenerator(generatorSOs[Id].generatorSprite, generatorSOs[Id].timeConsume,
             generatorSOs[Id].coinsProducement, generatorSOs[Id].expProducement,
-            generatorSOs[Id].generatorCost, generatorSOs[Id].ScaleFactor, generatorSOs[Id].generatorAmount);
+            generatorSOs[Id].generatorCost, generatorSOs[Id].ScaleFactor);
         }
     }
 
@@ -125,10 +123,14 @@ public class GeneratorPlacer : MonoBehaviour
         GameObject instance = Instantiate(_workerPrefab, _workersRoots[workerSOId]);
 
         Worker worker = instance.GetComponent<Worker>();
-        Debug.Log(worker);
-        Debug.Log(workersSOs[workerSOId].workerAnimation);
         worker.SetupWorker(workersSOs[workerSOId].workerSprite, workersSOs[workerSOId].workerCost, workersSOs[workerSOId].coinsMultiplayer,
-            workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName, /*workersSOs[workerSOId].workerAnimator,*/workersSOs[workerSOId].workerAnimation);
+            workersSOs[workerSOId].XPMultiplayer, workersSOs[workerSOId].workerName, workersSOs[workerSOId].workerAnimation);
+    }
+
+    public void ClearIdLists()
+    {
+        generatorIds.Clear();
+        workerIds.Clear();
     }
 
 

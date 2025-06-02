@@ -17,7 +17,7 @@ public class Worker : MonoBehaviour
     public string workerName;
 
     //private AnimatorController animatorController;
-    [SerializeField] 
+    [SerializeField]
     private Animator animator;
     private AnimationClip workerAnimation;
 

@@ -26,7 +26,4 @@ public class GeneratorSO : ScriptableObject
 
     [field: SerializeField]
     public float ScaleFactor { get; private set; }
-
-    [field: SerializeField]
-    public int generatorAmount { get; private set; }
 }

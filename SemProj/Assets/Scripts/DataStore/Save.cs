@@ -22,6 +22,8 @@ public class Save : MonoBehaviour
 
     private List<string> workersKeys = new List<string>();
 
+    private string danceFloorKey = "DanceFloor";
+
     private void Awake()
     {
         GetScriptsLinks();
@@ -30,18 +32,13 @@ public class Save : MonoBehaviour
             for (int i = 0; i < generatorPlacer.GetGeneratorsSO().Length; i++)
             {
                 generatorsKeys.Add($"Generator-{i}");
-                Debug.Log($"Generator-{i}");
+                //Debug.Log($"Generator-{i}");
             }
             for (int i = 0; i < generatorPlacer.GetWorkersSOs().Length; i++)
             {
                 workersKeys.Add($"Worker-{i}");
             }
         }
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void GetScriptsLinks()
@@ -70,8 +67,35 @@ public class Save : MonoBehaviour
             expScript.GainExp(-expScript.currExp);
             levelUp.SetCurrLevel(1);
             PlayerPrefs.DeleteAll();
+            Transform[] generatorsRoots = generatorPlacer.GetGeneratorRoots();
+            Transform[] workersRoots = generatorPlacer.GetWorkerRoots();
+            DestroyBoughtResources(generatorsRoots);
+            DestroyBoughtResources(workersRoots);
             loadScript.LoadAll();
         }
+    }
+
+    private void DestroyBoughtResources(Transform[] roots)
+    {
+        //foreach (Transform t in roots)
+        //{
+        //    if (t.GetComponentInChildren<Worker>())
+        //    {
+        //        Destroy(t.GetChild(0));
+        //    }
+        //    else
+        //    {
+        //        //List<Transform> generatorRoots = new List<Transform>();
+        //        for (int i = 0; i < roots.Length; i++)
+        //        {
+        //            for (int j = 0; j < roots[i].childCount; j++)
+        //            {
+        //                //generatorRoots.Add(roots[i].GetChild(j));
+        //                Destroy(roots[i].GetChild(j).GetChild(0));
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     private void SaveSlidersVolume()
@@ -92,7 +116,6 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetFloat(_resourceKeys[0], currCoins);
         PlayerPrefs.SetInt(_resourceKeys[1], currLevel);
         PlayerPrefs.SetFloat(_resourceKeys[2], expScript.currExp);
-        Debug.Log(currLevel);
     }
 
     public void SaveGenerator(int Id)
@@ -103,6 +126,11 @@ public class Save : MonoBehaviour
     {
         int workerId = Id - generatorPlacer.GetGeneratorsSO().Length;
         PlayerPrefs.SetInt(workersKeys[workerId].ToString(), workerId);
+    }
+
+    public void SaveDanceFloorUpgrade()
+    {
+        PlayerPrefs.SetInt(danceFloorKey, 1);
     }
 
     private void OnApplicationQuit()

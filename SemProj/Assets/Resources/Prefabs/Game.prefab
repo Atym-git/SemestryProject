@@ -109,6 +109,7 @@ RectTransform:
   m_Children:
   - {fileID: 3776921364383848220}
   - {fileID: 8537125511083617354}
+  - {fileID: 4412424785299613790}
   m_Father: {fileID: 1462376827567167512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -167,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsPerLMB: 1
+  maxCoinsPerCd: 50
   _clickerBut: {fileID: 6846549387003124089}
   coinsScript: {fileID: 5081183744875826946}
   clickClip: {fileID: 8300000, guid: 776575e55f2f1e44cacd998b1e99bc63, type: 3}
@@ -503,8 +505,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1480663546601949225}
-  - component: {fileID: 5081183744875826946}
   - component: {fileID: 2402401231645923890}
+  - component: {fileID: 5081183744875826946}
   - component: {fileID: 5166059881693919923}
   - component: {fileID: 3378918577103351385}
   - component: {fileID: 7065138844100444680}
@@ -543,19 +545,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4958967499863581340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5081183744875826946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38906887198007387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb3b7fc8ae7953c4f97c8be1eceb936b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showCoinsTMP: {fileID: 2327793827975172627}
 --- !u!114 &2402401231645923890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +571,19 @@ MonoBehaviour:
   expSlider: {fileID: 3891472629134550842}
   levelScript: {fileID: 2315308474682946090}
   lvlUpMultiplier: 1.25
+--- !u!114 &5081183744875826946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38906887198007387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3b7fc8ae7953c4f97c8be1eceb936b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showCoinsTMP: {fileID: 2327793827975172627}
 --- !u!114 &5166059881693919923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,7 +629,6 @@ MonoBehaviour:
   _workersRoots: []
   _dialoguePanel: {fileID: 4284021110931275139}
   _idTrigger: 0
-  _dialogueCloseTime: 8
   _maxMultipleGeneratorAmount: 10
   coinsScript: {fileID: 5081183744875826946}
 --- !u!114 &7065138844100444680
@@ -838,10 +839,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameTMP: {fileID: 3774519316619671500}
-  coinsProducTMP: {fileID: 9091086955533723384}
-  expProducTMP: {fileID: 9187785691950552374}
-  remainingTimeTMP: {fileID: 3115832438133495076}
+  generatorCoinsProducTMP: {fileID: 0}
+  generatorExpProducTMP: {fileID: 0}
+  generatorRemainTimeTMP: {fileID: 0}
   generatorRenderer: {fileID: 1909650068540779349}
+  workerCoinsBuffTMP: {fileID: 0}
+  workerExpBuffTMP: {fileID: 0}
+  workerRenderer: {fileID: 0}
 --- !u!114 &6675529840752375579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1852,16 +1856,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267533053979963829}
-  m_LocalRotation: {x: -0, y: -0, z: -0.008726558, w: 0.999962}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 34.353756, y: 40.361492, z: 43.629883}
+  m_LocalScale: {x: 7.5769925, y: 12.960324, z: 12.944861}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7948425540581058380}
+  m_Father: {fileID: 6177398953443830686}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.914716, y: -106.32123}
+  m_AnchoredPosition: {x: 2.0205421, y: 8.288162}
   m_SizeDelta: {x: 15.63, y: 10.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7300586068899158623
@@ -24258,6 +24262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsPerLMB: 1
+  maxCoinsPerCd: 50
   _clickerBut: {fileID: 0}
   coinsScript: {fileID: 5081183744875826946}
   clickClip: {fileID: 8300000, guid: 776575e55f2f1e44cacd998b1e99bc63, type: 3}
@@ -28869,6 +28874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsPerLMB: 1
+  maxCoinsPerCd: 50
   _clickerBut: {fileID: 0}
   coinsScript: {fileID: 5081183744875826946}
   clickClip: {fileID: 8300000, guid: 776575e55f2f1e44cacd998b1e99bc63, type: 3}
@@ -29439,7 +29445,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7294870182826733105}
-  - {fileID: 4412424785299613790}
   m_Father: {fileID: 3776921364383848220}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -34840,6 +34845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsPerLMB: 1
+  maxCoinsPerCd: 50
   _clickerBut: {fileID: 0}
   coinsScript: {fileID: 5081183744875826946}
   clickClip: {fileID: 8300000, guid: 776575e55f2f1e44cacd998b1e99bc63, type: 3}
@@ -46112,11 +46118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7242720276063103321, guid: a8d3b613d7f1c5942b20abf415c60f5a, type: 3}
       propertyPath: m_Size
-      value: 0.48426142
+      value: 0.4842615
       objectReference: {fileID: 0}
     - target: {fileID: 7242720276063103321, guid: a8d3b613d7f1c5942b20abf415c60f5a, type: 3}
       propertyPath: m_Value
-      value: 1.0000001
+      value: 1.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 7280436368563419550, guid: a8d3b613d7f1c5942b20abf415c60f5a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -47850,17 +47856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3115832438133495076 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3453551584942328740, guid: a8d3b613d7f1c5942b20abf415c60f5a, type: 3}
-  m_PrefabInstance: {fileID: 347010020802535040}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3120331680810141423 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3431029229250779247, guid: a8d3b613d7f1c5942b20abf415c60f5a, type: 3}
@@ -48606,25 +48601,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8758550034482079359, guid: a8d3b613d7f1c5942b20abf415c60f5a, type: 3}
   m_PrefabInstance: {fileID: 347010020802535040}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9091086955533723384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8861629056864090232, guid: a8d3b613d7f1c5942b20abf415c60f5a, type: 3}
-  m_PrefabInstance: {fileID: 347010020802535040}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9187785691950552374 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8885955755733060534, guid: a8d3b613d7f1c5942b20abf415c60f5a, type: 3}
-  m_PrefabInstance: {fileID: 347010020802535040}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
