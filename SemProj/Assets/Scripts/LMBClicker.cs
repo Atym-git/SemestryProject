@@ -1,15 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LMBClicker : MonoBehaviour
 {
-    public float coinsPerLMB;
+    private int coinsPerLMB = 1;
+    private int maxCoinsPerCd = 50;
+    private int currClicksAmount = 0;
 
-    [SerializeField] private Button _clickerBut;
+    [SerializeField] private int upgradeCost = 30;
+    [SerializeField] private TextMeshProUGUI costTMP;
+
+    [SerializeField] private Image danceFloor;
+
+    [SerializeField] private Sprite defaultDFSprite; //DF = Dance Floor
+    [SerializeField] private Sprite onCooldownDFSprite;
+    [SerializeField] private Sprite upgradedDFSprite;
+
+    [SerializeField] private Image shopCard;
+    [SerializeField] private Sprite boughtSprite;
+
+    [SerializeField] private float _cooldownTime = 10;
+    private bool _onCooldown = false;
+
+    //[SerializeField] private Button _clickerBut;
     [SerializeField] private CountNShowCoins coinsScript;
 
     [SerializeField] private AudioClip clickClip;
@@ -17,9 +32,13 @@ public class LMBClicker : MonoBehaviour
 
     [SerializeField] private GameObject animationGameObject;
 
+    [SerializeField] private Save save;
+
     private void Start()
     {
         //_clickerBut.onClick.AddListener(Clicker);
+        danceFloor.sprite = defaultDFSprite;
+        costTMP.text = upgradeCost.ToString();
     }
 
     private void Update()
@@ -37,17 +56,59 @@ public class LMBClicker : MonoBehaviour
 
     private void Clicker()
     {
-        SoundFXManager.SFXinstance.PlaySoundFXClip(clickClip, transform, clickVolume);
-        coinsScript.AddCoins(coinsPerLMB);
-        Debug.Log(1);
+        if (!_onCooldown)
+        {
+            SoundFXManager.SFXinstance.PlaySoundFXClip(clickClip, transform, clickVolume);
+            coinsScript.AddCoins(coinsPerLMB);
+            currClicksAmount++;
+        }
+        if (currClicksAmount >= maxCoinsPerCd)
+        {
+            _onCooldown = true;
+            StartCoroutine(Cooldown());
+            currClicksAmount = 0;
+        }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    private IEnumerator Cooldown()
     {
-    SoundFXManager.SFXinstance.PlaySoundFXClip(clickClip, transform, clickVolume);
-    //Vector3 mousePos = Input.mousePosition;
-    //Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
-    //Instantiate(animationGameObject, eventData.pressPosition, Quaternion.identity);
-    coinsScript.AddCoins(coinsPerLMB);
+        danceFloor.sprite = onCooldownDFSprite;
+        yield return new WaitForSeconds(_cooldownTime);
+        danceFloor.sprite = defaultDFSprite;
+        _onCooldown = false;
     }
+
+    public void DanceFloorUpgrade()
+    {
+        CountNShowCoins coins = SingleToneManager.coinsScript;
+        if (coins.IsEnoughToBuy(upgradeCost))
+        {
+            coins.AddCoins(-upgradeCost);
+            coinsPerLMB++;
+            StockCardsInSt();
+            //StopCoroutine(Cooldown());
+            defaultDFSprite = upgradedDFSprite;
+            _onCooldown = false;
+            danceFloor.sprite = defaultDFSprite;
+
+            save.SaveDanceFloorUpgrade();
+        }
+    }
+
+    private void StockCardsInSt()
+    {
+        Button button = shopCard.GetComponent<Button>();
+        button.interactable = false;
+        Destroy(costTMP);
+        shopCard.sprite = boughtSprite;
+    }
+
+    //public void OnPointerClick(PointerEventData eventData)
+    //{
+    //SoundFXManager.SFXinstance.PlaySoundFXClip(clickClip, transform, clickVolume);
+    ////Vector3 mousePos = Input.mousePosition;
+    ////Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
+    ////Instantiate(animationGameObject, eventData.pressPosition, Quaternion.identity);
+    //coinsScript.AddCoins(coinsPerLMB);
+    //}
 }

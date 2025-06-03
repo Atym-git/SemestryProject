@@ -8,4 +8,7 @@ public class CustomersSO : ScriptableObject
 {
     [field: SerializeField]
     public Sprite customerSprite { get; private set; }
+
+    [field: SerializeField]
+    public AnimationClip customerAnimation { get; private set; }
 }

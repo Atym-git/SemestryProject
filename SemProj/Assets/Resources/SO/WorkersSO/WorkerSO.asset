@@ -16,5 +16,6 @@ MonoBehaviour:
   <workerCost>k__BackingField: 10
   <XPMultiplayer>k__BackingField: 1.1
   <coinsMultiplayer>k__BackingField: 1.1
-  <workerName>k__BackingField: 
+  <workerName>k__BackingField: DJGirl
+  <workerDescPic>k__BackingField: {fileID: 21300000, guid: 6c4283a99ec971e44aa46fab989fa6fe, type: 3}
   <workerAnimation>k__BackingField: {fileID: 7400000, guid: e27214b3a6fc2fd4da9b4c7ed867816b, type: 2}

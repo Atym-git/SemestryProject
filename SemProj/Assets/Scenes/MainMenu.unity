@@ -461,36 +461,12 @@ PrefabInstance:
       value: 91
       objectReference: {fileID: 0}
     - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -501,16 +477,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -582
+      value: -527
       objectReference: {fileID: 0}
     - target: {fileID: 2259269340066156793, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2337204791285903196, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -738,7 +710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783698642983717894, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -275.471
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 7174941164786552583, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -782,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438236765002431337, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -198.82098
+      value: -275
       objectReference: {fileID: 0}
     - target: {fileID: 8004873852135765961, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -832,6 +804,10 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8123343676095787834, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
+      propertyPath: m_text
+      value: Load Game
+      objectReference: {fileID: 0}
     - target: {fileID: 8790909575294850056, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -866,7 +842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8790909575294850056, guid: 36c7950c4fa99504e8141521fa13b6b1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -122
+      value: -125
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

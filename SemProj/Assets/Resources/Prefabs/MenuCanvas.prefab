@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8505540594814671584}
   - component: {fileID: 2323504032505954375}
   m_Layer: 5
-  m_Name: GoToTutorial
+  m_Name: LoadGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,9 +26,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285394490881539118}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.6214375, y: 3.6214375, z: 3.6214375}
+  m_LocalScale: {x: 3.6214373, y: 3.6214373, z: 3.6214373}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7544856624487048393}
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -227.02, y: -126.130005}
+  m_AnchoredPosition: {x: -227.02003, y: -126.130005}
   m_SizeDelta: {x: 160, y: 11.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5397361699585588000
@@ -746,7 +746,7 @@ GameObject:
   - component: {fileID: 8212081229748781500}
   - component: {fileID: 7174941164786552583}
   m_Layer: 5
-  m_Name: GoToGameScene
+  m_Name: NewGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1087,6 +1087,8 @@ GameObject:
   - component: {fileID: 7550588639364766700}
   - component: {fileID: 3731891615329503747}
   - component: {fileID: 8589155402642541285}
+  - component: {fileID: 405156094081082673}
+  - component: {fileID: 5308647451891625105}
   m_Layer: 0
   m_Name: Manager (Scripts)
   m_TagString: Untagged
@@ -1150,6 +1152,44 @@ MonoBehaviour:
   - {fileID: 2646162588602371902}
   - {fileID: 2337204791285903196}
   - {fileID: 5495615530401201311}
+--- !u!114 &405156094081082673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4320556440806169323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6403eff42a33c414cb6fe7c6eb46091e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generatorPrefab: {fileID: 0}
+  _workerPrefab: {fileID: 0}
+  rootsParent: {fileID: 0}
+  generatorRoots: []
+  _workersRootParent: {fileID: 0}
+  _workersRoots: []
+  _dialoguePanel: {fileID: 0}
+  _idTrigger: 0
+  _maxMultipleGeneratorAmount: 10
+  coinsScript: {fileID: 0}
+--- !u!114 &5308647451891625105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4320556440806169323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648b4c5b449dcd249a139d878560f3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currLevel: 1
+  showLevelTMP: {fileID: 0}
+  unlockerScript: {fileID: 0}
+  customersSpawner: {fileID: 0}
 --- !u!1 &4530683638201505433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,15 +1217,15 @@ RectTransform:
   m_GameObject: {fileID: 4530683638201505433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 72, y: 72, z: 72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8805091683490337230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 235.43996, y: -39.60001}
-  m_SizeDelta: {x: 9.83, y: 8.9}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -392, y: 7}
+  m_SizeDelta: {x: 750, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1976475333976614433
 CanvasRenderer:
@@ -1862,7 +1902,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial
+  m_text: 'Load Game
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 039503568aa91a348aebadc6fd15bcbf, type: 2}
   m_sharedMaterial: {fileID: 216582500749327472, guid: 039503568aa91a348aebadc6fd15bcbf, type: 2}
@@ -2604,8 +2646,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8790909575294850056}
-  - {fileID: 7438236765002431337}
   - {fileID: 6783698642983717894}
+  - {fileID: 7438236765002431337}
   - {fileID: 8004873852135765961}
   - {fileID: 2259269340066156793}
   m_Father: {fileID: 2741347148984133477}
