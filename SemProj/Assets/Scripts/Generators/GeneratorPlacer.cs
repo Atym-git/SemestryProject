@@ -114,7 +114,7 @@ public class GeneratorPlacer : MonoBehaviour
             generators.Add(instances[i].GetComponent<Generator>());
             generators[i].SetupGenerator(generatorSOs[Id].generatorSprite, generatorSOs[Id].timeConsume,
             generatorSOs[Id].coinsProducement, generatorSOs[Id].expProducement,
-            generatorSOs[Id].generatorCost, generatorSOs[Id].ScaleFactor);
+            generatorSOs[Id].generatorCost, generatorSOs[Id].generatorName, generatorSOs[Id].ScaleFactor);
         }
     }
 

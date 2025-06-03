@@ -2874,8 +2874,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ShowGeneratorsStats, Assembly-CSharp
+      - m_Target: {fileID: 1799740224}
+        m_TargetAssemblyTypeName: Description, Assembly-CSharp
         m_MethodName: StopShowing
         m_Mode: 1
         m_Arguments:
@@ -4585,6 +4585,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 13963607449134903, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1799740224}
+    - target: {fileID: 13963607449134903, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopShowing
+      objectReference: {fileID: 0}
+    - target: {fileID: 13963607449134903, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Description, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 19142057112750755, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_Name
       value: Game
@@ -4596,6 +4608,22 @@ PrefabInstance:
     - target: {fileID: 95359445047101305, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Description, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 101138685010614801, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 101138685010614801, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 101138685010614801, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 101138685010614801, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 128668342372732424, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_IsActive
@@ -4688,6 +4716,22 @@ PrefabInstance:
     - target: {fileID: 1060487053022343329, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353439152021374475, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353439152021374475, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.116497815
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353439152021374475, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.107631914
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353439152021374475, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1358255553863485033, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_Sprite
@@ -5101,6 +5145,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4374574245556186253, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374574245556186253, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.087373376
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374574245556186253, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.08072395
+      objectReference: {fileID: 0}
     - target: {fileID: 4515119234383264944, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -5260,6 +5316,18 @@ PrefabInstance:
     - target: {fileID: 5755947382930444139, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887709768681806984, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887709768681806984, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.10921672
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887709768681806984, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.10090494
       objectReference: {fileID: 0}
     - target: {fileID: 6116598950915180075, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -5424,6 +5492,10 @@ PrefabInstance:
     - target: {fileID: 8124451943606573075, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Description, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256244536345544184, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8272994378861659644, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_SizeDelta.x

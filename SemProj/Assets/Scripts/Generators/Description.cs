@@ -41,11 +41,12 @@ public class Description : MonoBehaviour
     {
         _isShowing = true;
         Generator generator = generatorRoots[generatorId].GetComponentInChildren<Generator>();
-        nameTMP.text = generator.name;
+        nameTMP.text = generator.generatorName;
         generatorRenderer.sprite = generator.generatorSprite;
         generatorCoinsProducTMP.text = generator.coinsProducement.ToString();
         generatorExpProducTMP.text = generator.expProducement.ToString();
         generatorTimer = generator.GetComponentInChildren<GeneratorTimer>();
+        Debug.Log(nameTMP.text);
         StartCoroutine(ShowTimeInSecs());
     }
     public void ShowWorkerStats(int workerId)
@@ -75,5 +76,6 @@ public class Description : MonoBehaviour
         _isShowing = false;
         StopCoroutine(ShowTimeInSecs());
         nameTMP.text = "EQUIPMENT SHOP";
+        Debug.Log(nameTMP.text);
     }
 }

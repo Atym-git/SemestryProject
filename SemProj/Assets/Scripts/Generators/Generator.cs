@@ -29,7 +29,7 @@ public class Generator : MonoBehaviour
 
     private ExpGain expScript;
     private CountNShowCoins coinsScript;
-    private GeneratorTimer generatorTimerScript;
+    private GeneratorTimer generatorTimer;
 
     private Image generatorImage;
     private RectTransform generatorRectTransform;
@@ -42,7 +42,7 @@ public class Generator : MonoBehaviour
         coinsScript = SingleToneManager.coinsScript;
         generatorImage = GetComponent<Image>();
         generatorRectTransform = GetComponent<RectTransform>();
-        generatorTimerScript = transform.GetChild(generatorTimerChild).GetComponent<GeneratorTimer>();
+        generatorTimer = transform.GetChild(generatorTimerChild).GetComponent<GeneratorTimer>();
         expAnimator = transform.GetChild(animatorManagerChild).GetComponent<Animator>();
     }
 
@@ -59,7 +59,7 @@ public class Generator : MonoBehaviour
     }
 
     public void SetupGenerator(Sprite GeneratorSprite, float TimeToProduce, float CoinsProducement, float ExpProducement,
-        float GeneratorCost, float ScaleFactor)
+        float GeneratorCost, string GeneratorName, float ScaleFactor)
     {
         generatorImage = GetComponent<Image>();
 
@@ -69,9 +69,9 @@ public class Generator : MonoBehaviour
         coinsProducement = CoinsProducement;
         expProducement = ExpProducement;
         generatorCost = GeneratorCost;
-        //generatorRectTransform.localScale *= ScaleFactor;
-        //gameObject.GetComponentInChildren<RectTransform>().localScale *= 4;
-        //generatorRectTransform.localScale /= 4;
+        generatorName = GeneratorName;
+
+        generatorTimer.transform.localScale *= ScaleFactor;
     }
 
     public void WorkerOnGenerator(float coinsMultiplier, float expMultiplier)
@@ -125,7 +125,7 @@ public class Generator : MonoBehaviour
                     genTim.Zeroing();
                 }
             }
-            generatorTimerScript.Zeroing();
+            generatorTimer.Zeroing();
         }
     }
 }
