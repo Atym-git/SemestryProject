@@ -10,6 +10,10 @@ public class GeneratorTimer : MonoBehaviour
     private float currTime = 0;
 
     private Generator generatorScript;
+    private Dialogues dialogues;
+
+    private GameObject genDoneDial;
+    private bool _genDoneDialOut = false;
 
     private void Start()
     {
@@ -32,7 +36,25 @@ public class GeneratorTimer : MonoBehaviour
         else
         {
             generatorScript.isGeneratorFinished = true;
+            Dialogues();
         }
+    }
+
+    private void Dialogues()
+    {
+        if (dialogues != null && genDoneDial != null && !_genDoneDialOut)
+        {
+            //Debug.Log(dialogues);
+            //Debug.Log(genDoneDial);
+
+            dialogues.ActivateSingleDialogue(genDoneDial);
+        }
+    }
+
+    public void GenDoneDial(Dialogues Dialogues, GameObject GenDoneDial)
+    {
+        dialogues = Dialogues;
+        genDoneDial = GenDoneDial;
     }
 
     public void Zeroing()

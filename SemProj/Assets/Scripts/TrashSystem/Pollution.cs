@@ -33,6 +33,14 @@ public class Pollution : MonoBehaviour
 
     [SerializeField] private Button cleanUpButton;
 
+    [SerializeField] private Dialogues dialogues;
+
+    [SerializeField] private GameObject firstPollutionDialogue;
+    private bool _pollutionDialogueOut = false;
+
+    [SerializeField] private GameObject firstCleanUpDialogue;
+    private bool _cleanUpDialogueOut = false;
+   
     private void Start()
     {
         LoadResources();
@@ -70,6 +78,7 @@ public class Pollution : MonoBehaviour
                     continue;
                 }
             }
+            FirstCleanUpDialogue(firstPollutionDialogue);
             cleanUpButton.gameObject.SetActive(true);
         }
     }
@@ -86,11 +95,37 @@ public class Pollution : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+
             trashObjects.Clear();
             trashPlacements.Clear();
+
+            FirstCleanUpDialogue(firstCleanUpDialogue);
+
             StartCoroutine(PollutionsDelay());
         }
     }
+
+    //private void FirstPollutionDialogue()
+    //{
+    //    if (_pollutionDialogueOut)
+    //    {
+    //        dialogues.ActivateSingleDialogue(firstPollutionDialogue);
+    //        _pollutionDialogueOut = true;
+    //    }
+    //}
+
+    private void FirstCleanUpDialogue(GameObject dialogue)
+    {
+        if (!_cleanUpDialogueOut)
+        {
+            dialogues.ActivateSingleDialogue(dialogue);
+        }
+        if (dialogue == firstCleanUpDialogue)
+        {
+            _cleanUpDialogueOut = true;
+        }
+    }
+
 
     private IEnumerator PollutionsDelay()
     {

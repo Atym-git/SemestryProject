@@ -31,7 +31,9 @@ public class Worker : MonoBehaviour
         image.color = Color.white;
 
         workerSprite = WorkerSprite;
-        image.sprite = workerSprite;
+        image.sprite = WorkerSprite;
+        //Debug.Log(workerSprite);
+        //Debug.Log(image.sprite);
         workerCost = WorkerCost;
         coinsMultiplayer = WorkerCoinsMultiplayer;
         XPMultiplayer = WorkerXPMultiplayer;

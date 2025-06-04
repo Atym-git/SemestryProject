@@ -22,7 +22,7 @@ public class GeneratorPlacer : MonoBehaviour
     List<int> generatorIds = new List<int>();
     List<int> workerIds = new List<int>();
 
-    [SerializeField] private GameObject _dialoguePanel;
+    [SerializeField] private GameObject _firstGenDial;
 
     [SerializeField] private int _idTrigger = 0;
 
@@ -32,6 +32,7 @@ public class GeneratorPlacer : MonoBehaviour
 
     private GeneratorsInStock generatorsStockScript;
     private Save save;
+    [SerializeField] private Dialogues dialogues;
 
     private void Awake()
     {
@@ -68,13 +69,13 @@ public class GeneratorPlacer : MonoBehaviour
 
                 generatorIds.Add(Id);
                 coinsScript.AddCoins(-generatorSOs[Id].generatorCost);
+
                 generatorsStockScript.UpdateInStockGenerators(Id, generatorSOs.Length);
+
                 save.SaveGenerator(Id);
                 ClearLists(multipleGeneratorRoots, instances, generators);
-                if (Id == _idTrigger)
-                {
-                    _dialoguePanel.SetActive(true);
-                }
+
+                Dialogues(Id, generators);
             }
         }
         else
@@ -93,6 +94,17 @@ public class GeneratorPlacer : MonoBehaviour
             }
         }
 
+    }
+
+    private void Dialogues(int Id, List<Generator> generators)
+    {
+        Debug.Log("DialoguesInsidePlacer");
+        if (Id == _idTrigger)
+        {
+            Debug.Log("BoughtFirstGenerator");
+            dialogues.ActivateSingleDialogue(_firstGenDial);
+            dialogues.SetupGeneratorsDialogues(generators);
+        }
     }
 
     private void ClearLists(List<Transform> multipleGeneratorRoots, List<GameObject> instances, List<Generator> generators)
@@ -142,6 +154,8 @@ public class GeneratorPlacer : MonoBehaviour
         workersSOs = Resources.LoadAll("SO/WorkersSO", typeof(WorkersSO))
             .Cast<WorkersSO>()
             .ToArray();
+        //Debug.Log(workersSOs.Length);
+
     }
 
     public WorkersSO[] GetWorkersSOs() => workersSOs;

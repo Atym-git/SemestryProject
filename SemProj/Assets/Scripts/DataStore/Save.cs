@@ -8,8 +8,8 @@ public class Save : MonoBehaviour
 {
     public Slider[] volumeSliders;
 
-    private CountNShowCoins coinsScript;
-    private ExpGain expScript;
+    [SerializeField] private CountNShowCoins coinsScript;
+    [SerializeField] private ExpGain expScript;
     private LoadPrefs loadScript;
     private GeneratorPlacer generatorPlacer;
     private Level levelUp;
@@ -22,34 +22,49 @@ public class Save : MonoBehaviour
 
     private List<string> workersKeys = new List<string>();
 
-    private string danceFloorKey = "DanceFloor";
+    private List<string> levelDialoguesKeys = new List<string>();
+
+    private List<string> singleDialoguesKeys = new List<string>();
+
+    private const string danceFloorKey = "DanceFloor";
 
     private void Awake()
     {
         GetScriptsLinks();
-        CreateKeysForBuyable();
+        CreateKeysForLists("Generator-", generatorsKeys, generatorPlacer.GetGeneratorsSO().Length);
+        CreateKeysForLists("Worker-", workersKeys, generatorPlacer.GetWorkersSOs().Length);
     }
 
-    private void CreateKeysForBuyable()
+    private void CreateKeysForLists(string listElementName, List<string> list, int keysAmount)
     {
         if (generatorPlacer != null)
         {
-            for (int i = 0; i < generatorPlacer.GetGeneratorsSO().Length; i++)
+            for (int i = 0; i < keysAmount; i++)
             {
-                generatorsKeys.Add($"Generator-{i}");
-                //Debug.Log($"Generator-{i}");
+                list.Add(listElementName + i);
             }
-            for (int i = 0; i < generatorPlacer.GetWorkersSOs().Length; i++)
-            {
-                workersKeys.Add($"Worker-{i}");
-            }
+            //for (int i = 0; i < generatorPlacer.GetWorkersSOs().Length; i++)
+            //{
+            //    workersKeys.Add($"Worker-{i}");
+            //}
         }
+    }
+
+    public void SaveLevelDialoguesOut(int dialoguesAmount, int Id)
+    {
+        CreateKeysForLists("LevelDialogue-", levelDialoguesKeys, 1);
+
+        PlayerPrefs.SetInt(levelDialoguesKeys[Id], Id);
+    }
+    public void SaveSingleDialoguesOut(int dialoguesAmount, int Id)
+    {
+        CreateKeysForLists("LevelDialogue-", levelDialoguesKeys, 1);
+
+        PlayerPrefs.SetInt(levelDialoguesKeys[Id], Id);
     }
 
     private void GetScriptsLinks()
     {
-        expScript = SingleToneManager.expScript;
-        coinsScript = SingleToneManager.coinsScript;
         loadScript = GetComponent<LoadPrefs>();
         generatorPlacer = GetComponent<GeneratorPlacer>();
         levelUp = GetComponent<Level>();
@@ -62,8 +77,6 @@ public class Save : MonoBehaviour
 
     private void RestartGame()
     {
-        coinsScript = SingleToneManager.coinsScript;
-        expScript = SingleToneManager.expScript;
         levelUp = GetComponent<Level>();
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -112,10 +125,6 @@ public class Save : MonoBehaviour
 
     private void SaveGameResources()
     {
-        coinsScript = SingleToneManager.coinsScript;
-        expScript = SingleToneManager.expScript;
-        levelUp = GetComponent<Level>();
-
         int currLevel = levelUp.GetCurrLvl();
         int currCoins = coinsScript.GetCoins();
         PlayerPrefs.SetFloat(_resourceKeys[0], currCoins);

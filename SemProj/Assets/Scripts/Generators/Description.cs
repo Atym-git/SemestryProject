@@ -76,6 +76,5 @@ public class Description : MonoBehaviour
         _isShowing = false;
         StopCoroutine(ShowTimeInSecs());
         nameTMP.text = "EQUIPMENT SHOP";
-        Debug.Log(nameTMP.text);
     }
 }

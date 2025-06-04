@@ -12,8 +12,6 @@ public class Customer : MonoBehaviour
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.sprite = CustomerSprite;
 
-        Debug.Log(CustomerAnimation);
-        Debug.Log(CustomerAnimation.name);
         animator.SetTrigger(CustomerAnimation.name);
         sr.color = Color.white;
     }
