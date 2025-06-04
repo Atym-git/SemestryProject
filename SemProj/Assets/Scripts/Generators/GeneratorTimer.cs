@@ -44,10 +44,8 @@ public class GeneratorTimer : MonoBehaviour
     {
         if (dialogues != null && genDoneDial != null && !_genDoneDialOut)
         {
-            //Debug.Log(dialogues);
-            //Debug.Log(genDoneDial);
-
             dialogues.ActivateSingleDialogue(genDoneDial);
+            _genDoneDialOut = true;
         }
     }
 

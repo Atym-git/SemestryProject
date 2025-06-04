@@ -57,8 +57,5 @@ public class Dialogues : MonoBehaviour
         {
             generator.SetupGeneratorDialogues(dialogues, genDoneDial, moneyTakenDial);
         }
-        Debug.Log(dialogues);
-        Debug.Log(genDoneDial);
-        Debug.Log(moneyTakenDial);
     }
 }

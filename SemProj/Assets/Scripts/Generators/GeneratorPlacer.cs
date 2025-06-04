@@ -72,10 +72,10 @@ public class GeneratorPlacer : MonoBehaviour
 
                 generatorsStockScript.UpdateInStockGenerators(Id, generatorSOs.Length);
 
+                Dialogues(Id, generators);
+
                 save.SaveGenerator(Id);
                 ClearLists(multipleGeneratorRoots, instances, generators);
-
-                Dialogues(Id, generators);
             }
         }
         else
@@ -98,11 +98,14 @@ public class GeneratorPlacer : MonoBehaviour
 
     private void Dialogues(int Id, List<Generator> generators)
     {
-        Debug.Log("DialoguesInsidePlacer");
+        //Debug.Log("DialoguesInsidePlacer");
+
         if (Id == _idTrigger)
         {
-            Debug.Log("BoughtFirstGenerator");
+            //Debug.Log("BoughtFirstGenerator");
+
             dialogues.ActivateSingleDialogue(_firstGenDial);
+
             dialogues.SetupGeneratorsDialogues(generators);
         }
     }

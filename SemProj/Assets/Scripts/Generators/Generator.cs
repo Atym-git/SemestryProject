@@ -157,7 +157,7 @@ public class Generator : MonoBehaviour
 
     private void Dialogues()
     {
-        if (dialogues != null && !_moneyTakenDialOut)
+        if (dialogues != null && moneyTakenDial != null && !_moneyTakenDialOut)
         {
             dialogues.ActivateSingleDialogue(moneyTakenDial);
         }

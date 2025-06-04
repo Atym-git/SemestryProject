@@ -32,7 +32,6 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         transform.parent = _startParent;
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
-        Debug.Log("BeginDrag");
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -51,6 +50,5 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
-        Debug.Log("endDrag");
     }
 }
