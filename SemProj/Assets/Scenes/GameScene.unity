@@ -13560,6 +13560,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6675529840752375579, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: generatorInStockSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: da0c32ff1f2166247af5032fc549d608, type: 3}
+    - target: {fileID: 6675529840752375579, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: generatorInStockSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: bda22fd34087ce34782671d2fbbcd45d, type: 3}
+    - target: {fileID: 6675529840752375579, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: generatorInStockSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 364e74bca7daec54fb6328937368c1e5, type: 3}
+    - target: {fileID: 6675529840752375579, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: generatorInStockSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9006ff64508823742a0cfc409194ee10, type: 3}
+    - target: {fileID: 6675529840752375579, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: generatorInStockSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b5006370d235514ba6a711b0b5f24a7, type: 3}
     - target: {fileID: 6793667730845359444, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -13829,9 +13849,29 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8833111230472390380, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: level3StCUnlockedSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: f160ac869949d69448b0bc1c88e6a616, type: 3}
+    - target: {fileID: 8833111230472390380, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: level3StCUnlockedSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4bd7de5b0acc6d04e85f24494f0b833c, type: 3}
+    - target: {fileID: 8833111230472390380, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: level3StCUnlockedSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 895ec0d771142db47bb146f3c32b504e, type: 3}
+    - target: {fileID: 8833111230472390380, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: level3StCUnlockedSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: fb562cf92c1dac9428ac44e391435216, type: 3}
+    - target: {fileID: 8833111230472390380, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: level3StCUnlockedSprites.Array.data[7]
       value: 
       objectReference: {fileID: 21300000, guid: bb20c5f6dc61f9249b39982ed6c5597c, type: 3}
+    - target: {fileID: 8833111230472390380, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: level6StCUnlockedSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 47955f86f665c7047bc64163f62831a2, type: 3}
     - target: {fileID: 8833111230472390380, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: level6StCUnlockedSprites.Array.data[6]
       value: 
