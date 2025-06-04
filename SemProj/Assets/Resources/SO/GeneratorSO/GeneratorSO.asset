@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: c2b20ea0055232d44b94556a54585993, type: 3}
   <generatorName>k__BackingField: DJ BOOTH
-  <coinsProducement>k__BackingField: 10
-  <expProducement>k__BackingField: 5
-  <timeConsume>k__BackingField: 12
-  <generatorCost>k__BackingField: 10
+  <coinsProducement>k__BackingField: 35
+  <expProducement>k__BackingField: 250
+  <timeConsume>k__BackingField: 45
+  <generatorCost>k__BackingField: 100
   <ScaleFactor>k__BackingField: 1.25

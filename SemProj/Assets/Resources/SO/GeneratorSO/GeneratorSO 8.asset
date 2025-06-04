@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: c771a203fe7de8945b313c593bdf4971, type: 3}
   <generatorName>k__BackingField: Gachapon
-  <coinsProducement>k__BackingField: 100
-  <expProducement>k__BackingField: 80
-  <timeConsume>k__BackingField: 45
-  <generatorCost>k__BackingField: 120
+  <coinsProducement>k__BackingField: 180
+  <expProducement>k__BackingField: 200
+  <timeConsume>k__BackingField: 120
+  <generatorCost>k__BackingField: 900
   <ScaleFactor>k__BackingField: 2

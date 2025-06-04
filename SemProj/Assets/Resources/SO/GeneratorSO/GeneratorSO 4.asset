@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: 76556c30bbcb7314bbd1dae6f17510ce, type: 3}
   <generatorName>k__BackingField: Bar Tables
-  <coinsProducement>k__BackingField: 75
-  <expProducement>k__BackingField: 45
-  <timeConsume>k__BackingField: 25
-  <generatorCost>k__BackingField: 47
+  <coinsProducement>k__BackingField: 400
+  <expProducement>k__BackingField: 500
+  <timeConsume>k__BackingField: 240
+  <generatorCost>k__BackingField: 1200
   <ScaleFactor>k__BackingField: 3

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: 6d02e5ffeb730814aa3b3eeb084524b7, type: 3}
   <generatorName>k__BackingField: Arcades
-  <coinsProducement>k__BackingField: 65
-  <expProducement>k__BackingField: 43
-  <timeConsume>k__BackingField: 10
-  <generatorCost>k__BackingField: 25
+  <coinsProducement>k__BackingField: 70
+  <expProducement>k__BackingField: 350
+  <timeConsume>k__BackingField: 180
+  <generatorCost>k__BackingField: 350
   <ScaleFactor>k__BackingField: 1.5
