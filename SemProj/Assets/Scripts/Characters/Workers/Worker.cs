@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEditor.Animations;
 using UnityEngine.UI;
 
 public class Worker : MonoBehaviour
@@ -16,41 +15,35 @@ public class Worker : MonoBehaviour
 
     public string workerName;
 
-    //private AnimatorController animatorController;
     [SerializeField]
     private Animator animator;
     private AnimationClip workerAnimation;
 
+
     private Generator generatorScript;
 
     public void SetupWorker(Sprite WorkerSprite, float WorkerCost, float WorkerXPMultiplayer, float WorkerCoinsMultiplayer,
-        string WorkerName, /*AnimatorController AnimatorController,*/ AnimationClip WorkerAnimation)
+        string WorkerName, AnimationClip WorkerAnimation)
     {
         animator.SetTrigger(WorkerAnimation.name);
         Image image = GetComponent<Image>();
         image.color = Color.white;
 
+        if (WorkerSprite == null)
+        {
+            Debug.Log("Sprite is null");
+        }
         workerSprite = WorkerSprite;
-        image.sprite = workerSprite;
+        image.sprite = WorkerSprite;
+        //Debug.Log(workerSprite);
+        //Debug.Log(image.sprite);
         workerCost = WorkerCost;
         coinsMultiplayer = WorkerCoinsMultiplayer;
         XPMultiplayer = WorkerXPMultiplayer;
         workerName = WorkerName;
-        workerAnimation = WorkerAnimation;
+        //workerAnimation = WorkerAnimation;
         //animatorController = AnimatorController;
     }
-
-    //private void Start()
-    //{
-    //    SetupAnimator();
-    //}
-
-    //private void SetupAnimator()
-    //{
-    //    animator = GetComponent<Animator>();
-    //    RuntimeAnimatorController anim = animatorController;
-    //    animator.runtimeAnimatorController = anim;
-    //}
 
     public void WorkerSet()
     {

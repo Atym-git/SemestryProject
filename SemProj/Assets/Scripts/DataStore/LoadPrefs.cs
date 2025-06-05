@@ -75,8 +75,8 @@ public class LoadPrefs : MonoBehaviour
             if (PlayerPrefs.HasKey(_workersKeys[i]))
             {
                 coinsScript.AddCoins(workerSOs[i].workerCost);
-                Debug.Log(_workersKeys[i]);
-                Debug.Log(i);
+                //Debug.Log(_workersKeys[i]);
+                //Debug.Log(i);
                 generatorPlacer.BuyGeneratorOrWorker(i+_generatorsKeys.Count);
             }
         }

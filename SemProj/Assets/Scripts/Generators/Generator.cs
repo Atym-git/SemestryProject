@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,18 +31,27 @@ public class Generator : MonoBehaviour
     private ExpGain expScript;
     private CountNShowCoins coinsScript;
     private GeneratorTimer generatorTimer;
+    private Dialogues dialogues;
 
     private Image generatorImage;
     private RectTransform generatorRectTransform;
 
-    //private Transform[] generatorsTimers;
+    private GameObject moneyTakenDial;
+    private bool _moneyTakenDialOut = false;
 
     private void Awake()
     {
+        AssignLinks();
+    }
+
+    private void AssignLinks()
+    {
         expScript = SingleToneManager.expScript;
         coinsScript = SingleToneManager.coinsScript;
+
         generatorImage = GetComponent<Image>();
         generatorRectTransform = GetComponent<RectTransform>();
+
         generatorTimer = transform.GetChild(generatorTimerChild).GetComponent<GeneratorTimer>();
         expAnimator = transform.GetChild(animatorManagerChild).GetComponent<Animator>();
     }
@@ -74,6 +84,21 @@ public class Generator : MonoBehaviour
         generatorTimer.transform.localScale *= ScaleFactor;
     }
 
+    public void SetupGeneratorDialogues(Dialogues Dialogues, GameObject GenDoneDial, GameObject MoneyTakenDial)
+    {
+        dialogues = Dialogues;
+
+        Debug.Log(dialogues);
+        Debug.Log(GenDoneDial);
+
+        generatorTimer.GenDoneDial(dialogues, GenDoneDial);
+
+        //Debug.Log(dialogues);
+        //Debug.Log(GenDoneDial);
+
+        moneyTakenDial = MoneyTakenDial;
+    }
+
     public void WorkerOnGenerator(float coinsMultiplier, float expMultiplier)
     {
         coinsProducement *= coinsMultiplier;
@@ -101,6 +126,7 @@ public class Generator : MonoBehaviour
     {
         if (isGeneratorFinished)
         {
+            Dialogues();
             expAnimator.Play("Exp");
             expScript.GainExp(expProducement);
             coinsScript.AddCoins(coinsProducement);
@@ -126,6 +152,14 @@ public class Generator : MonoBehaviour
                 }
             }
             generatorTimer.Zeroing();
+        }
+    }
+
+    private void Dialogues()
+    {
+        if (dialogues != null && moneyTakenDial != null && !_moneyTakenDialOut)
+        {
+            dialogues.ActivateSingleDialogue(moneyTakenDial);
         }
     }
 }

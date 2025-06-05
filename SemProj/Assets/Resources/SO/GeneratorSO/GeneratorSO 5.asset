@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: 11100543d4e99ee47a60c60d9a5fdb0c, type: 3}
   <generatorName>k__BackingField: Couch Zone
-  <coinsProducement>k__BackingField: 100
-  <expProducement>k__BackingField: 80
-  <timeConsume>k__BackingField: 45
-  <generatorCost>k__BackingField: 120
+  <coinsProducement>k__BackingField: 200
+  <expProducement>k__BackingField: 250
+  <timeConsume>k__BackingField: 210
+  <generatorCost>k__BackingField: 1000
   <ScaleFactor>k__BackingField: 2.25

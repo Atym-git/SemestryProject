@@ -12,6 +12,7 @@ public class Level : MonoBehaviour
 
     [SerializeField] private GeneratorsUnlocker unlockerScript;
     [SerializeField] private CustomersSpawner customersSpawner;
+    [SerializeField] private Dialogues dialogues;
 
     public void LevelUpgraded()
     {
@@ -21,6 +22,7 @@ public class Level : MonoBehaviour
             ShowLevel();
             unlockerScript.Unlock(currLevel);
             customersSpawner.SpawnCustomers(currLevel, 1);
+            dialogues.RequiredLevelAchieved(currLevel);
         }
     }
 
@@ -30,11 +32,6 @@ public class Level : MonoBehaviour
         {
             return false;
         }
-
-        //for (int i = 1; i <= level; i++)
-        //{
-        //    LevelUpgraded();
-        //}
 
         if (level <= maxLevel)
         {
