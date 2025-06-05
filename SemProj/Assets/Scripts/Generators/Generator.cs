@@ -88,8 +88,8 @@ public class Generator : MonoBehaviour
     {
         dialogues = Dialogues;
 
-        Debug.Log(dialogues);
-        Debug.Log(GenDoneDial);
+        //Debug.Log(dialogues);
+        //Debug.Log(GenDoneDial);
 
         generatorTimer.GenDoneDial(dialogues, GenDoneDial);
 
