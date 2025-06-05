@@ -18,6 +18,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private void Start()
     {
         _startParent = transform.parent;
+        Debug.Log(_startParent);
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         setupScript = GetComponent<Worker>();
@@ -25,8 +26,10 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+
         if (transform.parent != _startParent)
         {
+            Debug.Log(1);
             setupScript.WorkerOff();
         }
         transform.parent = _startParent;

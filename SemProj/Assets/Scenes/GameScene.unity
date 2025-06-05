@@ -12195,6 +12195,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3331885899397375499, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 98.86
+      objectReference: {fileID: 0}
     - target: {fileID: 3343894150875967296, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -12346,6 +12350,10 @@ PrefabInstance:
     - target: {fileID: 3713774175022171451, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738141521195385554, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3763180903892004441, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_RaycastTarget
@@ -13514,6 +13522,22 @@ PrefabInstance:
     - target: {fileID: 8272994378861659644, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285813798045446940, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 122.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285813798045446940, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 114.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285813798045446940, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285813798045446940, guid: 1de3b0082383418428dde905001e1741, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.42
       objectReference: {fileID: 0}
     - target: {fileID: 8296749156276285915, guid: 1de3b0082383418428dde905001e1741, type: 3}
       propertyPath: m_IsActive
