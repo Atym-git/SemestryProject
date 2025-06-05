@@ -93,8 +93,8 @@ public class Generator : MonoBehaviour
 
         generatorTimer.GenDoneDial(dialogues, GenDoneDial);
 
-        Debug.Log(dialogues);
-        Debug.Log(GenDoneDial);
+        //Debug.Log(dialogues);
+        //Debug.Log(GenDoneDial);
 
         moneyTakenDial = MoneyTakenDial;
     }

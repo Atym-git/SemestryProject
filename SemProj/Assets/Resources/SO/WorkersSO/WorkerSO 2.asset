@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: WorkerSO 2
   m_EditorClassIdentifier: 
   <workerSprite>k__BackingField: {fileID: 21300000, guid: 6862a9bdc4633cd42ad740efc1fccf70, type: 3}
-  <workerCost>k__BackingField: 45
-  <XPMultiplayer>k__BackingField: 2
-  <coinsMultiplayer>k__BackingField: 1.5
+  <workerCost>k__BackingField: 500
+  <XPMultiplayer>k__BackingField: 1.1
+  <coinsMultiplayer>k__BackingField: 1.15
   <workerName>k__BackingField: Engineer
   <workerDescPic>k__BackingField: {fileID: 21300000, guid: 228f787a42239634a98c4f83aaee283f, type: 3}
   <workerAnimation>k__BackingField: {fileID: 7400000, guid: 448519eb5e1e56a45adb698d70583a00, type: 2}

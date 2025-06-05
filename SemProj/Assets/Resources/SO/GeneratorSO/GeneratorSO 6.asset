@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: 6283d167ed105f1419fc8bc1ba7926b0, type: 3}
   <generatorName>k__BackingField: Cafeteria
-  <coinsProducement>k__BackingField: 65
-  <expProducement>k__BackingField: 23
-  <timeConsume>k__BackingField: 34
-  <generatorCost>k__BackingField: 56
+  <coinsProducement>k__BackingField: 250
+  <expProducement>k__BackingField: 800
+  <timeConsume>k__BackingField: 210
+  <generatorCost>k__BackingField: 800
   <ScaleFactor>k__BackingField: 1.75

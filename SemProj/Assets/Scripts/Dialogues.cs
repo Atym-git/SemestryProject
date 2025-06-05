@@ -32,7 +32,7 @@ public class Dialogues : MonoBehaviour
 
     public void ActivateSingleDialogue(GameObject dialogue)
     {
-        if (!PlayerPrefs.HasKey("Dialogue-" + singleDialoguesId))
+        if (!PlayerPrefs.HasKey("SingleDialogue-" + singleDialoguesId))
         {
             dialogue.transform.GetChild(0).gameObject.SetActive(true);
             save.SaveSingleDialoguesOut(1, singleDialoguesId);

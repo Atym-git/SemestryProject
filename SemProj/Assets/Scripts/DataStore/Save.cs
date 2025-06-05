@@ -33,6 +33,7 @@ public class Save : MonoBehaviour
         GetScriptsLinks();
         CreateKeysForLists("Generator-", generatorsKeys, generatorPlacer.GetGeneratorsSO().Length);
         CreateKeysForLists("Worker-", workersKeys, generatorPlacer.GetWorkersSOs().Length);
+        CreateKeysForLists("LevelDialogue-", levelDialoguesKeys, 8);
     }
 
     private void CreateKeysForLists(string listElementName, List<string> list, int keysAmount)
@@ -52,13 +53,13 @@ public class Save : MonoBehaviour
 
     public void SaveLevelDialoguesOut(int dialoguesAmount, int Id)
     {
-        CreateKeysForLists("LevelDialogue-", levelDialoguesKeys, 1);
-
+        Debug.Log(Id);
         PlayerPrefs.SetInt(levelDialoguesKeys[Id], Id);
     }
+
     public void SaveSingleDialoguesOut(int dialoguesAmount, int Id)
     {
-        CreateKeysForLists("LevelDialogue-", levelDialoguesKeys, 1);
+        CreateKeysForLists("SingleDialogue-", levelDialoguesKeys, 1);
 
         PlayerPrefs.SetInt(levelDialoguesKeys[Id], Id);
     }

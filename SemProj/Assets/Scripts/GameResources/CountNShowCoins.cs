@@ -12,12 +12,6 @@ public class CountNShowCoins : MonoBehaviour
 
     private float polluteMultiplier = 1;
 
-    [SerializeField] private GameObject firstGeneratorIncdialog;
-    [SerializeField] private Dialogues dialogues;
-
-    private const int _minGeneratorIncome = 3;
-    private bool _dialogueOut = false;
-
     private void Start()
     {
         showCoinsTMP.text = currCoins.ToString();
@@ -33,7 +27,6 @@ public class CountNShowCoins : MonoBehaviour
         {
             currCoins += (int)Mathf.Round(coins);
         }
-        DialogueCheck(Mathf.RoundToInt(coins));
         ShowCoins();
     }
 
@@ -45,15 +38,6 @@ public class CountNShowCoins : MonoBehaviour
         }
         //currCoins -= coins;
         return true;
-    }
-
-    private void DialogueCheck(int coins)
-    {
-        if (coins >= _minGeneratorIncome && !_dialogueOut)
-        {
-            dialogues.ActivateSingleDialogue(firstGeneratorIncdialog);
-            _dialogueOut = true;
-        }
     }
 
     public void PolluteMultiplier(float PolluteMultiplier)

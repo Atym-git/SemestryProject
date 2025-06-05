@@ -19,6 +19,7 @@ public class Worker : MonoBehaviour
     private Animator animator;
     private AnimationClip workerAnimation;
 
+
     private Generator generatorScript;
 
     public void SetupWorker(Sprite WorkerSprite, float WorkerCost, float WorkerXPMultiplayer, float WorkerCoinsMultiplayer,
@@ -28,6 +29,10 @@ public class Worker : MonoBehaviour
         Image image = GetComponent<Image>();
         image.color = Color.white;
 
+        if (WorkerSprite == null)
+        {
+            Debug.Log("Sprite is null");
+        }
         workerSprite = WorkerSprite;
         image.sprite = WorkerSprite;
         //Debug.Log(workerSprite);
