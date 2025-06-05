@@ -36,7 +36,6 @@ public class Pollution : MonoBehaviour
     [SerializeField] private Dialogues dialogues;
 
     [SerializeField] private GameObject firstPollutionDialogue;
-    private bool _pollutionDialogueOut = false;
 
     [SerializeField] private GameObject firstCleanUpDialogue;
     private bool _cleanUpDialogueOut = false;

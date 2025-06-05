@@ -2,21 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SetSoundsVolume : MonoBehaviour
 {
     [SerializeField] private AudioMixer mainMixer;
 
-    public void SetMainVolume(float sliderValue)
+    [SerializeField] private Save save;
+
+    private Slider[] volumeSliders;
+
+    private void Start()
     {
-        mainMixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20f);
+        volumeSliders = save.volumeSliders;
     }
-    public void SetSoundFXVolume(float sliderValue)
+
+    public void SetMainVolume()
     {
-        mainMixer.SetFloat("SoundFXVolume", Mathf.Log10(sliderValue) * 20f);
+        Slider mainSlider = volumeSliders[0];
+        mainMixer.SetFloat("MasterVolume", Mathf.Log10(mainSlider.value) * 20f);
+        mainMixer.SetFloat("MusicVolume", Mathf.Log10(mainSlider.value) * 20f);
+        mainMixer.SetFloat("SoundFXVolume", Mathf.Log10(mainSlider.value) * 20f);
     }
-    public void SetMusicVolume(float sliderValue)
+    public void SetMusicVolume()
     {
-        mainMixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20f);
+        Slider musicSlider = volumeSliders[1];
+        mainMixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20f);
+    }
+    public void SetSoundFXVolume()
+    {
+        Slider soundFXSlider = volumeSliders[2];
+        mainMixer.SetFloat("SoundFXVolume", Mathf.Log10(soundFXSlider.value) * 20f);
     }
 }

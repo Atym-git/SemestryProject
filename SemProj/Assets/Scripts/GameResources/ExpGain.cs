@@ -16,8 +16,6 @@ public class ExpGain : MonoBehaviour
 
     [SerializeField] private Level levelScript;
 
-    [SerializeField] private float lvlUpMultiplier = 1.25f;
-
     private float polluteMultiplier = 1;
 
     private void Awake()

@@ -17,7 +17,7 @@ public class CustomersSpawner : MonoBehaviour
 
     private Level level;
 
-    private void Start()
+    private void Awake()
     {
         ResourceLoader();
         for (int i = 0; i < customersRootParent.childCount; i++)

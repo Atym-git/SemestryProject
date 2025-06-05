@@ -20,6 +20,8 @@ public class LoadPrefs : MonoBehaviour
     private List<string> _workersKeys = new List<string>();
     private string[] _resourcesKeys;
 
+    private const int startingCoinsAmount = 150;
+
     private void Start()
     {
         saveScript = GetComponent<Save>();
@@ -51,10 +53,17 @@ public class LoadPrefs : MonoBehaviour
 
     private void LoadResources()
     {
-        coinsScript.AddCoins(PlayerPrefs.GetFloat(_resourcesKeys[0]));
+        //coinsScript.AddCoins(PlayerPrefs.GetFloat(_resourcesKeys[0]));
+        if (!PlayerPrefs.HasKey(_resourcesKeys[0]))
+        {
+            coinsScript.AddCoins(startingCoinsAmount);
+        }
+        else
+        {
+            coinsScript.LoadCoins(PlayerPrefs.GetFloat(_resourcesKeys[0]));
+        }
         levelUp.SetCurrLevel(PlayerPrefs.GetInt(_resourcesKeys[1]));
         expScript.GainExp(PlayerPrefs.GetFloat(_resourcesKeys[2]));
-        //Debug.Log(PlayerPrefs.GetInt(_resourcesKeys[1]));
     }
 
     private void LoadGenerators(GeneratorSO[] generatorSOs)
@@ -75,8 +84,6 @@ public class LoadPrefs : MonoBehaviour
             if (PlayerPrefs.HasKey(_workersKeys[i]))
             {
                 coinsScript.AddCoins(workerSOs[i].workerCost);
-                //Debug.Log(_workersKeys[i]);
-                //Debug.Log(i);
                 generatorPlacer.BuyGeneratorOrWorker(i+_generatorsKeys.Count);
             }
         }

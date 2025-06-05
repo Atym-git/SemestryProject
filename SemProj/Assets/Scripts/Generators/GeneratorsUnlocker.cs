@@ -13,9 +13,6 @@ public class GeneratorsUnlocker : MonoBehaviour
     //[SerializeField] private Transform imagesParent;
     //private List<int> filledSprites = new List<int>();
 
-    [SerializeField] private int level3UnlockAmount = 3;
-    [SerializeField] private int level6UnlockAmount = 5;
-
     [SerializeField] private Sprite[] level3StCUnlockedSprites; //StC = Store Cards
     [SerializeField] private Image[] level3StCImages;
     [SerializeField] private Button[] level3StCButtons;

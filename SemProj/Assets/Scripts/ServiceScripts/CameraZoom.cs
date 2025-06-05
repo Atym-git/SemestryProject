@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraZoom : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class CameraZoom : MonoBehaviour
     private const string _scrollWheel = "Mouse ScrollWheel";
 
     public bool isCursorOnShop = false;
+    private bool _isPaused = false;
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class CameraZoom : MonoBehaviour
 
     private void Zoom()
     {
-        if (!isCursorOnShop)
+        if (!isCursorOnShop && !_isPaused)
         {
         var inputDelta = Input.GetAxis(_scrollWheel);
         var inputDeltaWithSpeed = inputDelta * _zoomSpeed;
@@ -45,6 +47,11 @@ public class CameraZoom : MonoBehaviour
 
         _camera.orthographicSize = newOrthoSize;
         }
+    }
+
+    public void Pause(bool isPaused)
+    {
+        _isPaused = isPaused;
     }
 
 }

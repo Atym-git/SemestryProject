@@ -30,6 +30,11 @@ public class CountNShowCoins : MonoBehaviour
         ShowCoins();
     }
 
+    public void LoadCoins(float coins)
+    {
+        currCoins = Mathf.RoundToInt(coins);
+    }
+
     public bool IsEnoughToBuy(int coins)
     {
         if (currCoins < coins)

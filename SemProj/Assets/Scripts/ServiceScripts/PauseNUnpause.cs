@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class PauseNUnpause : MonoBehaviour
 {
-    public void Pause() => Time.timeScale = 0f;
+    private bool _isPaused;
 
-    public void UnPause() => Time.timeScale = 1f;
+    [SerializeField] private CameraZoom cameraZoom;
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        _isPaused = true;
+        cameraZoom.Pause(_isPaused);
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = 1f;
+        _isPaused = false;
+        cameraZoom.Pause(_isPaused);
+    }
 }

@@ -26,8 +26,6 @@ public class GeneratorPlacer : MonoBehaviour
 
     [SerializeField] private int _idTrigger = 0;
 
-    [SerializeField] private int _maxMultipleGeneratorAmount = 10;
-
     [SerializeField, HideInInspector] private CountNShowCoins coinsScript;
 
     private GeneratorsInStock generatorsStockScript;

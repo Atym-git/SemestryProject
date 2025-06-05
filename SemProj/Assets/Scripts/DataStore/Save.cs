@@ -2,17 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(GeneratorPlacer))]
-[RequireComponent(typeof(Level))]
+
 public class Save : MonoBehaviour
 {
     public Slider[] volumeSliders;
 
     [SerializeField] private CountNShowCoins coinsScript;
     [SerializeField] private ExpGain expScript;
-    private LoadPrefs loadScript;
-    private GeneratorPlacer generatorPlacer;
-    private Level levelUp;
+    [SerializeField] private LoadPrefs loadScript;
+    [SerializeField] private GeneratorPlacer generatorPlacer;
+    [SerializeField] private Level levelUp;
 
     private string[] _slidersKeys = { "MainSlider", "MusicSlider", "SFXSlider" };
 
@@ -30,10 +29,13 @@ public class Save : MonoBehaviour
 
     private void Awake()
     {
-        GetScriptsLinks();
-        CreateKeysForLists("Generator-", generatorsKeys, generatorPlacer.GetGeneratorsSO().Length);
-        CreateKeysForLists("Worker-", workersKeys, generatorPlacer.GetWorkersSOs().Length);
-        CreateKeysForLists("LevelDialogue-", levelDialoguesKeys, 8);
+        if (generatorPlacer != null)
+        {
+            //GetScriptsLinks();
+            CreateKeysForLists("Generator-", generatorsKeys, generatorPlacer.GetGeneratorsSO().Length);
+            CreateKeysForLists("Worker-", workersKeys, generatorPlacer.GetWorkersSOs().Length);
+            CreateKeysForLists("LevelDialogue-", levelDialoguesKeys, 8);
+        }
     }
 
     private void CreateKeysForLists(string listElementName, List<string> list, int keysAmount)
@@ -126,11 +128,14 @@ public class Save : MonoBehaviour
 
     private void SaveGameResources()
     {
-        int currLevel = levelUp.GetCurrLvl();
-        int currCoins = coinsScript.GetCoins();
-        PlayerPrefs.SetFloat(_resourceKeys[0], currCoins);
-        PlayerPrefs.SetInt(_resourceKeys[1], currLevel);
-        PlayerPrefs.SetFloat(_resourceKeys[2], expScript.currExp);
+        if (coinsScript != null && expScript != null)
+        {
+            int currLevel = levelUp.GetCurrLvl();
+            int currCoins = coinsScript.GetCoins();
+            PlayerPrefs.SetFloat(_resourceKeys[0], currCoins);
+            PlayerPrefs.SetInt(_resourceKeys[1], currLevel);
+            PlayerPrefs.SetFloat(_resourceKeys[2], expScript.currExp);
+        }
     }
 
     public void SaveGenerator(int Id)

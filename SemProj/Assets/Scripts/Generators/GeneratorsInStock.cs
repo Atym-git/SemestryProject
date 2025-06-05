@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,9 +16,9 @@ public class GeneratorsInStock : MonoBehaviour
 
     [SerializeField] private Image[] generatorsImages;
 
-    private TextMeshProUGUI[] generatorsCostTMP;
+    [SerializeField] private TextMeshProUGUI[] generatorsCostTMP;
 
-    private void Start()
+    private void Awake()
     {
         //for (int i = 0; i < generatorsImages.Length; i++)
         //{
@@ -38,7 +40,10 @@ public class GeneratorsInStock : MonoBehaviour
             upgradeButtons[currId].SetActive(true);
             //generatorButtons[currId].SetActive(true);
         }
+        Debug.Log("TMPMassLength: " + generatorsCostTMP.Length);
+        Debug.Log("currId: " + currId);
         Destroy(generatorsCostTMP[currId]);
+        //generatorsCostTMP[currId].text = "";
         optionMarks[currId].SetActive(true);
         generatorsImages[currId].sprite = generatorInStockSprites[currId];
     }

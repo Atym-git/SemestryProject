@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Dialogues : MonoBehaviour
@@ -43,7 +44,9 @@ public class Dialogues : MonoBehaviour
     public void RequiredLevelAchieved(int currLvl)
     {
         int requirLvlIndex = levelDialoguesRequirLvls.IndexOf(currLvl);
-        if (levelDialoguesRequirLvls.Contains(currLvl) && !PlayerPrefs.HasKey("LevelDialogue-" + requirLvlIndex))
+        Debug.Log(PlayerPrefs.HasKey("LevelDialogue-" + requirLvlIndex));
+        Debug.Log(levelDialoguesRequirLvls.Contains(currLvl));
+        if (levelDialoguesRequirLvls.Contains(currLvl) && PlayerPrefs.GetInt("LevelDialogue-" + requirLvlIndex) == requirLvlIndex)
         {
             levelBasedDialoguesGO[requirLvlIndex].transform.GetChild(0).gameObject.SetActive(true);
             save.SaveLevelDialoguesOut(levelDialoguesRequirLvls.Count, requirLvlIndex);
