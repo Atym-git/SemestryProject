@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: c45497f50b248604a80acd8b0d56ccfb, type: 3}
   <generatorName>k__BackingField: Flowers
-  <coinsProducement>k__BackingField: 100
-  <expProducement>k__BackingField: 150
-  <timeConsume>k__BackingField: 120
-  <generatorCost>k__BackingField: 1500
+  <coinsProducement>k__BackingField: 120
+  <expProducement>k__BackingField: 100
+  <timeConsume>k__BackingField: 50
+  <generatorCost>k__BackingField: 150
   <ScaleFactor>k__BackingField: 4

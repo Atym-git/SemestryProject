@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <generatorSprite>k__BackingField: {fileID: 21300000, guid: 42394cbdcfde8bd49aeb11aa084e2907, type: 3}
   <generatorName>k__BackingField: Dance Floor
-  <coinsProducement>k__BackingField: 35
+  <coinsProducement>k__BackingField: 300
   <expProducement>k__BackingField: 200
   <timeConsume>k__BackingField: 75
   <generatorCost>k__BackingField: 500
