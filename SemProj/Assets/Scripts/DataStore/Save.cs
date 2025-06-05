@@ -117,7 +117,7 @@ public class Save : MonoBehaviour
         //}
     }
 
-    private void SaveSlidersVolume()
+    public void SaveSlidersVolume()
     {
         PlayerPrefs.SetFloat(_slidersKeys[0], volumeSliders[0].value);
         PlayerPrefs.SetFloat(_slidersKeys[1], volumeSliders[1].value);
